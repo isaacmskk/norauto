@@ -7,7 +7,7 @@
         }
     }else{
         echo'No me has pasado controller';
-        echo'No me has pasado controller';
+        
     }
 
 ?>
