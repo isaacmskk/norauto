@@ -1,14 +1,6 @@
 <?php
 include_once('controller/pedidoController.php');
 include_once('config/parameters.php');
-/*if(isset($_GET['controller'])){
-    echo 'Quieres realizar una accion sobre '.$GET['controller'];
-    if(isset($_GET['action'])){
-        echo 'Sobre '.$GET['controller'].' quieres mostrar la pagina '.$GET['action']; 
-    }else{
-        echo 'No me has pasado controller';
-    }
-}*/
 
 if(!isset($GET['controller'])){
     //Si no se pasa nada, se mostrara pagina principal de pedidos
@@ -27,7 +19,6 @@ if(!isset($GET['controller'])){
         }else{
             $action = action_default;
         }
-echo 'hola';
         $controller->$action();
     }else{
         header("Location:".url.'?controller=pedido');
