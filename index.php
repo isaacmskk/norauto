@@ -1,12 +1,11 @@
 <?php
 include_once('controller/pedidoController.php');
 include_once('config/parameters.php');
-
 if(!isset($GET['controller'])){
     //Si no se pasa nada, se mostrara pagina principal de pedidos
     header("Location:".url.'?controller=pedido');
 }else{
-    $nombre_controller = $GET['controller'].' Controller ';
+    $nombre_controller = $GET['controller'].'Controller';
 
     if(class_exists($nombre_controller)){
         //Miramos si nos pasa una accion
