@@ -2,11 +2,11 @@
 
     include_once 'producto.php';
 
-    class Hamburguesa extends Producto{
+    class Hamburguesa extends Plato{
         private $tipohamburguesa;
 
         public function __construct($id, $name, $tipo,$tipohamburguesa){
-            parent::__construct($id, $name, $tipo);
+            parent::__construct($id, $name);
             $this->$tipohamburguesa;
         }
 
