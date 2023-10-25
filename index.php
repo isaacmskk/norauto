@@ -1,11 +1,14 @@
 <?php
-include_once('controller/platoController.php');
-include_once('config/parameters.php');
+include_once 'controller/platoController.php';
+include_once 'config/parameters.php';
 
-if(!isset($GET['controller'])){
+echo'NORAUTO';
+
+if(!isset($_GET['controller'])){
     //Si no se pasa nada, se mostrara pagina principal de pedidos
+    header("Location:".url.'?controller=plato');
 }else{
-    $nombre_controller = $GET['controller'].'Controller';
+    $nombre_controller = $_GET['controller'].'Controller';
 
     if(class_exists($nombre_controller)){
         //Miramos si nos pasa una accion
@@ -13,15 +16,16 @@ if(!isset($GET['controller'])){
 
         $controller = new $nombre_controller();
 
-        if(isset($GET['action']) && method_exists($controller, $_GET['action'])){
-            $action = $GET['action'];
+        if(isset($_GET['action']) && method_exists($controller, $_GET['action'])){
+            $action = $_GET['action'];
         }else{
             $action = action_default;
         }
         $controller->$action();
     }else{
-        header("Location:".url.'?controller=pedido');
+        header("Location:".url.'?controller=plato');
     }
 }
+
 
 ?>

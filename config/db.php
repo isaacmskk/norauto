@@ -5,7 +5,10 @@
             $con = new mysqli($host,$user,$pwd,$db);
             if ($con == false){
                 die('ERROR DATABASE');
+
+            }else{
+            return $con;
+            }
         }
     }
-}
 ?>

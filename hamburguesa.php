@@ -1,6 +1,6 @@
 <?php
 
-    include_once 'producto.php';
+    include_once '../model/plato.php';
 
     class Hamburguesa extends Plato{
         private $tipohamburguesa;
