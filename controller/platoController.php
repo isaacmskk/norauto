@@ -7,12 +7,13 @@ class platoController{
 
     public function index(){
         
+        $allPlatos = PlatoDAO::getAllPlatos();
+
+        include_once 'views/cabecera.php';
+        include_once 'views/panelpedido.php';
+
     }
 
-
-        public function compra(){
-            echo 'Pagina de compra';
-        }
 }
 
 
