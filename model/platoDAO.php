@@ -1,20 +1,20 @@
 <?php
 include_once 'config/db.php';
+include_once 'plato.php';
     class PlatoDAO {
         public static function getAllPlatos() {
-            $con = db::connect(); 
+            $con = db::connect();
+            $stmt = $con->prepare("SELECT * FROM plato");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $con->close();
 
-                if ($result = $con->query("SELECT * FROM plato ")) {
-                    while ($plato = $result->fetch_object('plato')) {
-                        echo $plato ['nombre'];
-                        
+            $listaPlatos = [];
 
-                }
-        }else{
-            return $result;
-            
-        }
-    
+        while ($plato = $result->fetch_object('plato')) {
+            $listaPlatos[] = $plato;
+    }
+    return $listaPlatos;
 }
 public static function deletePlato($id) {
     $con = db::connect(); 
@@ -27,7 +27,7 @@ public static function deletePlato($id) {
 
     return $result;
 }
-public static function modificarPlato($id_plato, $NOMBRE,$DESCRIPCION,$INGREDIENTES,$FOTO,$PRECIO,$CAT_ID) {
+public static function modificarPlato($ID_PLATO, $NOMBRE,$DESCRIPCION,$INGREDIENTES,$FOTO,$PRECIO,$CAT_ID) {
     $con = db::connect(); 
 
     $stmt = $con->prepare("UPDATE plato SET NAME = ID_PLATO = ?, NOMBRE = ?,DESCRIPCION = ?,INGREDIENTES = ?,FOTO = ?,PRECIO = ?,CAT_ID = ?, ");
@@ -38,23 +38,22 @@ public static function modificarPlato($id_plato, $NOMBRE,$DESCRIPCION,$INGREDIEN
 
     return $result;
 }
-    public static function getAllByTipe($tipo) {
+    public static function getPlatoById($id) {
         $con = db::connect(); 
 
-        $stmt = $con->prepare("SELECT * FROM plato where id = ?");
-        $stmt->bind_param("i", $id_plato);
+        $stmt = $con->prepare("SELECT * FROM plato where ID_PLATO = ?");
+        $stmt->bind_param("i", $ID_PLATO);
         $stmt->execute();
-        $result = $stmt->get_result();
-
         $con->close();
+
         // $listaPlatos = [];
 
-        // while ($plato = $result->fetch_object($tipo)) {
-        //         $listaPlatos[] = $plato;
-        // }
+    //     while ($plato = $result->fetch_object($id)) {
+    //             $listaPlatos[] = $id;
+    //     }
 
-        // return $listaPlatos;
+    //     return $listaPlatos;
     }
-}
 
+    }
 ?>

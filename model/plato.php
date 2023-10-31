@@ -1,6 +1,6 @@
 <?php
 
-    abstract class Plato{
+      class Plato{
         protected $ID_PLATO;
         protected $NOMBRE;
         protected $DESCRIPCION;
@@ -9,9 +9,6 @@
         protected $PRECIO;
         protected $ID_CAT;
 
-
-        
-        
 
         /**
          * Get the value of ID_PLATO
@@ -153,5 +150,3 @@
                 return $this;
         }
     }
-
-?>

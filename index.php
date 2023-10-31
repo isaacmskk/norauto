@@ -3,7 +3,7 @@ include_once 'controller/platoController.php';
 include_once 'config/parameters.php';
 
 echo'NORAUTO';
-
+echo '<br>';
 if(!isset($_GET['controller'])){
     //Si no se pasa nada, se mostrara pagina principal de pedidos
     header("Location:".url.'?controller=plato');
