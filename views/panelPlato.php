@@ -30,18 +30,21 @@
 
 
             <td>
-                <form action=<?= url . "?controller=plato&action=modificar" ?>method="post">
-                    <input name="modificar" value="<?= $plato->getID_PLATO() ?> " hidden>
-                    <button name="modificar" class="bet-button w3-black w3-section" type="sumbit">Modificar</button>
-                </form>
-            </td>
-            <td>
-                <form action=<?= url . "?controller=plato&action=eliminar" ?>method="post">
-                    <input name="eliminar" value="<?= $plato->getID_PLATO() ?> " hidden>
-                    <button name="eliminar" class="bet-button w3-black w3-section" type="sumbit">Eliminar</button>
-                </form>
-            </td>
-        </tr>
+    <form action="<?= url ?>?controller=plato&action=editar" method="post">
+        <input name="ID_PLATO" value="<?= $plato->getID_PLATO() ?> " hidden>
+        <input name="NOMBRE" value="<?= $plato->getNOMBRE() ?> " hidden>
+        <button name="modificar" class="bet-button w3-black w3-section" type="submit">Modificar</button>
+    </form>
+</td>
+
+<td>
+    <form action="<?= url ?>?controller=plato&action=eliminar" method="post">
+        <input name="eliminar" value="<?= $plato->getID_PLATO() ?> " hidden>
+        <button name="eliminar" class="bet-button w3-black w3-section" type="submit">Eliminar</button>
+    </form>
+</td>
+</tr>
+
         <?php 
         endforeach;
  ?>
