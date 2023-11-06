@@ -1,0 +1,175 @@
+* {
+    font-family: "Muli";
+    src: url(font\muli.ttf);
+
+}
+
+.containerheader {
+    width: 100%;
+    height: 64px;
+    background-color: #002B6F;
+}
+
+.logo {
+    width: 128px;
+    height: 50px;
+    display: inline-flex;
+
+}
+
+.menuheader {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.carritoheader {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: flex-end;
+
+
+}
+
+.nav1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+
+}
+
+.nav1 li {
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: space-between;
+    margin-right: 30px;
+
+
+}
+
+.nav1 a {
+    color: #22293A;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+.ofertas a {
+    color: #FCB731;
+}
+
+.nav1 a:hover {
+    background-color: yellow;
+    display: inline-block;
+}
+
+.banner1 {
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 1519px;
+}
+
+.fondoimagensegunda {
+    width: 100%;
+    height: 260px;
+    background-color: #F4F4F6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.imagensegunda {
+    display: flex;
+    width: 972px;
+    height: 218px;
+    padding: 30px;
+    position: relative;
+}
+
+.fondoimagensegunda p {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+}
+
+.menuprincipal {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.comidamenu1 {
+
+    width: 342px;
+    height: 180px;
+}
+
+.comidamenu2 {
+    width: 342px;
+    height: 180px;
+}
+
+.comidamenu3 {
+    width: 342px;
+    height: 180px;
+}
+
+.comidamenu4 {
+    width: 342px;
+    height: 180px;
+}
+
+.containerplatos {
+    background-color: #F4F4F6;
+    width: 100%;
+    height: 385px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.containerplatos img {
+    width: 64px;
+    height: 64px;
+}
+
+/* .containerplatos.circle img{
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    background-color: white;
+    
+} */
+
+.volverarriba {
+    width: 100%;
+    height: 69px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerabajo img {
+    width: 100%;
+    height: 165px;
+}
+
+/*Media query*/
+@media only screen and (max-width: 600px) {
+    /* body {
+      background-color: lightblue;
+    } */
+}
