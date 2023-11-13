@@ -16,17 +16,13 @@
     <?php
 
 
-    foreach ($allPlatos as $plato) : ?>
+    foreach ($_SESSION['SELECCIONES'] as $pedido) : ?>
 
         <tr>
 
-            <td><?= $plato->getID_PLATO() ?></td>
-            <td><?= $plato->getNOMBRE() ?></td>
-            <td><?= $plato->getDESCRIPCION() ?></td>
-            <td><?= $plato->getINGREDIENTES() ?></td>
-            <td><?= $plato->getFOTO() ?></td>
-            <td><?= $plato->getPRECIO() ?></td>
-            <td><?= $plato->getID_CAT() ?></td>
+            <td><?= $pedido->getPlato()->getID_PLATO() ?></td>
+            <td><?= $pedido->getPlato()->getNOMBRE() ?></td>
+            <td><?= $pedido->getPlato()->getDESCRIPCION() ?></td>
 
 
             <td>
