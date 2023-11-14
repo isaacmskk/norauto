@@ -14,16 +14,45 @@
   <link href="indexcss.css" rel="stylesheet" type="text/css" media="screen">
 
 </head>
-<header class="containerheader" id="header">
-  <a href="#">
-    <img src="fotos/logo.png" alt="logo norauto" class="logo">
-  </a>
-  <a href="menu.html">
-    <img src="fotos/menu-del-restaurante (1).png" alt="menu norauto" class="menuheader">
-  </a>
-  <a href="carrito.html">
-    <img src="fotos/caarritoheader.png" alt="carrito norauto" class="carritoheader">
-  </a>
+<header id="header">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="norauto.html"><img src="fotos/logo.png" alt="Logo Norauto" width="128"
+          height="40"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <form class="d-flex mx-auto" role="search">
+          <input class="form-control me-2" type="search" placeholder="Busca tu plato favorito..." aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <img src="fotos/marcador-de-posicion.png" alt="mi centro" width="30" height="30">
+
+            <a class="nav-link" href="#">Mi centro</a>
+          </li>
+          <li class="nav-item">
+            <img src="fotos/menu-del-restaurante (1).png" alt="imagen menu" width="30" height="30">
+            <a class="nav-link" href="menu.html">Menu</a>
+          </li>
+          
+          <li class="nav-item">
+            <img src="fotos/usuario.png" alt="conectarse" width="30" height="30">
+
+            <a class="nav-link" href="#">Conectarse</a>
+          </li>
+          <li class="nav-item">
+            <a href="carrito.html">
+              <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <body>
@@ -52,24 +81,7 @@
       </li>
     </ul>
   </nav>
-  <!-- <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10">
-        <img src="fotos/banner.png" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="10">
-        <img src="fotos/BANNERABAJO.png" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div> -->
+
   <section class="imagenprincipio">
     <img class="banner1" src="fotos\banner.png" alt="Muestra una imagen de una comida y una oferta">
   </section>
@@ -110,7 +122,7 @@
 
   <section class="containerplatos">
     <div class="platotexto">
-      <p>Nuestros platos mas pedidos</p>
+      <p>Nuestros platos más pedidos</p>
     </div>
     <div class="icon">
       <img src="fotos/hamburguesaplato.png">
@@ -139,53 +151,18 @@
   <section class="bannerabajo">
     <img src="fotos/BANNERABAJO.png">
   </section>
+  <footer>
+    <div class="footer">
+      <ul class="social-icons">
+        <li><img src="fotos/image (1).png" alt="instagram"></li>
+        <li><img src="fotos/image (2).png" alt="Facebook"></li>
+        <li><img class="youtube" src="fotos/youtube (1).png" alt="youtube"></li>
+        <li><img src="fotos/image.png" alt="twitter"></li>
 
-
-  <!-- <section class="menuabajo">
-    <li class="abajobold">Mi compra</li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </section>
-  <section class="menuabajo">
-    <li class="abajobold">Nuestros Servicios</li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </section>
-  <section class="menuabajo">
-    <li class="abajobold">Norauto</li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </section>
-  <section class="menuabajo">
-    <li class="abajobold"></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </section>
-  <section class="menuabajo">
-    <li class="abajobold"></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </section> -->
+      </ul>
+      <p>Copyright &copy; 2023 Isaac Montes Segarra</p>
+    </div>
+  </footer>
 </body>
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
