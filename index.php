@@ -2,30 +2,39 @@
 include_once 'controller/platoController.php';
 include_once 'config/parameters.php';
 
-echo'NORAUTO';
-echo '<br>';
-if(!isset($_GET['controller'])){
-    //Si no se pasa nada, se mostrara pagina principal de pedidos
-    header("Location:".url.'?controller=plato');
+// echo 'NORAUTO';
+// echo '<br>';
+
+// $controllerName = $_GET['controller'] ?? 'plato';
+// $actionName = $_GET['action'] ?? action_default;
+
+// $controllerClassName = $controllerName . 'Controller';
+
+// if (class_exists($controllerClassName)) {
+//     $controller = new $controllerClassName();
+
+//     if (method_exists($controller, $actionName)) {
+//         $controller->$actionName();
+//     } else {
+//         header("Location:" . url . '?controller=' . $controllerName);
+//     }
+// } else {
+//     header("Location:" . url . '?controller=plato');
+// }
+if (!isset($_GET['controller'])){
+header("Location: ".url."?controller=plato");
 }else{
-    $nombre_controller = $_GET['controller'].'Controller';
+    $controllerClassName = $_GET['controller'].'Controller';
+    if (class_exists($controllerClassName)) {
+        $controller = new $controllerClassName();
 
-    if(class_exists($nombre_controller)){
-        //Miramos si nos pasa una accion
-        //si no mostramos por defecto
-
-        $controller = new $nombre_controller();
-
-        if(isset($_GET['action']) && method_exists($controller, $_GET['action'])){
+        if(isset($_GET['action'])&& method_exists($controller,$_GET['action'])){
             $action = $_GET['action'];
         }else{
-            $action = action_default;
+            $action=action_default;
         }
         $controller->$action();
-    }else{
-        header("Location:".url.'?controller=plato');
-    }
 }
-
-
+header("Location:" . url . '?controller=plato');
+}
 ?>
