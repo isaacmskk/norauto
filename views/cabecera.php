@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
 <header id="header">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="norauto.html"><img src="fotos/logo.png" alt="Logo Norauto" width="128"
+      <a class="navbar-brand" href=<?=url.'?controller=plato'?>><img src="fotos/logo.png" alt="Logo Norauto" width="128"
           height="40"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

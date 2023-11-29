@@ -10,6 +10,7 @@
         <th>ID_CAT</th>
     </tr>
     <?php
+    include_once 'utils/CalculadoraPrecios.php';
     $pos = 0;
     foreach ($_SESSION['selecciones'] as $pedido) { ?>
 

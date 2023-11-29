@@ -215,7 +215,7 @@
     background-color: #FCB731;
 }
 .fondomenu1 {
-    display: flex;
+    display: inline-flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
@@ -258,7 +258,7 @@
     border-style: dotted;
 
 }
-.fondomenu2 {
+/* .fondomenu2 {
     display: inline-flex;
     justify-content: space-evenly;
     align-items: center;
@@ -301,18 +301,11 @@
     border-radius: 5px;
     border-style: dotted;
 
-}
+} */
 .imagenesmenu img {
-    width: 251px;
-    height: 230px;
+    width: 240px;
+    height: 220px;
 }
-
-
-
-
-
-
-
 
 
 

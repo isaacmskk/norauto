@@ -5,8 +5,12 @@ class platoController
 {
     public function index()
     {
-        session_start();
+        include_once 'views/cabecera.php';
+        include_once 'views/norauto.php';
+        include_once 'views/footer.php';
+    }
 
+    public function menu(){
         if(!isset($_SESSION['selecciones'])){
             $_SESSION['selecciones'] = array();
         }else{
@@ -21,16 +25,27 @@ class platoController
         $allPlatos = PlatoDAO::getAllPlatos();
 
         include_once 'views/cabecera.php';
-        include_once 'views/panelPlato.php';
+        include_once 'views/menu.php';
         include_once 'views/footer.php';
-    }
+        // session_start();
 
-    public function menu(){
-        $allPlatos = PlatoDAO::getAllPlatos();
+        // if(!isset($_GET['categoria'])){
+        //     $allProducts = PlatoDAO::getAllPlatos();
+        //     $categoria = 'Todos los Productos';
+        // }else{
+        //     if(isset($_GET['categoria'])){
+        //         $categoria = $_GET['categoria'];
+        //         if($categoria == 'TodosProductos'){
+        //             $allProducts = PlatoDAO::getAllPlatos();
+        //         }else{
+        //             $allProducts = PlatoDAO::getAllByTipe($categoria);
+        //         }
+        //     }
+        // }
 
-        include_once 'views/cabecera.php';
-        include_once 'views/panelPlato.php';
-        include_once 'views/footer.php';
+        // include_once 'views/cabecera.php';
+        // include_once 'views/panelPlato.php';
+        // include_once 'views/footer.php';
 
     }
 
