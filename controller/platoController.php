@@ -1,6 +1,4 @@
 <?php
-//Creamos el controlador de pedidos
-// include_once 'model/plato.php';
 include_once 'model/platoDAO.php';
 
 class platoController
@@ -9,25 +7,31 @@ class platoController
     {
         session_start();
 
-
-
-        if (!isset($_SESSION['selecciones'])) {
+        if(!isset($_SESSION['selecciones'])){
             $_SESSION['selecciones'] = array();
-        } else{
-            if (isset($_POST['ID_PLATO']) && isset($_POST['NOMBRE'])) {
-                if ($_POST['NOMBRE'] == 'NOMBRE') {
-                    $pedido = new Pedido(PlatoDAO::getPlatoById($_POST['ID_PLATO']));
-                }
-                array_push($_SESSION['selecciones'],$pedido);
+        }else{
+            if(isset($_POST['Añadir'])){
+                $productoSel = PlatoDAO::getPlatoById($_POST['ID_PLATO'], $_POST['ID_CAT']);
+                array_push($_SESSION['selecciones'],$productoSel);
             }
+
         }
-        $ID_PLATO = $_POST['id'] ?? null;
-        $NOMBRE = $_POST['NOMBRE'] ?? null;
+    
 
         $allPlatos = PlatoDAO::getAllPlatos();
 
         include_once 'views/cabecera.php';
         include_once 'views/panelPlato.php';
+        include_once 'views/footer.php';
+    }
+
+    public function menu(){
+        $allPlatos = PlatoDAO::getAllPlatos();
+
+        include_once 'views/cabecera.php';
+        include_once 'views/panelPlato.php';
+        include_once 'views/footer.php';
+
     }
 
     public function compra()
@@ -46,34 +50,34 @@ class platoController
             }
         }
         echo 'Pagina de compra';
-        include_once 'views/panelCarrito.php';
+        include_once 'views/panelCompra.php';
         include_once 'views/cabecera.php';
     }
 
-    public function eliminar()
-    {
-        echo 'Plato a eliminar';
-        $ID_PLATO = $_POST['id'] ?? null;
-        if ($ID_PLATO) {
-            platoDAO::deletePlato($ID_PLATO);
-        }
-        header("Location:" . url . '?controller=eliminar');
-    }
+    // public function eliminar()
+    // {
+    //     echo 'Plato a eliminar';
+    //     $ID_PLATO = $_POST['id'] ?? null;
+    //     if ($ID_PLATO) {
+    //         platoDAO::deletePlato($ID_PLATO);
+    //     }
+    //     header("Location:" . url . '?controller=eliminar');
+    // }
 
-    public function actualizar()
-    {
-        $ID_PLATO = $_POST['id'] ?? null;
-        $NOMBRE = $_POST['NOMBRE'] ?? null;
-        $DESCRIPCION = $_POST['DESCRIPCION'] ?? null;
-        $FOTO = $_POST['FOTO'] ?? null;
-        $PRECIO = $_POST['PRECIO'] ?? null;
-        $CAT_ID = $_POST['CAT_ID'] ?? null;
+    // public function actualizar()
+    // {
+    //     $ID_PLATO = $_POST['id'] ?? null;
+    //     $NOMBRE = $_POST['NOMBRE'] ?? null;
+    //     $DESCRIPCION = $_POST['DESCRIPCION'] ?? null;
+    //     $FOTO = $_POST['FOTO'] ?? null;
+    //     $PRECIO = $_POST['PRECIO'] ?? null;
+    //     $ID_CAT = $_POST['ID_CAT'] ?? null;
 
-        if ($ID_PLATO && $NOMBRE && $DESCRIPCION && $FOTO && $PRECIO && $CAT_ID) {
-            PlatoDAO::seleccionarPlato($ID_PLATO, $NOMBRE, $DESCRIPCION, $FOTO, $PRECIO, $CAT_ID);
-        }
+    //     if ($ID_PLATO && $NOMBRE && $DESCRIPCION && $FOTO && $PRECIO && $ID_CAT) {
+    //         PlatoDAO::seleccionarPlato($ID_PLATO, $NOMBRE, $DESCRIPCION, $FOTO, $PRECIO, $ID_CAT);
+    //     }
 
-        include_once 'views/panelPlato.php';
-        header("Location:" . url . '?controller=plato');
-    }
+    //     include_once 'views/panelPlato.php';
+    //     header("Location:" . url . '?controller=plato');
+    // }
 }

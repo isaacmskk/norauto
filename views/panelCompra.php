@@ -4,21 +4,21 @@
     <tr>
         <th>ID_PLATO</th>
         <th>NOMBRE</th>
-        <th>DESCRIPCION</th>
         <th>INGREDIENTES</th>
         <th>FOTO</th>
         <th>PRECIO</th>
         <th>ID_CAT</th>
-        <th>SELECCICONAR</th>
     </tr>
     <?php
     $pos = 0;
     foreach ($_SESSION['selecciones'] as $pedido) { ?>
 
+
         <tr>
             <td><?= $pedido->getPlato()->getID_PLATO() ?></td>
             <td><?= $pedido->getPlato()->getNOMBRE() ?></td>
-            <td><?= $pedido->getPlato()->getCantidad() ?></td>
+            <td><?= $pedido->getPlato()->getPRECIO() ?></td>
+            <td><?= $pedido->getCantidad() ?></td>
             <td><?= $pedido->devuelvePrecio() ?></td>
 
             <form action=<?= url . '?controller=plato&action=compra' ?>method="post">

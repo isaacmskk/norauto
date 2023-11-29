@@ -4,11 +4,9 @@ class Plato
 {
         protected $ID_PLATO;
         protected $NOMBRE;
-        protected $DESCRIPCION;
         protected $FOTO;
         protected $PRECIO;
         protected $ID_CAT;
-
 
         /**
          * Get the value of ID_PLATO
@@ -50,25 +48,6 @@ class Plato
                 return $this;
         }
 
-        /**
-         * Get the value of DESCRIPCION
-         */
-        public function getDESCRIPCION()
-        {
-                return $this->DESCRIPCION;
-        }
-
-        /**
-         * Set the value of DESCRIPCION
-         *
-         * @return  self
-         */
-        public function setDESCRIPCION($DESCRIPCION)
-        {
-                $this->DESCRIPCION = $DESCRIPCION;
-
-                return $this;
-        }
 
 
         /**

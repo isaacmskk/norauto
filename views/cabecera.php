@@ -1,3 +1,4 @@
+
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -30,7 +31,7 @@
           </li>
           <li class="nav-item">
             <img src="fotos/menu-del-restaurante (1).png" alt="imagen menu" width="30" height="30">
-            <a class="nav-link" href="menu.html">Menu</a>
+            <a class="nav-link" href=<?=url.'?controller=plato&action=menu'?>>Menu</a>
           </li>
           
           <li class="nav-item">
@@ -39,8 +40,8 @@
             <a class="nav-link" href="#">Conectarse</a>
           </li>
           <li class="nav-item">
-            <a href=<?=url.'?controller=plato&action=compra'?>><?=count($_SESSION['selecciones'])?>Selecciones
-              <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40">
+            <a href=<?=url.'?controller=plato&action=compra'?>>
+              <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40"><?=count($_SESSION['selecciones'])?>
             </a>
           </li>
         </ul>
@@ -48,5 +49,7 @@
     </div>
   </nav>
 </header>
+
 </body>
+
 </html>
