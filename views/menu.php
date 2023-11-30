@@ -89,7 +89,11 @@
 
                     <img src=<?= $plato->getFOTO() ?>>
                     <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
-                    <button action=<?= url . '?controller=plato&action=selecciones' ?> method="post">Añadir</button>
+                    <form action=<?= url . '?controller=plato&action=selecciones' ?> method="post">
+                    <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
+                    <input name="selecciones" value="<?= $plato->getID_CAT() ?> " hidden>
+                    <button name="Añadir" class="bet-button w3-black w3-section" type="submit">Añadir</button>
+                </form>
 
                 </div>
             </article>
@@ -97,17 +101,6 @@
         }    ?>
 
     </section>
-
-<!--   
-            <td>
-
-                <form action=<?= url . '?controller=plato&action=selecciones' ?> method="post">
-                    <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
-                    <input name="selecciones" value="<?= $plato->getID_CAT() ?> " hidden>
-                    <button name="Añadir" class="bet-button w3-black w3-section" type="submit">Añadir</button>
-                </form>
-            </td>
-        </tr> -->
 
         <!-- <section class="fondomenu2">
       <div class="imagenesmenu">

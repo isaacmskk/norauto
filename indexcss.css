@@ -96,10 +96,8 @@
 
 .nav1 a:hover::after {
     visibility: visible;
-    transform: scaleX(1);
+    transform: scaleX(0);
 }
-
-
 
 .ofertas a {
     color: #FCB731;

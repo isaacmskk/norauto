@@ -38,17 +38,17 @@ class PlatoDAO {
         return $listaPlatos;
     }
 
-    public static function seleccionarPlato($ID_PLATO, $NOMBRE, $FOTO, $PRECIO, $ID_CAT) {
-        $con = db::connect(); 
+    // public static function seleccionarPlato($ID_PLATO, $NOMBRE, $FOTO, $PRECIO, $ID_CAT) {
+    //     $con = db::connect(); 
     
-        $stmt = $con->prepare("UPDATE plato SET NOMBRE = ?, FOTO = ?, PRECIO = ?, ID_CAT = ? WHERE ID_PLATO = ?");
-        $stmt->bind_param("sssii", $NOMBRE, $FOTO, $PRECIO, $ID_CAT, $ID_PLATO);
+    //     $stmt = $con->prepare("UPDATE plato SET NOMBRE = ?, FOTO = ?, PRECIO = ?, ID_CAT = ? WHERE ID_PLATO = ?");
+    //     $stmt->bind_param("sssii", $NOMBRE, $FOTO, $PRECIO, $ID_CAT, $ID_PLATO);
     
-        $stmt->execute();
-        $result = $stmt->get_result();
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
     
-        return $result;
-    }
+    //     return $result;
+    // }
     
     public static function getPlatoById($ID_PLATO,$ID_CAT) {
         $con = db::connect(); 
