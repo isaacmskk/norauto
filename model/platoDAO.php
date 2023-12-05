@@ -2,6 +2,7 @@
 include_once "controller/platoController.php";
 include_once 'config/db.php';
 include_once 'plato.php';
+include 'model/PASTA.PHP';
 
 class PlatoDAO {
     public static function getAllPlatos() {
@@ -12,7 +13,7 @@ class PlatoDAO {
         $con->close();
         $listaPlatos = [];
 
-        while ($plato = $result->fetch_object('plato')) {
+        while ($plato = $result->fetch_object('pasta')) {
             $listaPlatos[] = $plato;
         }
         return $listaPlatos;
@@ -38,19 +39,8 @@ class PlatoDAO {
         return $listaPlatos;
     }
 
-    // public static function seleccionarPlato($ID_PLATO, $NOMBRE, $FOTO, $PRECIO, $ID_CAT) {
-    //     $con = db::connect(); 
     
-    //     $stmt = $con->prepare("UPDATE plato SET NOMBRE = ?, FOTO = ?, PRECIO = ?, ID_CAT = ? WHERE ID_PLATO = ?");
-    //     $stmt->bind_param("sssii", $NOMBRE, $FOTO, $PRECIO, $ID_CAT, $ID_PLATO);
-    
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    
-    //     return $result;
-    // }
-    
-    public static function getPlatoById($ID_PLATO,$ID_CAT) {
+    public static function getPlatoById($ID_PLATO) {
         $con = db::connect(); 
 
         $stmt = $con->prepare("SELECT * FROM plato where ID_PLATO = ?");
@@ -59,7 +49,7 @@ class PlatoDAO {
         $result = $stmt->get_result();
         $con->close();
 
-        $plato = $result->fetch_object($ID_CAT);
+        $plato = $result->fetch_object('pasta');
 
         return $plato;
     }

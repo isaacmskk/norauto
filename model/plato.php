@@ -7,7 +7,15 @@ class Plato
         protected $FOTO;
         protected $PRECIO;
         protected $ID_CAT;
+        
+        public function __construct($ID_PLATO,$NOMBRE,$FOTO,$PRECIO,$ID_CAT){
+                $this->ID_PLATO = $ID_PLATO;
+                $this->NOMBRE = $NOMBRE;
+                $this->FOTO = $FOTO;
+                $this->PRECIO = $PRECIO;
+                $this->ID_CAT = $ID_CAT;
 
+        }
         /**
          * Get the value of ID_PLATO
          */

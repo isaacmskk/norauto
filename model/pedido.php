@@ -48,4 +48,7 @@ class Pedido{
 
         return $this;
     }
+public function devuelvePrecio(){
+    return $this->plato->getPRECIO()*$this->cantidad;
+}
 }

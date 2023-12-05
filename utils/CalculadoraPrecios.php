@@ -9,7 +9,7 @@ class CalculadoraPrecios{
             $precioTotal += $pedido->devuelvePrecio();
         }
 
-        return $precioTotal;
+        return number_format($precioTotal,2, '.',',');
     }
 }
 ?>

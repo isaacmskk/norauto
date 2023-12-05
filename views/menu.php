@@ -82,53 +82,24 @@
 
 
     <section class="fondomenu1 row">
-        <?php
-        foreach ($allPlatos as $plato) { ?>
-            <article class="col-12 col-lg-3">
-                <div class="imagenesmenu">
-
-                    <img src=<?= $plato->getFOTO() ?>>
-                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
-                    <form action=<?= url . '?controller=plato&action=selecciones' ?> method="post">
+    <?php
+    foreach ($allPlatos as $plato) { ?>
+        <article class="col-12 col-lg-3">
+            <div class="imagenesmenu">
+                <img src=<?= $plato->getFOTO() ?>>
+                <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
+                <form action=<?="?controller=plato&action=selecciones" ?> method="POST">
                     <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
-                    <input name="selecciones" value="<?= $plato->getID_CAT() ?> " hidden>
+                    <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>
                     <button name="Añadir" class="bet-button w3-black w3-section" type="submit">Añadir</button>
                 </form>
-
-                </div>
-            </article>
-        <?php
-        }    ?>
+            </div>
+        </article>
+    <?php
+    } ?>
+</section>
 
     </section>
-
-        <!-- <section class="fondomenu2">
-      <div class="imagenesmenu">
-        <img src="fotos/especialmenu.png">
-        <p>Hamburguesa Especial <br>8,50€</p>
-        <button>Añadir</button>
-      </div>
-      <div class="imagenesmenu">
-        <img src="fotos/carbonara.png">
-        <p>Espaguetis Carbonara <br>12,00€</p>
-        <button>Añadir</button>
-      </div class="imagenesmenu">
-      <div class="imagenesmenu">
-        <img src="fotos/4quesos.png">
-        <p>Cuatro Quesos <br>9,99€</p>
-        <button>Añadir</button>
-      </div>
-      <div class="imagenesmenu">
-        <img src="fotos/paellamenu.png">
-        <p>Paella Marisco <br>17,90€</p>
-        <button>Añadir</button>
-      </div>
-      <div class="imagenesmenu">
-        <img src="fotos/perritobuieno.png">
-        <p>Hot dog gourmet <br>5,50€</p>
-        <button>Añadir</button>
-      </div>
-  </section> -->
     <section class="volverarriba">
         <a href="#header">Volver Arriba</a>
     </section>
