@@ -12,6 +12,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link href="bootstrap.min.css" rel="stylesheet">
   <link href="carritocss.css" rel="stylesheet" type="text/css" media="screen">
+  <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
+
 
 </head>
 
@@ -41,49 +43,57 @@
       </li>
     </ul>
   </nav>
-  <section class="fondo">
-    <div class="textocesta">
-      <p>Cesta</p>
-    </div>
-    <div class="textoresumen">
-      <p>Resumen</p>
-    </div>
-    <?php
-    $pos = 0;
-    foreach ($_SESSION['selecciones'] as $pedido) { ?>
-      <div class="cuadro">
+  <section class="fondo row">
+    <div class="col-8">
+      <div class="textocesta">
+        <p>Cesta</p>
+      </div>
 
-        <img src=<?= $pedido->getPlato()->getFOTO() ?> width="120" height="120">
-        <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
-        <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
-        <div class="eliminar2">
-          <img src="fotos/eliminar.png" width="32" height="32">
-          <a>Eliminar</a>
+      <?php
+      $pos = 0;
+      foreach ($_SESSION['selecciones'] as $pedido) { ?>
+        <div class="cuadro">
+
+          <img src=<?= $pedido->getPlato()->getFOTO() ?> width="120" height="120">
+          <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
+          <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
+          <div class="boton2">
+            <form action=<?= '?controller=plato&action=compra' ?> method='post'>
+              <tr>
+                <td><button class="mas" type="submit" name="Añadir" value=<?=$pos?>> + </button></td>
+                <td><?= $pedido->getCantidad() ?></td>
+                <td><button class="menos" type="submit" name="Eliminar" value=<?=$pos?>> - </button></td>
+                <td><?php echo $pos; ?></td>
+              </tr>
+            </form>
+          </div>
         </div>
-        <div class="boton2">
-          <img src="fotos/botonsumar.png">
-        </div>
-      </div>
-    <?php
-      $pos++;
-    } ?>
-    <div class="cuadro3">
-      <p class="promotext">¿Código Promocional?</p>
-      <input class="formcodigo" type="search" placeholder="      Inserta el código" aria-label="Search">
-      <div class="articulos">
-        <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
-        <p><?= $precioTotal ?>€</p>
-      </div>
-      <div class="barra">
-      </div>
-      <div class="totalpedido">
-        <p>Total</p>
-        <p><?= $precioTotal ?>€</p>
-      </div>
-      <form action="<?= '?controller=plato&action=confirmar' ?>" method='post'>
-        <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-        <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+      <?php
+        $pos++;
+      } ?>
     </div>
+    <div class="col-4">
+      <div class="textoresumen">
+        <p>Resumen</p>
+      </div>
+      <div class="cuadro3">
+        <p class="promotext">¿Código Promocional?</p>
+        <input class="formcodigo" type="search" placeholder="      Inserta el código" aria-label="Search">
+        <div class="articulos">
+          <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
+          <p><?= $precioTotal ?>€</p>
+        </div>
+        <div class="barra">
+        </div>
+        <div class="totalpedido">
+          <p>Total</p>
+          <p><?= $precioTotal ?>€</p>
+        </div>
+        <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
+          <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
+          <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+        </form>
+      </div>
   </section>
 
   <section class="volverarriba">
@@ -97,9 +107,9 @@
 </body>
 
 </html>
-<?php
-$pos = 0;
-foreach ($_SESSION['selecciones'] as $pedido) { ?>
+<!-- <?php
+      $pos = 0;
+      foreach ($_SESSION['selecciones'] as $pedido) { ?>
 
 
   <tr>
@@ -109,15 +119,15 @@ foreach ($_SESSION['selecciones'] as $pedido) { ?>
     <td><?= $pedido->getCantidad() ?></td>
     <td><?= $pedido->devuelvePrecio() ?></td>
 
-    <form action=<?= url . '?controller=plato&action=compra' ?>method='post'>
+    <form action=<?= '?controller=plato&action=compra' ?>method='post'>
       <td><button class="" type="submit" name="Añadir" value=<?= $pos ?>> + </button></td>
       <td><button class="" type="submit" name="Eliminar" value=<?= $pos ?>> - </button></td>
     </form>
   </tr>
 
 <?php
-  $pos++;
-} ?>
+        $pos++;
+      } ?> -->
 </body>
 
 

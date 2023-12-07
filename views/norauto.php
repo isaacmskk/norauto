@@ -12,6 +12,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link href="bootstrap.min.css" rel="stylesheet">
   <link href="indexcss.css" rel="stylesheet" type="text/css" media="screen">
+  <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
+
 
 </head>
 <body>

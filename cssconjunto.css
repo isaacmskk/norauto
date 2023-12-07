@@ -1,0 +1,153 @@
+* {
+    font-family: "Muli";
+    src: url(font\muli.ttf);
+
+}
+
+.navbar {
+    background-color: #002B6F !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+}
+
+.navbar-brand {
+    margin-left: 10px !important;
+}
+
+.nav-link {
+    color: #FFFFFF !important;
+    margin-right: 20px !important;
+}
+
+.nav-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    color: #FFFFFF !important;
+}
+
+.navbar-toggler {
+    border-color: #FFFFFF !important;
+}
+
+.form-control {
+    display: flex !important;
+    justify-content: center !important;
+    border-color: #FFFFFF !important;
+    width: 700px !important;
+}
+
+.btn-outline-success {
+    margin-right: 50px !important;
+
+    color: white !important;
+    border-color: #0071DC !important;
+    background-color: #0071DC !important;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+    background-color: #002B6F !important;
+    color: white !important;
+    border-color: #002B6F !important;
+
+}
+
+.nav1 {
+
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: -3px;
+}
+
+.nav1 li {
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: space-between;
+    margin-right: 30px;
+    position: relative;
+
+}
+
+.nav1 a {
+    color: #22293A;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    display: inline-block;
+}
+
+.nav1 a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -15px;
+    left: 0;
+    background-color: #FCB731;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.nav1 a:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.ofertas a {
+    color: #FCB731;
+}
+
+.volverarriba {
+    width: 100%;
+    height: 69px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.volverarriba a{
+    text-decoration: none;
+    color: #22293A;
+}
+
+.bannerabajo img {
+    width: 100%;
+    height: 165px;
+}
+
+.footer {
+    background-color: #002B6F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.social-icons {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.social-icons li {
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+/*Media query*/
+@media only screen and (max-width: 600px) {
+    /* body {
+      background-color: lightblue;
+    } */
+}

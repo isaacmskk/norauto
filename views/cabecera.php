@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link href="bootstrap.min.css" rel="stylesheet">
-  <link href="indexcss.css" rel="stylesheet" type="text/css" media="screen">
+  <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body>
 <header id="header">
@@ -37,11 +37,11 @@
           <li class="nav-item">
             <img src="fotos/usuario.png" alt="conectarse" width="30" height="30">
 
-            <a class="nav-link" href="#">Conectarse</a>
+            <a class="nav-link" href=<?=url.'?controller=plato&action=login'?>>Conectarse</a>
           </li>
           <li class="nav-item">
             <a href=<?=url.'?controller=plato&action=compra'?>>
-              <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40"><?=count($_SESSION['selecciones'])?>
+              <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40" ><?= isset($_SESSION['selecciones']) ? count($_SESSION['selecciones']) : 0 ?>
             </a>
           </li>
         </ul>

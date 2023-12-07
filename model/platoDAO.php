@@ -2,7 +2,7 @@
 include_once "controller/platoController.php";
 include_once 'config/db.php';
 include_once 'plato.php';
-include 'model/PASTA.PHP';
+include 'pasta.PHP';
 
 class PlatoDAO {
     public static function getAllPlatos() {

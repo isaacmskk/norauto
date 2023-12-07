@@ -1,0 +1,68 @@
+.fondo {
+    background-color: #F4F4F6; /* Añadido para cambiar el color de fondo a rojo */
+    height: 862px;
+    width: 100%;
+}
+.platotexto {
+    top: 35px;
+    display: block; 
+    color: #22293a;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center; 
+}
+
+.platotexto p {
+    text-align: center;
+}
+
+.platotexto::after {
+    display: block;
+    margin: 0 auto; 
+    position: relative;
+    content: "";
+    width: 70px;
+    height: 4px;
+    bottom: -1px;
+    background-color: #FCB731;
+}
+
+
+.login-container {
+    width: 514px;
+    padding: 16px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    height: 614px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+button {
+    background-color: white;
+    color: #0071DC;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid #0071DC;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    background-color: #99ceff;
+    color: #0071DC;
+}
+.social-login {
+    display: flex;
+    justify-content: space-between;
+}
+.social-login button {
+    width: 48%;
+}

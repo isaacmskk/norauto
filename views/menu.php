@@ -12,6 +12,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="menucss.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
+
 
 </head>
 
@@ -91,7 +93,7 @@
                 <form action=<?="?controller=plato&action=selecciones" ?> method="POST">
                     <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
                     <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>
-                    <button name="Añadir" class="bet-button w3-black w3-section" type="submit">Añadir</button>
+                    <button class="añadirmenu" name="Añadir" class="bet-button w3-black w3-section" type="submit"><img src="fotos/minicarrito.png">Añadir</button>
                 </form>
             </div>
         </article>
