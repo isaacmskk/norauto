@@ -4,26 +4,27 @@
     width: 100%;
     padding-top: 30px;
 }
+
 .platotexto {
-    margin-top: 4s0px;
-    display: block; 
+    margin-top: 30px;
+    display: block;
     color: #22293a;
     font-size: 25px;
     font-weight: 700;
-    text-align: center; 
+    text-align: center;
 
 }
 
 .platotexto::after {
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
     position: relative;
     content: "";
     width: 70px;
     height: 4px;
     bottom: -1px;
     background-color: #FCB731;
-    margin-bottom:50px;
+    margin-bottom: 20px;
 }
 
 
@@ -32,19 +33,24 @@
     padding: 16px;
     background-color: white;
     margin: 0 auto;
-    height: 614px;
+    height: 700px;
+    border-radius: 3px;
+
 }
 
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid grey;
     box-sizing: border-box;
+    border-radius: 3px;
 
 }
-button {
+
+.crear {
     background-color: white;
     color: #0071DC;
     padding: 14px 20px;
@@ -52,15 +58,70 @@ button {
     border: 1px solid #0071DC;
     cursor: pointer;
     width: 100%;
+    font-weight: bold;
+    border-radius: 3px;
+
 }
-button:hover {
-    background-color: #99ceff;
-    color: #0071DC;
+.redes{
+font-size: 16px;
+color: #22293a;
+text-align: center;
+height: 50px;
+border-color: white;
+
+
 }
+
+.botonpagar {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid #0071DC;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: #0071DC;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+    
+}
+
+.botonpagar:hover {
+    background-color: #002B6F;
+    color: white;
+    border-color: #002B6F;
+}
+
 .social-login {
+    border-radius: 3px;
+    font-weight: bold;
     display: flex;
     justify-content: space-between;
 }
+
 .social-login button {
     width: 48%;
+    border-radius: 3px;
+    border-color: white;
+    border-style: none;
+
+}
+
+.contra{
+    color: #0071DC;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+.contra:hover{
+  
+    text-decoration: none;
+}
+.identi{
+    text-align: center;
+    font-weight: bold;
+    border-color: white;
 }

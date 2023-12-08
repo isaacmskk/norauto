@@ -149,32 +149,7 @@
 
 }
 
-.eliminar1 {
-    position: relative;
-    margin-top: 170px;
-    margin-left: -900px;
-    color: #6D7488;
 
-}
-
-.eliminar2 {
-    position: relative;
-    margin-top: 170px;
-    margin-left: -900px;
-    color: #6D7488;
-
-
-}
-
-.eliminar1:hover {
-    text-decoration: underline;
-
-}
-
-.eliminar2:hover {
-    text-decoration: underline;
-
-}
 
 .barra {
     margin-left: 10px;

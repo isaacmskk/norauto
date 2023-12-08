@@ -50,18 +50,21 @@
             <div class="platotexto">
                 <p>¿Es la primera vez en norauto.es?</p>
             </div>
-            <button type="submit">Crea tu cuenta</button>
+            <button class="crear" type="submit">Crea tu cuenta</button>
             <div class="platotexto">
                 <p>¿Ya eres cliente?</p>
             </div>
             <form action='?controller=plato&action=login' method='post'>
                 <input type="text" placeholder="NIF/CIF/e-mail *" name="uname" required>
                 <input type="password" placeholder="Contraseña *" name="psw" required>
-                <a>¿Te has olvidado de tu contraseña?</a>
-                <button type="submit">Conéctate</button>
-
+                <div class="contra">
+                    <a>¿Te has olvidado de tu contraseña?</a>
+                </div>
+                <button class="botonpagar" type="submit">Conéctate</button>
+                <div class="identi">
                 <p>O identifícate con</p>
-                <div class="social-login">
+                </div>
+                <div class="social-login redes">
                     <button type="button">Google</button>
                     <button type="button">Paypal</button>
                 </div>
