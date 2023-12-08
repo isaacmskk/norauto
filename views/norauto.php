@@ -35,7 +35,7 @@
         <a href="#">Bicicleta electrica, Moto</a>
       </li>
       <li>
-        <a href="#">Otoño</a>
+        <a href="#">Invierno</a>
       </li>
       <li class="ofertas">
         <a href="#">Ofertas</a>

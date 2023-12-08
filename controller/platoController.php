@@ -11,8 +11,6 @@ include_once 'model/plato.php';
 include_once 'model/pedido.php';
 
 
-
-
 class platoController
 {
     public function index()
@@ -113,20 +111,16 @@ class platoController
             $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
-                // Las credenciales son correctas
+                header("Location:" . url . '?controller=plato');
+                $_SESSION["username"] = $uname;
                 return true;
             } else {
-                // Las credenciales son incorrectas
+                header("Location:" . url . '?controller=plato&action=login');
                 return false;
             }
-
-            $con->close();
         }
         include_once 'views/cabecera.php';
-include_once 'views/login.php';
-include_once 'views/footer.php';
+        include_once 'views/login.php';
+        include_once 'views/footer.php';
     }
-
 }
-
-

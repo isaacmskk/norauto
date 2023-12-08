@@ -36,7 +36,7 @@
         <a href="#">Bicicleta electrica, Moto</a>
       </li>
       <li>
-        <a href="#">Otoño</a>
+        <a href="#">Invierno</a>
       </li>
       <li class="ofertas">
         <a href="#">Ofertas</a>
@@ -63,7 +63,6 @@
                 <td><button class="mas" type="submit" name="Añadir" value=<?=$pos?>> + </button></td>
                 <td><?= $pedido->getCantidad() ?></td>
                 <td><button class="menos" type="submit" name="Eliminar" value=<?=$pos?>> - </button></td>
-                <td><?php echo $pos; ?></td>
               </tr>
             </form>
           </div>
@@ -107,27 +106,7 @@
 </body>
 
 </html>
-<!-- <?php
-      $pos = 0;
-      foreach ($_SESSION['selecciones'] as $pedido) { ?>
 
-
-  <tr>
-    <td><?= $pedido->getPlato()->getID_PLATO() ?></td>
-    <td><?= $pedido->getPlato()->getNOMBRE() ?></td>
-    <td><?= $pedido->getPlato()->getPRECIO() ?></td>
-    <td><?= $pedido->getCantidad() ?></td>
-    <td><?= $pedido->devuelvePrecio() ?></td>
-
-    <form action=<?= '?controller=plato&action=compra' ?>method='post'>
-      <td><button class="" type="submit" name="Añadir" value=<?= $pos ?>> + </button></td>
-      <td><button class="" type="submit" name="Eliminar" value=<?= $pos ?>> - </button></td>
-    </form>
-  </tr>
-
-<?php
-        $pos++;
-      } ?> -->
 </body>
 
 

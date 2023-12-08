@@ -37,7 +37,7 @@
           <li class="nav-item">
             <img src="fotos/usuario.png" alt="conectarse" width="30" height="30">
 
-            <a class="nav-link" href=<?=url.'?controller=plato&action=login'?>>Conectarse</a>
+            <a class="nav-link" href=<?=url.'?controller=plato&action=login'?>><?= isset($_SESSION['username']) ? $_SESSION['username'] : 'Conectarse' ?></a>
           </li>
           <li class="nav-item">
             <a href=<?=url.'?controller=plato&action=compra'?>>
