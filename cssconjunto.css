@@ -18,7 +18,10 @@
     color: #FFFFFF !important;
     margin-right: 20px !important;
 }
-
+.colorcarrito{
+    color: #FCB731;
+    text-decoration: none!important;
+}
 .nav-item {
     display: flex !important;
     align-items: center !important;

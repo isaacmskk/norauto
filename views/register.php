@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Login Norauto</title>
+    <title>Register Norauto</title>
 
     <meta charset="UTF-8">
     <meta name="description" content="Descripció web">
