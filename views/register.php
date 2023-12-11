@@ -50,19 +50,12 @@
             <div class="platotexto">
                 <p>¿Es la primera vez en norauto.es?</p>
             </div>
-            <a href=<?=url.'?controller=plato&action=register'?>> 
-            <button class="crear" type="submit">Crea tu cuenta</button>
-            </a>
-            <div class="platotexto">
-                <p>¿Ya eres cliente?</p>
-            </div>
-            <form action='?controller=plato&action=login' method='post'>
-                <input type="text" placeholder="Mail *" name="uname" required>
+            <form action='?controller=plato&action=register' method='post'>
+                <input type="text" placeholder="Nombre *" name="name" required>
+                <input type="text" placeholder="Apellido *" name="apellido" required>
+                <input type="text" placeholder="NIF/CIF/e-mail *" name="uname" required>
                 <input type="password" placeholder="Contraseña *" name="psw" required>
-                <div class="contra">
-                    <a>¿Te has olvidado de tu contraseña?</a>
-                </div>
-                <button class="botonpagar" type="submit">Conéctate</button>
+                <button class="botonpagar" type="submit">Registrate</button>
                 <div class="identi">
                     <p>O identifícate con</p>
                 </div>
@@ -72,7 +65,6 @@
                 </div>
             </form>
         </div>
-    </section>
     </section>
     <section class="volverarriba">
         <a href="#header">Volver Arriba</a>

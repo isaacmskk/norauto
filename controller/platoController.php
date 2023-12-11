@@ -123,4 +123,27 @@ class platoController
         include_once 'views/login.php';
         include_once 'views/footer.php';
     }
+    public function register()
+    {
+        session_start();
+        // Primero, verifica si el formulario se ha enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = $_POST["name"];
+            $apellido = $_POST["apellido"];
+            $uname = $_POST["uname"];
+            $psw = $_POST["psw"];
+            $con = db::connect();
+
+            if (!empty($_POST["name"]) && !empty($_POST["apellido"]) && !empty($_POST["uname"]) && !empty($_POST["psw"])) {
+                $con->query("INSERT INTO usuarios ( MAIL, APELLIDO, NOMBRE, password) VALUES ('$name', '$apellido', '$uname', '$psw')");
+                header("Location:" . url . '?controller=plato&action=login');
+            } else {
+                echo "Por favor, completa todos los campos requeridos.";
+            }
+        }
+
+        include_once 'views/cabecera.php';
+        include_once 'views/register.php';
+        include_once 'views/footer.php';
+    }
 }
