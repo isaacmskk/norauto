@@ -103,7 +103,6 @@ class platoController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $uname = $_POST["uname"];
             $psw = $_POST["psw"];
-
             $con = db::connect();
             $stmt = $con->prepare("SELECT * FROM usuarios WHERE NOMBRE= ? AND password= ?");
             $stmt->bind_param("ss", $uname, $psw);

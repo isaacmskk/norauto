@@ -39,7 +39,7 @@
               <a class="nav-link" href=<?= url . '?controller=plato&action=login' ?>><?= isset($_SESSION['username']) ? $_SESSION['username'] : 'Conectarse' ?></a>
             </li>
             <li class="nav-item">
-              <a href=<?= url . '?controller=plato&action=compra' ?>>
+              <a href=<?= url . '?controller=plato&action=compra' ?> style="text-decoration:none">
                 <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40">
                 <span class="colorcarrito">
                   <?= isset($_SESSION['selecciones']) ? count($_SESSION['selecciones']) : 0 ?>
