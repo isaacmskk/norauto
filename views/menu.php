@@ -45,7 +45,7 @@
     </nav>
 
     <section class="menubanner">
-        <img class="bannermenu" src="fotos/bannermenu.png" alt="Muestra una imagen de una comida y una oferta">
+        <img class="bannermenu" src="fotos/bannermenu.png" alt="Muestra una imagen banner de un restaurante">
         <div class="imagenmenutexto">
             <p>Menú</p>
         </div>
@@ -56,23 +56,23 @@
             <p>Nuestros platos más pedidos</p>
         </div>
         <div class="icon">
-            <img src="fotos/hamburguesaplato.png">
+            <img src="fotos/hamburguesaplato.png" alt="imagen hamburguesa icono">
             <p>Hamburguesas</p>
         </div>
         <div class="icon">
-            <img src="fotos\spaguetti.png">
+            <img src="fotos\spaguetti.png" alt="imagen spaguetti icono">
             <p>Pasta</p>
         </div>
         <div class="icon">
-            <img src="fotos\pizza.png">
+            <img src="fotos\pizza.png" alt="imagen pizza icono">
             <p>Pizza</p>
         </div>
         <div class="icon">
-            <img src="fotos\paella.png">
+            <img src="fotos\paella.png" alt="imagen paella icono">
             <p>Paella</p>
         </div>
         <div class="icon">
-            <img src="fotos\hot-dog.png">
+            <img src="fotos\hot-dog.png" alt="imagen hotdog icono">
             <p>Hot-dog</p>
         </div>
     </section>
@@ -84,22 +84,22 @@
 
 
     <section class="fondomenu1 row">
-    <?php
-    foreach ($allPlatos as $plato) { ?>
-        <article class="col-12 col-lg-3">
-            <div class="imagenesmenu">
-                <img src=<?= $plato->getFOTO() ?>>
-                <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
-                <form action=<?="?controller=plato&action=selecciones" ?> method="POST">
-                    <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
-                    <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>
-                    <button class="añadirmenu" name="Añadir" class="bet-button w3-black w3-section" type="submit"><img src="fotos/minicarrito.png">Añadir</button>
-                </form>
-            </div>
-        </article>
-    <?php
-    } ?>
-</section>
+        <?php
+        foreach ($allPlatos as $plato) { ?>
+            <article class="col-12 col-lg-3">
+                <div class="imagenesmenu">
+                    <img alt="imagen producto" src=<?= $plato->getFOTO() ?>>
+                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
+                    <form action=<?= "?controller=plato&action=selecciones" ?> method="POST">
+                        <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
+                        <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>
+                        <button class="añadirmenu" name="Añadir" class="bet-button w3-black w3-section" type="submit"><img alt="imagen carrito boton pequeño" src="fotos/minicarrito.png">Añadir</button>
+                    </form>
+                </div>
+            </article>
+        <?php
+        } ?>
+    </section>
 
     </section>
     <section class="volverarriba">
@@ -108,7 +108,7 @@
 
 
     <section class="bannerabajo">
-        <img src="fotos/BANNERABAJO.png">
+        <img src="fotos/BANNERABAJO.png" alt="imagen norauto ">
     </section>
 </body>
 

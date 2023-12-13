@@ -24,7 +24,7 @@
           </form>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <img src="fotos/marcador-de-posicion.png" alt="mi centro" width="30" height="30">
+              <img src="fotos/marcador-de-posicion.png" alt="imagen mi centro" width="30" height="30">
 
               <a class="nav-link" href="#">Mi centro</a>
             </li>
@@ -34,13 +34,13 @@
             </li>
 
             <li class="nav-item">
-              <img src="fotos/usuario.png" alt="conectarse" width="30" height="30">
+              <img src="fotos/usuario.png" alt="imagen conectarse" width="30" height="30">
 
               <a class="nav-link" href=<?= url . '?controller=plato&action=login' ?>><?= isset($_SESSION['username']) ? $_SESSION['username'] : 'Conectarse' ?></a>
             </li>
             <li class="nav-item">
               <a href=<?= url . '?controller=plato&action=compra' ?> style="text-decoration:none">
-                <img src="fotos/caarritoheader.png" alt="Logo Norauto" width="40" height="40">
+                <img src="fotos/caarritoheader.png" alt="imagen carrito" width="40" height="40">
                 <span class="colorcarrito">
                   <?= isset($_SESSION['selecciones']) ? count($_SESSION['selecciones']) : 0 ?>
                 </span>

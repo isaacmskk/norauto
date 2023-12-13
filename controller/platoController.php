@@ -16,14 +16,15 @@ class platoController
     public function index()
     {
         session_start();
+        if (isset($_COOKIE['ultimopedido'])) {
+            $msg_cookie = 'Tu ultimo pedido fue de ' . $_COOKIE['ultimopedido'] . '€';
+
+            // setcookie('ultimopedido', '', time() - 3600);
+        }
 
         include_once 'views/cabecera.php';
         include_once 'views/norauto.php';
         include_once 'views/footer.php';
-
-        if (isset($_COOKIE['ultimopedido'])) {
-            setcookie('ultimopedido', '', time() - 3600);
-        }
     }
 
     public function menu()

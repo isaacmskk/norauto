@@ -80,7 +80,7 @@
 
 
     <section class="bannerabajo">
-        <img src="fotos/BANNERABAJO.png">
+        <img src="fotos/BANNERABAJO.png" alt="imagen norauto ">
     </section>
 </body>
 

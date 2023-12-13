@@ -16,6 +16,7 @@
 
 
 </head>
+
 <body>
   <nav class="nav1">
     <ul>
@@ -44,28 +45,26 @@
   </nav>
 
   <section class="imagenprincipio">
-    <img class="banner1" src="fotos\banner.png" alt="Muestra una imagen de una comida y una oferta">
+    <img class="banner1" src="fotos\banner.png" alt="Muestra una imagen de comida y una oferta">
   </section>
 
   <section class="fondoimagensegunda">
-    <img class="imagensegunda" src="fotos\restaurante123.png" alt="Muestra una imagen de una comida y una oferta">
+    <img class="imagensegunda" src="fotos\restaurante123.png" alt="Muestra una imagen de una barra de restaurante">
     <div class="encontrarplato">
       <p>Encontrar mi plato favorito</p>
     </div>
     <div class="nuestrahp">
-      <a href="menu.html">
-        <img src="fotos/ham.png">
-      </a>
-      <a href="menu.html">
-        <img src="fotos/nuestrapasta.png">
-      </a>
+
+      <img src="fotos/ham.png" alt="Muestra una imagen con texto de hamburguesas invitando a clicarla">
+
+      <img src="fotos/nuestrapasta.png" alt="Muestra una imagen con texto de pasta invitando a clicarla">
     </div>
     <div class="fotosextra1">
-      <img src="fotos/reservarmesa.png">
+      <img src="fotos/reservarmesa.png" alt="Muestra una imagen con el texto de reservar mesa">
     </div>
     <div class="fotosextra2">
 
-      <img src="fotos/dondecomere.png">
+      <img src="fotos/dondecomere.png" alt="Muestra una imagen con el texto ¿donde comere?">
     </div>
   </section>
 
@@ -74,10 +73,10 @@
       <p>Todo nuestro menú</p>
     </div>
     <a href="menu.html">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png">
+      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
+      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
+      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
     </a>
   </section>
 
@@ -86,25 +85,28 @@
       <p>Nuestros platos más pedidos</p>
     </div>
     <div class="icon">
-      <img src="fotos/hamburguesaplato.png">
+      <img src="fotos/hamburguesaplato.png" alt="imagen hamburguesa icono">
       <p>Hamburguesas</p>
     </div>
     <div class="icon">
-      <img src="fotos\spaguetti.png">
+      <img src="fotos\spaguetti.png" alt="imagen spaguetti icono">
       <p>Pasta</p>
     </div>
     <div class="icon">
-      <img src="fotos\pizza.png">
+      <img src="fotos\pizza.png" alt="imagen pizza icono">
       <p>Pizza</p>
     </div>
     <div class="icon">
-      <img src="fotos\paella.png">
+      <img src="fotos\paella.png" alt="imagen paella icono">
       <p>Paella</p>
     </div>
     <div class="icon">
-      <img src="fotos\hot-dog.png">
+      <img src="fotos\hot-dog.png" alt="imagen hotdog icono">
       <p>Hot-dog</p>
     </div>
+  </section>
+  <section class="volverarriba">
+    <p><?=$msg_cookie?></p>
   </section>
   <section class="volverarriba">
     <a href="#header">Volver Arriba</a>
