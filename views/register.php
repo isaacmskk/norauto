@@ -46,7 +46,7 @@
     </nav>
 
     <section class="fondo">
-        <div class="login-container">
+        <div class="register-container">
             <div class="platotexto">
                 <p>¿Es la primera vez en norauto.es?</p>
             </div>

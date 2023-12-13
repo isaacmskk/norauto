@@ -146,4 +146,16 @@ class platoController
         include_once 'views/register.php';
         include_once 'views/footer.php';
     }
+    public function logout()
+    {
+        session_start();
+        if (isset($_SESSION["username"])) {
+            unset($_SESSION["username"]);
+            session_destroy();
+            header("Location:" . url . '?controller=plato');
+        }
+        include_once 'views/cabecera.php';
+        include_once 'views/login.php';
+        include_once 'views/footer.php';
+    }
 }

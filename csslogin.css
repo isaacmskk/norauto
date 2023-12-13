@@ -33,11 +33,19 @@
     padding: 16px;
     background-color: white;
     margin: 0 auto;
-    height: 700px;
+    height: 770px;
     border-radius: 3px;
 
 }
+.register-container {
+    width: 514px;
+    padding: 16px;
+    background-color: white;
+    margin: 0 auto;
+    height: 600px;
+    border-radius: 3px;
 
+}
 input[type=text],
 input[type=password] {
     width: 100%;
@@ -62,12 +70,17 @@ input[type=password] {
     border-radius: 3px;
 
 }
+.crear:hover {
+    background-color:#a2c6ff;
+
+}
 .redes{
 font-size: 16px;
 color: #22293a;
 text-align: center;
 height: 50px;
 border-color: white;
+margin-bottom: 20px;
 
 
 }
@@ -124,4 +137,25 @@ border-color: white;
     text-align: center;
     font-weight: bold;
     border-color: white;
+}
+
+.botoncerrar {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid #002B6F;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 3px;
+    background-color: #002B6F;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+    
+}
+
+.botoncerrar:hover {
+    background-color: #0071DC;
+    color: white;
+    border-color: #0071DC;
 }

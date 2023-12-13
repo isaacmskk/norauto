@@ -50,8 +50,8 @@
             <div class="platotexto">
                 <p>¿Es la primera vez en norauto.es?</p>
             </div>
-            <a href=<?=url.'?controller=plato&action=register'?>> 
-            <button class="crear" type="submit">Crea tu cuenta</button>
+            <a href=<?= url . '?controller=plato&action=register' ?>>
+                <button class="crear" type="submit">Crea tu cuenta</button>
             </a>
             <div class="platotexto">
                 <p>¿Ya eres cliente?</p>
@@ -71,6 +71,12 @@
                     <button type="button">Paypal</button>
                 </div>
             </form>
+            <form action='?controller=plato&action=logout' method='post'>
+                <div class="cerrarsesion">
+                    <button class="botoncerrar" type="submit">Cerrar Sesión</button>
+                </div>
+            </form>
+
         </div>
     </section>
     </section>

@@ -43,55 +43,57 @@
       </li>
     </ul>
   </nav>
-  <section class="fondo row">
-    <div class="col-8">
-      <div class="textocesta">
-        <p>Cesta</p>
-      </div>
+  <section class="fondo">
+    <div class="row">
+      <div class="col-8">
+        <div class="textocesta">
+          <p>Cesta</p>
+        </div>
 
-      <?php
-      $pos = 0;
-      foreach ($_SESSION['selecciones'] as $pedido) { ?>
-        <div class="cuadro">
+        <?php
+        $pos = 0;
+        foreach ($_SESSION['selecciones'] as $pedido) { ?>
+          <div class="cuadro">
 
-          <img alt="muestra la imagen del plato seleccionado" src=<?= $pedido->getPlato()->getFOTO() ?> width="120" height="120">
-          <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
-          <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
-          <div class="boton2">
-            <form action=<?= '?controller=plato&action=compra' ?> method='post'>
-              <tr>
-                <td><button class="mas" type="submit" name="Añadir" value=<?=$pos?>> + </button></td>
-                <td><?= $pedido->getCantidad() ?></td>
-                <td><button class="menos" type="submit" name="Eliminar" value=<?=$pos?>> - </button></td>
-              </tr>
-            </form>
+            <img alt="muestra la imagen del plato seleccionado" src=<?= $pedido->getPlato()->getFOTO() ?> width="120" height="120">
+            <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
+            <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
+            <div class="boton2">
+              <form action=<?= '?controller=plato&action=compra' ?> method='post'>
+                <tr>
+                  <td><button class="mas" type="submit" name="Añadir" value=<?= $pos ?>> + </button></td>
+                  <td><?= $pedido->getCantidad() ?></td>
+                  <td><button class="menos" type="submit" name="Eliminar" value=<?= $pos ?>> - </button></td>
+                </tr>
+              </form>
+            </div>
           </div>
-        </div>
-      <?php
-        $pos++;
-      } ?>
-    </div>
-    <div class="col-4">
-      <div class="textoresumen">
-        <p>Resumen</p>
+        <?php
+          $pos++;
+        } ?>
       </div>
-      <div class="cuadro3">
-        <p class="promotext">¿Código Promocional?</p>
-        <input class="formcodigo" type="search" placeholder="      Inserta el código" aria-label="Search">
-        <div class="articulos">
-          <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
-          <p><?= $precioTotal ?>€</p>
+      <div class="col-4">
+        <div class="textoresumen">
+          <p>Resumen</p>
         </div>
-        <div class="barra">
+        <div class="cuadro3">
+          <p class="promotext">¿Código Promocional?</p>
+          <input class="formcodigo" type="search" placeholder="      Inserta el código" aria-label="Search">
+          <div class="articulos">
+            <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
+            <p><?= $precioTotal ?>€</p>
+          </div>
+          <div class="barra">
+          </div>
+          <div class="totalpedido">
+            <p>Total</p>
+            <p><?= $precioTotal ?>€</p>
+          </div>
+          <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
+            <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
+            <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+          </form>
         </div>
-        <div class="totalpedido">
-          <p>Total</p>
-          <p><?= $precioTotal ?>€</p>
-        </div>
-        <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
-          <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-          <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
-        </form>
       </div>
   </section>
 

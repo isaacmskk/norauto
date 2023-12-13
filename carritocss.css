@@ -42,7 +42,7 @@
 }
 
 .cuadro3 {
-    margin-left: 40px;
+    margin-left: 15px;
     display: flex;
     align-items: flex-start;
     background-color: white;
@@ -150,7 +150,6 @@
 }
 
 
-
 .barra {
     margin-left: 10px;
     width: 95%;
@@ -164,7 +163,7 @@
     margin-bottom: 70px;
     display: inline-flex;
     color: #22293A;
-    width: 100%;
+    width: 50px;
     position: absolute;
     margin-left: 150px;
     

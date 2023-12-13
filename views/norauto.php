@@ -18,6 +18,9 @@
 </head>
 
 <body>
+<section class="cookie">
+    <p><?= $msg_cookie ?></p>
+  </section>
   <nav class="nav1">
     <ul>
       <li>
@@ -72,12 +75,10 @@
     <div class="todomenutexto">
       <p>Todo nuestro menú</p>
     </div>
-    <a href="menu.html">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
-      <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
-    </a>
+    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
+    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
+    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
   </section>
 
   <section class="containerplatos">
@@ -105,8 +106,8 @@
       <p>Hot-dog</p>
     </div>
   </section>
-  <section class="volverarriba">
-    <p><?=$msg_cookie?></p>
+  <section class="cookie">
+    <p><?= $msg_cookie ?></p>
   </section>
   <section class="volverarriba">
     <a href="#header">Volver Arriba</a>
