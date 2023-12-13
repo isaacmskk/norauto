@@ -17,10 +17,15 @@ class platoController
     {
         session_start();
         if (isset($_COOKIE['ultimopedido'])) {
-            $msg_cookie = 'Tu ultimo pedido fue de ' . $_COOKIE['ultimopedido'] . '€';
-
-            // setcookie('ultimopedido', '', time() - 3600);
+            if(empty($_COOKIE['ultimopedido'])){
+                $msg_cookie = 'No has hecho ningun pedido todavia';
+            } else {
+                $msg_cookie = 'Tu ultimo pedido fue de ' . $_COOKIE['ultimopedido'] . '€';
+            }
+        } else {
+            $msg_cookie = 'No has hecho ningun pedido todavia';
         }
+        
 
         include_once 'views/cabecera.php';
         include_once 'views/norauto.php';
@@ -131,7 +136,7 @@ class platoController
             $name = $_POST["name"];
             $apellido = $_POST["apellido"];
             $uname = $_POST["uname"];
-            $psw = $_POST["psw"];
+            $psw = password_hash($_POST["psw"], PASSWORD_DEFAULT);
             $con = db::connect();
 
             if (!empty($_POST["name"]) && !empty($_POST["apellido"]) && !empty($_POST["uname"]) && !empty($_POST["psw"])) {
@@ -157,5 +162,8 @@ class platoController
         include_once 'views/cabecera.php';
         include_once 'views/login.php';
         include_once 'views/footer.php';
+    }
+    public function admin(){
+
     }
 }

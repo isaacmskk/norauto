@@ -81,10 +81,11 @@
 .menuprincipal {
     background-color: white;
     height: 341px;
+    
 }
 
 .todomenutexto {
-    left: 580px;
+    left: 680px;
     align-items: center;
     position: absolute;
     display: inline-flex;
@@ -105,14 +106,13 @@
 }
 
 .comidamenu {
-    width: 342px;
-    height: 180px;
-    display: inline-flex;
-    justify-content: space-evenly;
-    position: relative;
-    top: 100px;
-    left: 30px;
+    margin-top: 100px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
 }
+
 
 .platotexto {
     top: 35px;

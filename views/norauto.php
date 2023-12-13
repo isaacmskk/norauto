@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<section class="cookie">
+  <section class="cookie">
     <p><?= $msg_cookie ?></p>
   </section>
   <nav class="nav1">
@@ -71,15 +71,26 @@
     </div>
   </section>
 
-  <section class="menuprincipal">
+ <section class="menuprincipal">
     <div class="todomenutexto">
       <p>Todo nuestro menú</p>
     </div>
-    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
-    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
-    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
-    <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
+    <div class="row">
+      <div class="col-sm">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
+      </div>
+      <div class="col-sm">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+      </div>
+      <div class="col-sm">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
+      </div>
+      <div class="col-sm">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
+      </div>
+    </div>
   </section>
+
 
   <section class="containerplatos">
     <div class="platotexto">
@@ -105,9 +116,6 @@
       <img src="fotos\hot-dog.png" alt="imagen hotdog icono">
       <p>Hot-dog</p>
     </div>
-  </section>
-  <section class="cookie">
-    <p><?= $msg_cookie ?></p>
   </section>
   <section class="volverarriba">
     <a href="#header">Volver Arriba</a>
