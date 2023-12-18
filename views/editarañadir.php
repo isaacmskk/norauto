@@ -8,10 +8,12 @@
 </head>
 
 <body>
-    <form action="<?=url."?controller=plato&action=editplato"?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?= $plato->getID_PLATO()?>">
-        <input name="nombre" value="<?= $plato->getNOMBRE()?>">
-        <input name="precio" value="<?= $plato->getPRECIO()?>">
+    <form action=<?="?controller=plato&action=editplato"?> method="POST">
+        <input type="hidden" name="ID_PLATO" value="<?= $plato->getID_PLATO()?>">
+        <input name="NOMBRE" value="<?= $plato->getNOMBRE()?>">
+        <input name="PRECIO" value="<?= $plato->getPRECIO()?>">
+        <input type= "file" name="FOTO" value="<?= $plato->getFOTO()?>">
+
         <button class="bet-button w3-black w3-section" type="sumbit" name="edit">Editar</button>
     </form>
 </body>

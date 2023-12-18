@@ -69,11 +69,11 @@ class PlatoDAO
         $result = $stmt->get_result();
         return $result;
     }
-    public static function updatePlato($id_plato, $nombre, $precio, $categoria, $foto)
+    public static function updatePlato($id_plato, $nombre, $precio, $foto)
     {
         $con = db::connect();
-        $stmt = $con->prepare("UPDATE plato SET NOMBRE=?, PRECIO=?, ID_CAT=?, FOTO=? WHERE ID_PLATO=?");
-        $stmt->bind_param("sdisi", $nombre, $precio, $categoria, $foto, $id_plato);
+        $stmt = $con->prepare("UPDATE plato SET NOMBRE=?, PRECIO=?, FOTO=? WHERE ID_PLATO=?");
+        $stmt->bind_param("sdsi", $nombre, $precio, $foto, $id_plato);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;

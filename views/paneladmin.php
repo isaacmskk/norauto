@@ -17,7 +17,7 @@
         foreach ($allPlatos as $plato) { ?>
             <article class="col-12 col-lg-3">
                 <div class="imagenesmenu">
-                    <img alt="imagen producto" src=<?= $plato->getFOTO() ?>>
+                    <img alt="imagen producto" src=<?="fotos/".$plato->getFOTO() ?>>
                     <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
 
                     <form action=<?="?controller=plato&action=eliminar"?> method="POST">

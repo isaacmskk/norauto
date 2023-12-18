@@ -189,13 +189,12 @@ class platoController
 
     public function editplato()
     {
-        if (isset($_POST['ID_PLATO']) && isset($_POST['NOMBRE']) && isset($_POST['PRECIO']) && isset($_POST['ID_CAT']) && isset($_POST['FOTO'])) {
+        if (isset($_POST['ID_PLATO']) && isset($_POST['NOMBRE']) && isset($_POST['PRECIO'])&& isset($_POST['FOTO'])) {
             $id_plato = $_POST["ID_PLATO"];
             $nombre = $_POST["NOMBRE"];
             $precio = $_POST["PRECIO"]; // Convertir el precio a un número
-            $categoria = $_POST["ID_CAT"];
             $foto = $_POST["FOTO"];
-            PlatoDAO::updatePlato($id_plato, $nombre, $precio, $categoria, $foto);
+            PlatoDAO::updatePlato($id_plato, $nombre, $precio, $foto);
         }
         header("Location:" . url . '?controller=plato&action=admin');
     }
@@ -226,13 +225,13 @@ class platoController
         $categoria = $_POST['CAT_ID'];
         $imagen = $_POST['FOTO'];
 
-        move_uploaded_file(
-            // Temp image location
-            $imagen["tmp_name"],
+        // move_uploaded_file(
+        //     // Temp image location
+        //     $imagen["tmp_name"],
         
-            // New image location
-            __DIR__ . "fotos/" . $imagen["name"]
-        );
+        //     // New image location
+        //     __DIR__ . "fotos/" . $imagen["name"]
+        // );
         // Guardar el plato en la base de datos
         $resultado = PlatoDAO::añadirPlato($nombre, $precio, $categoria,$imagen);
       

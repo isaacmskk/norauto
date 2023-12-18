@@ -55,7 +55,7 @@
         foreach ($_SESSION['selecciones'] as $pedido) { ?>
           <div class="cuadro">
 
-            <img alt="muestra la imagen del plato seleccionado" src=<?= $pedido->getPlato()->getFOTO() ?> width="120" height="120">
+            <img alt="muestra la imagen del plato seleccionado" src=<?="fotos/".$pedido->getPlato()->getFOTO() ?> width="120" height="120">
             <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
             <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
             <div class="boton2">
