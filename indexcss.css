@@ -85,13 +85,13 @@
 }
 
 .todomenutexto {
-    left: 680px;
-    align-items: center;
+    left: 600px;
     position: absolute;
     display: inline-flex;
     color: #22293a;
     font-size: 32px;
     font-weight: 700;
+    
 
 }
 
