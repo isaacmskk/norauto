@@ -21,27 +21,27 @@
   <section class="cookie">
     <p><?= $msg_cookie ?></p>
   </section>
-  <nav class="nav1">
+  <nav class="nav1 row">
     <ul>
-      <li>
+      <li class="col">
         <a href="#">Cita Taller</a>
       </li>
-      <li>
+      <li class="col">
         <a href="#">Neumaticos y llantas</a>
       </li>
-      <li>
+      <li class="col">
         <a href="#">Piezas y herramientas</a>
       </li>
-      <li>
+      <li class="col">
         <a href="#">Equipamiento y mantenimiento</a>
       </li>
-      <li>
+      <li class="col">
         <a href="#">Bicicleta electrica, Moto</a>
       </li>
-      <li>
+      <li class="col">
         <a href="#">Invierno</a>
       </li>
-      <li class="ofertas">
+      <li class="ofertas col">
         <a href="#">Ofertas</a>
       </li>
     </ul>
@@ -57,36 +57,33 @@
       <p>Encontrar mi plato favorito</p>
     </div>
     <div class="nuestrahp">
-
       <img src="fotos/ham.png" alt="Muestra una imagen con texto de hamburguesas invitando a clicarla">
-
       <img src="fotos/nuestrapasta.png" alt="Muestra una imagen con texto de pasta invitando a clicarla">
     </div>
     <div class="fotosextra1">
       <img src="fotos/reservarmesa.png" alt="Muestra una imagen con el texto de reservar mesa">
     </div>
     <div class="fotosextra2">
-
       <img src="fotos/dondecomere.png" alt="Muestra una imagen con el texto ¿donde comere?">
     </div>
   </section>
 
- <section class="menuprincipal">
-    <div class="todomenutexto">
+ <section class="menuprincipal " >
+    <div class="todomenutexto col-sm">
       <p>Todo nuestro menú</p>
     </div>
     <div class="row">
       <div class="col-sm">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
+        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
       </div>
       <div class="col-sm">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+      </div>
+      <div class="col-sm"> 
+        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
       </div>
       <div class="col-sm">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
-      </div>
-      <div class="col-sm">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
+        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
       </div>
     </div>
   </section>
