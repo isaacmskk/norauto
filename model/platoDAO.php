@@ -87,7 +87,7 @@ class PlatoDAO
         $stmt = $con->prepare("INSERT INTO plato (NOMBRE, PRECIO, ID_CAT, FOTO) VALUES (?, ?, ?, ?)");
 
         // Bind the parameters
-        $stmt->bind_param("siss", $nombre, $precio, $categoria, $imagen);
+        $stmt->bind_param("sdss", $nombre, $precio, $categoria, $imagen);
 
         // Execute the INSERT statement
         if (!$stmt->execute()) {

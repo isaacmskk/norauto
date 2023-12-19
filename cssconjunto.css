@@ -161,7 +161,35 @@
     width: 24px;
     height: 24px;
 }
+.formañadir{
+    display: block;
+    margin-left: 650px;
+}
+.buttonañadir {
+    color: white !important;
+    border-color: #0071DC !important;
+    background-color: #0071DC !important;
+    width: 251px;
+    height: 33px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-style: dotted;
 
+}
+
+.buttonañadir:hover {
+    color: white !important;
+    border-color: #002B6F !important;
+    background-color: #002B6F !important;
+    width: 251px;
+    height: 33px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-style: dotted;
+
+}
 /*Media query*/
 @media only screen and (max-width: 600px) {
     /* body {

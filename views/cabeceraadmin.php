@@ -24,13 +24,8 @@
           </form>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <img src="fotos/marcador-de-posicion.png" alt="imagen mi centro" width="30" height="30">
-
-              <a class="nav-link" href="#">Mi centro</a>
-            </li>
-            <li class="nav-item">
-              <a href=<?= url . '?controller=plato&action=admin' ?> style="text-decoration:none">
-                <img src="fotos/" alt="imagen panel admin" width="40" height="40">
+              <img src="fotos/engranaje.png" alt="imagen panel admin" width="40" height="40">
+              <a href=<?= url . '?controller=plato&action=admin' ?> class="nav-link" style="text-decoration:none">Panel Admin
               </a>
             </li>
             <li class="nav-item">

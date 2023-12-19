@@ -38,7 +38,8 @@
 
         <?php
         } ?>
-        <form action=<?="?controller=plato&action=añadir"?> method="POST">
+        </section>
+        <form class="formañadir" action=<?="?controller=plato&action=añadir"?> method="POST">
             <input type="text" name="NOMBRE" placeholder="NOMBRE"><br>
             <input type="float" name="PRECIO" placeholder="PRECIO"><br>
             <select name="CAT_ID">
@@ -50,9 +51,9 @@
 
             </select><br>
             <input type="file" name="FOTO"><br>
-            <button type="submit" name="añadir">Crear</button>
+            <button class="buttonañadir" type="submit" name="añadir">Crear</button>
         </form>
-    </section>
+    
 </body>
 
 </html>

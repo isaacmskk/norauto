@@ -12,6 +12,7 @@
         <input type="hidden" name="ID_PLATO" value="<?= $plato->getID_PLATO()?>">
         <input name="NOMBRE" value="<?= $plato->getNOMBRE()?>">
         <input name="PRECIO" value="<?= $plato->getPRECIO()?>">
+        <input type="hidden" name="FOTO_ANTIQUEDA" value="<?= $plato->getFOTO()?>">
         <input type= "file" name="FOTO" value="<?= $plato->getFOTO()?>">
 
         <button class="bet-button w3-black w3-section" type="sumbit" name="edit">Editar</button>
