@@ -68,24 +68,53 @@
     </div>
   </section>
 
- <section class="menuprincipal " >
-    <div class="todomenutexto col-sm">
-      <p>Todo nuestro menú</p>
-    </div>
+  <!-- <section class="menuprincipal">
+  <div class="todomenutexto">
+          <p class="text-center">Todo nuestro menú</p>
+        </div>
     <div class="row">
-      <div class="col-sm">
-        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
-      </div>
-      <div class="col-sm">
-        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
-      </div>
-      <div class="col-sm"> 
-        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
-      </div>
-      <div class="col-sm">
-        <img class="comidamenu img-fluid max-width-sm-150" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
-      </div>
+      <article class="col-12 col-lg-3" style="overflow: hidden;">
+        
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
+      </article>
     </div>
+  </section> -->
+  <section class="fondomenu1 row">
+    <div class="todomenutexto">
+      <p class="text-center">Todo nuestro menú</p>
+    </div>
+    <article class="col-12 col-lg-3">
+      <div class="imagenesmenu">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
+
+      </div>
+
+    </article>
+
+    <article class="col-12 col-lg-3">
+      <div class="imagenesmenu">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
+
+      </div>
+
+    </article>
+    <article class="col-12 col-lg-3">
+      <div class="imagenesmenu">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
+
+      </div>
+
+    </article>
+    <article class="col-12 col-lg-3">
+      <div class="imagenesmenu">
+        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
+
+      </div>
+
+    </article>
   </section>
 
 
