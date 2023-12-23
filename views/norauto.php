@@ -47,7 +47,7 @@
     </ul>
   </nav>
 
-  <section class="imagenprincipio">
+  <section class="row">
     <img class="banner1" src="fotos\banner.png" alt="Muestra una imagen de comida y una oferta">
   </section>
 
@@ -68,20 +68,6 @@
     </div>
   </section>
 
-  <!-- <section class="menuprincipal">
-  <div class="todomenutexto">
-          <p class="text-center">Todo nuestro menú</p>
-        </div>
-    <div class="row">
-      <article class="col-12 col-lg-3" style="overflow: hidden;">
-        
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL.png" alt="Muestra una imagen de un plato de hamburguesas">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL2.png" alt="Muestra una imagen de un plato de pasta">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL3.png" alt="Muestra una imagen de un plato de paella">
-        <img class="comidamenu" src="fotos/MENUENPAGINAPRINCIPAL4.png" alt="Muestra una imagen de un plato de hotdogs">
-      </article>
-    </div>
-  </section> -->
   <section class="fondomenu1 row">
     <div class="todomenutexto">
       <p class="text-center">Todo nuestro menú</p>

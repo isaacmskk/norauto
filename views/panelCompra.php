@@ -45,7 +45,7 @@
   </nav>
   <section class="fondo">
     <div class="row">
-      <div class="col-8">
+      <div class="col-12 col-lg-8">
         <div class="textocesta">
           <p>Cesta</p>
         </div>
@@ -55,7 +55,7 @@
         foreach ($_SESSION['selecciones'] as $pedido) { ?>
           <div class="cuadro">
 
-            <img alt="muestra la imagen del plato seleccionado" src=<?="fotos/".$pedido->getPlato()->getFOTO() ?> width="120" height="120">
+            <img alt="muestra la imagen del plato seleccionado" src=<?= "fotos/" . $pedido->getPlato()->getFOTO() ?> width="120" height="120">
             <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
             <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
             <div class="boton2">
@@ -72,7 +72,7 @@
           $pos++;
         } ?>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-lg-4">
         <div class="textoresumen">
           <p>Resumen</p>
         </div>
@@ -95,6 +95,7 @@
           </form>
         </div>
       </div>
+    </div>
   </section>
 
   <section class="volverarriba">
