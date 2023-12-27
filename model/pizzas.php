@@ -4,7 +4,7 @@ class Pizzas extends Plato {
     public $esVegana;
 
     public function __construct($ID_PLATO,$NOMBRE,$FOTO,$PRECIO,$ID_CAT,$isVegana) {
-        parent::__construct($ID_PLATO,$NOMBRE,$FOTO,$PRECIO,$ID_CAT);
+        parent::__construct($ID_PLATO,$NOMBRE,$FOTO,$PRECIO,$ID_CAT,$isVegana);
         $this->esVegana = $isVegana;
     }
 

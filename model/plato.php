@@ -7,13 +7,19 @@ class Plato
         protected $FOTO;
         protected $PRECIO;
         protected $ID_CAT;
+        protected $vegana;
+
+
         
-        public function __construct($ID_PLATO,$NOMBRE,$FOTO,$PRECIO,$ID_CAT){
+        public function __construct($ID_PLATO,$NOMBRE,$FOTO,$PRECIO,$ID_CAT,$vegana){
                 $this->ID_PLATO = $ID_PLATO;
                 $this->NOMBRE = $NOMBRE;
                 $this->FOTO = $FOTO;
                 $this->PRECIO = $PRECIO;
                 $this->ID_CAT = $ID_CAT;
+                $this->vegana = $vegana;
+
+
 
         }
         /**
@@ -114,6 +120,26 @@ class Plato
         public function setID_CAT($ID_CAT)
         {
                 $this->ID_CAT = $ID_CAT;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of vegana
+         */ 
+        public function getVegana()
+        {
+                return $this->vegana;
+        }
+
+        /**
+         * Set the value of vegana
+         *
+         * @return  self
+         */ 
+        public function setVegana($vegana)
+        {
+                $this->vegana = $vegana;
 
                 return $this;
         }

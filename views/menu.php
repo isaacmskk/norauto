@@ -90,7 +90,8 @@
             <article class="col-12 col-lg-3">
                 <div class="imagenesmenu">
                     <img alt="imagen producto" src=<?="fotos/".$plato->getFOTO() ?>>
-                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€</p>
+                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€<br><?php if ($plato->getVegana() == 1) { echo "Vegana";} ?></p>
+                    
                     <form action=<?= "?controller=plato&action=selecciones" ?> method="POST">
                         <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
                         <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>
