@@ -155,7 +155,7 @@ class platoController
             $name = $_POST["name"];
             $apellido = $_POST["apellido"];
             $uname = $_POST["uname"];
-            $psw = password_hash($_POST["psw"], PASSWORD_DEFAULT);
+            $psw = ($_POST["psw"]);
             $con = db::connect();
 
             if (!empty($_POST["name"]) && !empty($_POST["apellido"]) && !empty($_POST["uname"]) && !empty($_POST["psw"])) {
