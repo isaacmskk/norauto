@@ -6,6 +6,7 @@ include 'pasta.PHP';
 
 class PlatoDAO
 {
+    //esta funcion recogera todos los platos de la base de datos y los metera en un array para poderlos mostrar
     public static function getAllPlatos()
     {
         $con = db::connect();
@@ -20,7 +21,7 @@ class PlatoDAO
         }
         return $listaPlatos;
     }
-
+    //esta funcion cogera todos los platos por su id_cat
     public static function getAllByTipe($ID_CAT)
     {
         $con = db::connect();
@@ -42,6 +43,7 @@ class PlatoDAO
         return $listaPlatos;
     }
 
+    //esta funcion cogera todos los platos por su id
 
     public static function getPlatoById($ID_PLATO)
     {
@@ -57,6 +59,8 @@ class PlatoDAO
 
         return $plato;
     }
+
+        //esta funcion eliminara el plato por su id en concreto
     public static function eliminarPlato($ID_PLATO)
     {
         $con = db::connect();
@@ -69,6 +73,7 @@ class PlatoDAO
         $result = $stmt->get_result();
         return $result;
     }
+    //esta funcion sera usada para actualizar el plato a partir de un formulario
     public static function updatePlato($id_plato, $nombre, $precio, $foto)
     {
         $con = db::connect();
@@ -78,6 +83,8 @@ class PlatoDAO
         $result = $stmt->get_result();
         return $result;
     }
+
+        //esta funcion sera usada para añadir el plato a partir de un formulario
     public static function añadirPlato($nombre, $precio, $categoria, $imagen)
     {
         // Connect to the database
