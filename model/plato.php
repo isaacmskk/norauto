@@ -19,8 +19,6 @@ class Plato
                 $this->ID_CAT = $ID_CAT;
                 $this->vegana = $vegana;
 
-
-
         }
         /**
          * Get the value of ID_PLATO
