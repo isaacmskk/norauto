@@ -60,7 +60,7 @@ class PlatoDAO
         return $plato;
     }
 
-        //esta funcion eliminara el plato por su id en concreto
+    //esta funcion eliminara el plato por su id en concreto
     public static function eliminarPlato($ID_PLATO)
     {
         $con = db::connect();
@@ -84,7 +84,7 @@ class PlatoDAO
         return $result;
     }
 
-        //esta funcion sera usada para añadir el plato a partir de un formulario
+    //esta funcion sera usada para añadir el plato a partir de un formulario
     public static function añadirPlato($nombre, $precio, $categoria, $imagen)
     {
         // Connect to the database
@@ -109,4 +109,32 @@ class PlatoDAO
         // Return the result
         return $result;
     }
+    public static function añadirPedido($fecha, $cliente, $total, $selecciones)
+    {
+        // Agregamos el pedido a la base de datos
+        $con = db::connect();
+    
+        foreach ($selecciones as $seleccion) {
+            $platoId = $seleccion->getPlato()->getID_PLATO();
+    
+            // Validamos los valores de `ID_PLATO`
+            if (!PlatoDAO::getPlatoById($platoId)) {
+                $con->close();
+                return "No existe el plato con ID " . $platoId;
+            }
+    
+            $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL, ID_PLATO) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssii", $fecha, $cliente, $total, $platoId);
+    
+            if (!$stmt->execute()) {
+                $con->close();
+                return "No se pudo insertar el pedido en la base de datos.";
+            }
+        }
+    
+        $con->close();
+        return "Pedidos insertados correctamente en la base de datos.";
+    }
+
+
 }

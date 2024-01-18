@@ -126,11 +126,21 @@ class platoController
     /* 
     esta es la funcion con la cual se confirmara el pedido de los platos escogidos.
     lo que hace es enviarte a la pagina home y mostrar el precio total del pedido gracias a la cookie mostrada anteriormente, tambien borra todos los platos del carrito.
-    */ 
+    */
 
     public function confirmar()
     {
         session_start();
+        if (!isset($_SESSION['ID_CLIENTE'])) {
+            // Si no está definida, inicializamos con un valor predeterminado
+            $cliente = 0;
+        } else {
+            // Si está definida, usamos su valor actual
+            $cliente = $_SESSION['ID_CLIENTE'];
+        }
+        $fecha = date('d-m-Y');
+        $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
+        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones']);
         setcookie("ultimopedido", $_POST['cantidadFinal'], time() + 3600);
         unset($_SESSION['selecciones']);
         header("Location:" . url . '?controller=plato');
@@ -155,6 +165,9 @@ class platoController
             if ($result->num_rows > 0) {
                 header("Location:" . url . '?controller=plato');
                 $_SESSION["username"] = $uname;
+                $row = $result->fetch_assoc();
+                $id = $row['ID_CLIENTE'];
+                $_SESSION['ID_CLIENTE'] = $id;
                 return true;
             } else {
                 header("Location:" . url . '?controller=plato&action=login');
@@ -251,7 +264,7 @@ class platoController
             echo 'ERROR DE ID';
         }
     }
-/*
+    /*
 esta funcion actualiza el plato con lo que se ha enviado a traves del form de edit al cual la anterior funcion nos ha redirigido
 */
     public function editplato()
@@ -271,7 +284,7 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         header("Location:" . url . '?controller=plato&action=admin');
     }
 
-/*
+    /*
 esta funcion añade un plato a traves de un formulario tambien en el panel admin
 */
 
@@ -287,4 +300,5 @@ esta funcion añade un plato a traves de un formulario tambien en el panel admin
             header("Location:" . url . '?controller=plato&action=admin');
         }
     }
+
 }
