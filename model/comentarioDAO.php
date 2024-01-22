@@ -20,41 +20,19 @@ class ComentarioDAO
 
         return $comentario;
     }
-    // public static function insert($reseña)
-    // {
-    //     $con = db::connect();
 
-    //     $query = "INSERT INTO reseñas (ID_CLIENTE, COMENTARIO, VALORACION) VALUES (?, ?, ?)";
-
-    //     $stmt = $con->prepare($query);
-
-    //     // Almacena los resultados de las funciones en variables
-    //     $idCliente = $reseña->getID_CLIENTE();
-    //     $comentario = $reseña->getCOMENTARIO();
-    //     $valoracion = $reseña->getVALORACION();
-
-    //     // Pasa las variables a bind_param
-    //     $stmt->bind_param("isi", $idCliente, $comentario, $valoracion);
-
-    //     if ($stmt->execute()) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
     public static function insertarComentario($id_cliente, $comentario, $valoracion)
-    {
-        // Conexión a la base de datos
-        $con = db::connect();
-    
-        // Preparar la consulta
-        $stmt = $con->prepare("INSERT INTO reseñas (ID_CLIENTE, COMENTARIO, VALORACION) VALUES (?, ?, ?)");
-    
-        // Vincular los parámetros
-        $stmt->bind_param('isi', $id_cliente, $comentario, $valoracion);
-    
-        // Ejecutar la consulta
-        $stmt->execute();
-    }
-    
+        {
+            // Conexión a la base de datos
+            $con = db::connect();
+        
+            // Preparar la consulta
+            $stmt = $con->prepare("INSERT INTO reseñas (ID_CLIENTE, COMENTARIO, VALORACION) VALUES (?, ?, ?)");
+        
+            // Vincular los parámetros
+            $stmt->bind_param('isi', $id_cliente, $comentario, $valoracion);
+        
+            // Ejecutar la consulta
+            $stmt->execute();
+        }
 }

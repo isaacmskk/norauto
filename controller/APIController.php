@@ -31,20 +31,20 @@ class APIController
             // Leer los datos JSON del flujo de entrada
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
-        
+
             // Asegúrate de que los datos necesarios están presentes
             if (isset($data['ID_CLIENTE']) && isset($data['COMENTARIO']) && isset($data['VALORACION'])) {
                 $id_cliente = $data['ID_CLIENTE'];
                 $comentario = $data['COMENTARIO'];
                 $valoracion = $data['VALORACION'];
                 ComentarioDAO::insertarComentario($id_cliente, $comentario, $valoracion);
-        
+
                 echo json_encode(['success' => true]);
             } else {
                 echo json_encode(['success' => false, 'error' => 'Faltan datos']);
             }
             return;
         }
-        
     }
 }
+

@@ -69,3 +69,52 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
+// var id_cliente;
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     let form = document.getElementById('comentarioForm');
+//     if(form) {
+//         form.addEventListener('submit', function(event) {
+//             event.preventDefault();
+//             id_cliente = document.getElementById('ID_CLIENTE').value;
+//             let COMENTARIO = document.getElementById('COMENTARIO').value;
+//             let VALORACION = document.getElementById('VALORACION').value;
+
+//             let data = {
+//                 ID_CLIENTE: id_cliente,
+//                 COMENTARIO: COMENTARIO,
+//                 VALORACION: VALORACION
+//             };
+
+//             fetch('https://localhost/norauto/?controller=API&action=api&accion=insertar', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(data),
+//             })
+//             .then(response => {
+//                 if (!response.ok) {
+//                     throw new Error('Error de red');
+//                 }
+//                 return response.text();
+//             })
+//             .then(text => {
+//                 try {
+//                     return text ? JSON.parse(text) : {};
+//                 } catch (error) {
+//                     console.error('No se pudo analizar como JSON:', text);
+//                     throw error;
+//                 }
+//             })
+//             .then(data => {
+//                 console.log('Success:', data);
+//             })
+//             .catch((error) => {
+//                 console.error('Error:', error);
+//             });
+//         });
+//     } else {
+//         console.error("No se encontró el formulario con el id 'comentarioForm'");
+//     }
+// });
