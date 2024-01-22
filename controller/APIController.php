@@ -7,15 +7,17 @@ include_once 'model/reseñas.php';
 /** IMPORTANTE**/
 //Cargar Modelos necesarios BBDD
 
-class APIController{    
- 
-    public function api(){
-       
-        if($_GET["accion"] == 'buscar_reseña'){
+class APIController
+{
+
+    public function api()
+    {
+
+        if ($_GET["accion"] == 'buscar_reseña') {
             $comentarios = ComentarioDAO::AllComentarios();
             $comentarioar = [];
-            foreach ($comentarios as $comentario){
-                $comentarioar[]= [
+            foreach ($comentarios as $comentario) {
+                $comentarioar[] = [
                     'ID_RESEÑA' => $comentario->getID_RESEÑA(),
                     'NOMBRE' => $comentario->getNOMBRE(),
                     'COMENTARIO' => $comentario->getCOMENTARIO(),
@@ -25,7 +27,24 @@ class APIController{
             header('Content-Type: application/json');
             echo json_encode($comentarioar, JSON_UNESCAPED_UNICODE);
             return;
+        } else if ($_GET["accion"] == 'insertar') {
+            // Leer los datos JSON del flujo de entrada
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
         
+            // Asegúrate de que los datos necesarios están presentes
+            if (isset($data['ID_CLIENTE']) && isset($data['COMENTARIO']) && isset($data['VALORACION'])) {
+                $id_cliente = $data['ID_CLIENTE'];
+                $comentario = $data['COMENTARIO'];
+                $valoracion = $data['VALORACION'];
+                ComentarioDAO::insertarComentario($id_cliente, $comentario, $valoracion);
+        
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'error' => 'Faltan datos']);
+            }
+            return;
         }
+        
     }
 }

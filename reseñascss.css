@@ -1,0 +1,23 @@
+/* js */
+.fondorese{
+    background-color: #F4F4F6;
+    padding-left: 50px;
+    padding-top: 20px;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.estrellas{
+    font-size: 25px;
+}
+
+.comrese{
+    font-size: 13px;
+    word-wrap: break-word;
+}
+.nomrese{
+    font-size: 12px;
+    font-weight: bold;
+
+}
