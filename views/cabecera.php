@@ -21,9 +21,9 @@
           </form>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <img src="fotos/marcador-de-posicion.png" alt="imagen mi centro" width="30" height="30">
-
-              <a class="nav-link" href="#">Mi centro</a>
+              <a href=<?= url . '?controller=plato&action=mostrarPedidos' ?> style="text-decoration:none">
+                <button class="">Mis pedidos</button>
+              </a>
             </li>
             <li class="nav-item">
               <img src="fotos/menu-del-restaurante (1).png" alt="imagen menu" width="30" height="30">

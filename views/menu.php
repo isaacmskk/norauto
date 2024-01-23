@@ -41,6 +41,9 @@
             <li class="ofertas">
                 <a href="#">Ofertas</a>
             </li>
+            <li>
+                <a href=<?= url . '?controller=Comentarios&action=reseñas' ?>>Reseñas</a>
+            </li>
         </ul>
     </nav>
 
@@ -85,13 +88,15 @@
 
     <section class="fondomenu1 row">
         <?php
-        foreach ($allPlatos as $plato) { ?>
-        
+        foreach ($allPlatos as $plato){ ?>
+
             <article class="col-12 col-lg-3">
                 <div class="imagenesmenu">
-                    <img alt="imagen producto" src=<?="fotos/".$plato->getFOTO() ?>>
-                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€<br><?php if ($plato->getVegana() == 1) { echo "Vegana";} ?></p>
-                    
+                    <img alt="imagen producto" src=<?= "fotos/" . $plato->getFOTO() ?>>
+                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€<br><?php if ($plato->getVegana() == 1) {
+                                                                                            echo "Vegana";
+                                                                                        } ?></p>
+
                     <form action=<?= "?controller=plato&action=selecciones" ?> method="POST">
                         <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
                         <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>

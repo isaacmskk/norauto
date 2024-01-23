@@ -113,28 +113,97 @@ class PlatoDAO
     {
         // Agregamos el pedido a la base de datos
         $con = db::connect();
-    
+
+        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssi", $fecha, $cliente, $total);
+
+        if (!$stmt->execute()) {
+            $con->close();
+            return "No se pudo insertar el pedido en la base de datos.";
+        }
+
+        $pedidoId = $stmt->insert_id;
+
         foreach ($selecciones as $seleccion) {
             $platoId = $seleccion->getPlato()->getID_PLATO();
-    
+
             // Validamos los valores de `ID_PLATO`
             if (!PlatoDAO::getPlatoById($platoId)) {
                 $con->close();
                 return "No existe el plato con ID " . $platoId;
             }
-    
-            $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL, ID_PLATO) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssii", $fecha, $cliente, $total, $platoId);
-    
+
+            $stmt = $con->prepare("INSERT INTO platos_pedido (ID_PEDIDO, ID_PLATO) VALUES (?, ?)");
+            $stmt->bind_param("ii", $pedidoId, $platoId);
+
             if (!$stmt->execute()) {
                 $con->close();
-                return "No se pudo insertar el pedido en la base de datos.";
+                return "No se pudo insertar el plato en el pedido.";
             }
         }
-    
+
         $con->close();
         return "Pedidos insertados correctamente en la base de datos.";
     }
 
+    public static function obtenerPedido($pedidoId)
+    {
+        $con = db::connect();
+        $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_PEDIDO = ?");
+        $stmt->bind_param("i", $pedidoId);
 
+        if (!$stmt->execute()) {
+            $con->close();
+            return "No se pudo obtener el pedido de la base de datos.";
+        }
+
+        $resultadoPedido = $stmt->get_result();
+        $pedido = $resultadoPedido->fetch_assoc();
+
+        $stmt = $con->prepare("SELECT * FROM platos_pedido WHERE ID_PEDIDO = ?");
+        $stmt->bind_param("i", $pedidoId);
+
+        if (!$stmt->execute()) {
+            $con->close();
+            return "No se pudo obtener los platos del pedido de la base de datos.";
+        }
+
+        $resultadoPlatos = $stmt->get_result();
+        $platos = $resultadoPlatos->fetch_all(MYSQLI_ASSOC);
+
+        $con->close();
+        foreach ($platos as $plato) {
+        }
+    }
+    public static function obtenerPedidos()
+    {
+        $con = db::connect();
+        $stmt = $con->prepare("SELECT * FROM pedido");
+
+        if (!$stmt->execute()) {
+            $con->close();
+            return "No se pudo obtener los pedidos de la base de datos.";
+        }
+
+        $resultadoPedidos = $stmt->get_result();
+        $pedidos = $resultadoPedidos->fetch_all(MYSQLI_ASSOC);
+
+        $con->close();
+        return $pedidos;
+    }
+
+    public static function seleccionarpedido($ID_PEDIDO){
+        
+        $con = db::connect();
+
+        $stmt = $con->prepare("SELECT * FROM pedido where ID_PEDIDO = ?");
+        $stmt->bind_param("i", $ID_PEDIDO);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $con->close();
+
+        $plato = $result->fetch_object('pedido');
+
+        return $plato;
+    }
 }

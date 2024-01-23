@@ -123,28 +123,7 @@ class platoController
         include_once 'views/panelCompra.php';
         include_once 'views/footer.php';
     }
-    /* 
-    esta es la funcion con la cual se confirmara el pedido de los platos escogidos.
-    lo que hace es enviarte a la pagina home y mostrar el precio total del pedido gracias a la cookie mostrada anteriormente, tambien borra todos los platos del carrito.
-    */
 
-    public function confirmar()
-    {
-        session_start();
-        if (!isset($_SESSION['ID_CLIENTE'])) {
-            // Si no está definida, inicializamos con un valor predeterminado
-            $cliente = 0;
-        } else {
-            // Si está definida, usamos su valor actual
-            $cliente = $_SESSION['ID_CLIENTE'];
-        }
-        $fecha = date('d-m-Y');
-        $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
-        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones']);
-        setcookie("ultimopedido", $_POST['cantidadFinal'], time() + 3600);
-        unset($_SESSION['selecciones']);
-        header("Location:" . url . '?controller=plato');
-    }
     /*
     esta funcion logea al usuario comprobando anteriormente que este existe en la base de datos,
     el user envia mediante un formulario los datos, estos se recogen y comprueban, si todo es correcto son enviados 
@@ -284,6 +263,29 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         header("Location:" . url . '?controller=plato&action=admin');
     }
 
+    /* 
+    esta es la funcion con la cual se confirmara el pedido de los platos escogidos.
+    lo que hace es enviarte a la pagina home y mostrar el precio total del pedido gracias a la cookie mostrada anteriormente, tambien borra todos los platos del carrito.
+    */
+
+    public function confirmar()
+    {
+        session_start();
+        if (!isset($_SESSION['ID_CLIENTE'])) {
+            // Si no está definida, inicializamos con un valor predeterminado
+            $cliente = 0;
+        } else {
+            // Si está definida, usamos su valor actual
+            $cliente = $_SESSION['ID_CLIENTE'];
+        }
+        $fecha = date('d-m-Y');
+        $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
+        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones']);
+        setcookie("ultimopedido", $_POST['cantidadFinal'], time() + 3600);
+        unset($_SESSION['selecciones']);
+        header("Location:" . url . '?controller=plato');
+    }
+
     /*
 esta funcion añade un plato a traves de un formulario tambien en el panel admin
 */
@@ -301,4 +303,32 @@ esta funcion añade un plato a traves de un formulario tambien en el panel admin
         }
     }
 
+    public function mostrarPedidos()
+    {
+        session_start();
+
+        $resultado = PlatoDAO::obtenerPedidos();
+        if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+
+            include_once 'views/cabeceraadmin.php';
+        } else {
+            include_once 'views/cabecera.php';
+        }
+        include_once 'views/pedidos.php';
+        include_once 'views/footer.php';
+    }
+    public function reseñaForm($ID_PEDIDO)
+    {
+        session_start();
+
+        $resultado = PlatoDAO::seleccionarpedido($ID_PEDIDO);
+        if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+
+            include_once 'views/cabeceraadmin.php';
+        } else {
+            include_once 'views/cabecera.php';
+        }
+        include_once 'views/formreseña.php';
+        include_once 'views/footer.php';
+    }
 }

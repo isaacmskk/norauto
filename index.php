@@ -3,7 +3,6 @@ include_once 'controller/platoController.php';
 include_once 'config/parameters.php';
 include_once 'controller/ComentariosController.php';
 include_once 'controller/APIController.php';
-
 if (!isset($_GET['controller'])) {
     header("Location: " . url . "?controller=plato");
 } else {

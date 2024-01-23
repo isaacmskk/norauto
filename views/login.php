@@ -42,6 +42,9 @@
             <li class="ofertas">
                 <a href="#">Ofertas</a>
             </li>
+            <li>
+                <a href=<?= url . '?controller=Comentarios&action=reseñas' ?>>Reseñas</a>
+            </li>
         </ul>
     </nav>
 
