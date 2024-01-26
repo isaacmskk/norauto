@@ -53,4 +53,24 @@ class ComentarioDAO
         $con->close();
         return $pedidos;
     }
+
+    public static function existeResena($idPedido)
+    {
+        $con = db::connect();
+        $stmt = $con->prepare("SELECT * FROM reseñas WHERE ID_PEDIDO = ?");
+        $stmt->bind_param("i", $idPedido);
+    
+        if (!$stmt->execute()) {
+            $con->close();
+            return false;
+        }
+    
+        $resultado = $stmt->get_result();
+        $existe = $resultado->num_rows > 0;
+    
+        $con->close();
+        return $existe;
+    }
+    
+
 }
