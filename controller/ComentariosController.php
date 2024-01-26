@@ -31,7 +31,6 @@
         public function reseñaForm()
         {
             session_start();
-
             if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
                 include_once 'views/cabeceraadmin.php';
             } else {

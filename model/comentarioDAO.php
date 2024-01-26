@@ -21,20 +21,21 @@ class ComentarioDAO
         return $comentario;
     }
 
-    public static function insertarComentario($id_cliente, $comentario, $valoracion)
+    public static function insertarComentario($id_cliente, $id_pedido, $comentario, $valoracion)
     {
         // Conexión a la base de datos
         $con = db::connect();
-
+    
         // Preparar la consulta
-        $stmt = $con->prepare("INSERT INTO reseñas (ID_CLIENTE, COMENTARIO, VALORACION) VALUES (?, ?, ?)");
-
+        $stmt = $con->prepare("INSERT INTO reseñas (ID_CLIENTE, ID_PEDIDO, COMENTARIO, VALORACION) VALUES (?, ?, ?, ?)");
+    
         // Vincular los parámetros
-        $stmt->bind_param('isi', $id_cliente, $comentario, $valoracion);
-
+        $stmt->bind_param('iisi', $id_cliente, $id_pedido, $comentario, $valoracion);
+    
         // Ejecutar la consulta
         $stmt->execute();
     }
+    
     public static function obtenerPedidos($idCliente)
     {
         $con = db::connect();

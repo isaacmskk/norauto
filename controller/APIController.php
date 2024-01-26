@@ -27,23 +27,25 @@ class APIController
             header('Content-Type: application/json');
             echo json_encode($comentarioar, JSON_UNESCAPED_UNICODE);
             return;
-        } else if ($_GET["accion"] == 'insertar') {
+        }else if ($_GET["accion"] == 'insertar') {
             // Leer los datos JSON del flujo de entrada
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
-
+        
             // Asegúrate de que los datos necesarios están presentes
-            if (isset($data['ID_CLIENTE']) && isset($data['COMENTARIO']) && isset($data['VALORACION'])) {
+            if (isset($data['ID_CLIENTE']) && isset($data['ID_PEDIDO']) && isset($data['COMENTARIO']) && isset($data['VALORACION'])) {
                 $id_cliente = $data['ID_CLIENTE'];
+                $id_pedido = $data['ID_PEDIDO']; // Recoge el ID_PEDIDO de los datos enviados
                 $comentario = $data['COMENTARIO'];
                 $valoracion = $data['VALORACION'];
-                ComentarioDAO::insertarComentario($id_cliente, $comentario, $valoracion);
-
+                ComentarioDAO::insertarComentario($id_cliente, $id_pedido, $comentario, $valoracion); // Pasa el ID_PEDIDO a la función
+        
                 echo json_encode(['success' => true]);
             } else {
                 echo json_encode(['success' => false, 'error' => 'Faltan datos']);
             }
             return;
         }
+        
     }
 }

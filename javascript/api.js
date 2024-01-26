@@ -88,33 +88,36 @@ function updateReviews() {
 const ordenSelector = document.getElementById('orden');
 ordenSelector.addEventListener('change', updateReviews);
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('comentarioForm').addEventListener('submit', function (event) {
-        event.preventDefault();
 
-        let ID_CLIENTE = document.getElementById('ID_CLIENTE').value;
-        let COMENTARIO = document.getElementById('COMENTARIO').value;
-        let VALORACION = document.getElementById('VALORACION').value;
+//insertar pedidos
+document.getElementById('comentarioForm').addEventListener('submit', function (event) {
+    event.preventDefault();
 
-        let data = {
-            ID_CLIENTE: ID_CLIENTE,
-            COMENTARIO: COMENTARIO,
-            VALORACION: VALORACION
-        };
-        console.log(data)
-        fetch('https://localhost/norauto/?controller=API&action=api&accion=insertar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
+    let ID_CLIENTE = document.getElementById('ID_CLIENTE').value;
+    let ID_PEDIDO = document.getElementById('ID_PEDIDO').value;
+    let COMENTARIO = document.getElementById('COMENTARIO').value;
+    let VALORACION = document.getElementById('VALORACION').value;
+
+    let data = {
+        ID_CLIENTE: ID_CLIENTE,
+        ID_PEDIDO: ID_PEDIDO,
+        COMENTARIO: COMENTARIO,
+        VALORACION: VALORACION
+    };
+
+    fetch('https://localhost/norauto/?controller=API&action=api&accion=insertar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    });
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 });
+
