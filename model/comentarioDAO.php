@@ -22,17 +22,34 @@ class ComentarioDAO
     }
 
     public static function insertarComentario($id_cliente, $comentario, $valoracion)
-        {
-            // Conexión a la base de datos
-            $con = db::connect();
-        
-            // Preparar la consulta
-            $stmt = $con->prepare("INSERT INTO reseñas (ID_CLIENTE, COMENTARIO, VALORACION) VALUES (?, ?, ?)");
-        
-            // Vincular los parámetros
-            $stmt->bind_param('isi', $id_cliente, $comentario, $valoracion);
-        
-            // Ejecutar la consulta
-            $stmt->execute();
+    {
+        // Conexión a la base de datos
+        $con = db::connect();
+
+        // Preparar la consulta
+        $stmt = $con->prepare("INSERT INTO reseñas (ID_CLIENTE, COMENTARIO, VALORACION) VALUES (?, ?, ?)");
+
+        // Vincular los parámetros
+        $stmt->bind_param('isi', $id_cliente, $comentario, $valoracion);
+
+        // Ejecutar la consulta
+        $stmt->execute();
+    }
+    public static function obtenerPedidos($idCliente)
+    {
+        $con = db::connect();
+        $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_CLIENTE = ?");
+        $stmt->bind_param("i", $idCliente);
+
+        if (!$stmt->execute()) {
+            $con->close();
+            return "No se pudo obtener los pedidos de la base de datos.";
         }
+
+        $resultadoPedidos = $stmt->get_result();
+        $pedidos = $resultadoPedidos->fetch_all(MYSQLI_ASSOC);
+
+        $con->close();
+        return $pedidos;
+    }
 }

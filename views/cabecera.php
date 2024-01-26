@@ -21,7 +21,7 @@
           </form>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a href=<?= url . '?controller=plato&action=mostrarPedidos' ?> style="text-decoration:none">
+              <a href=<?= url . '?controller=Comentarios&action=mostrarPedidos' ?> style="text-decoration:none">
                 <button class="">Mis pedidos</button>
               </a>
             </li>

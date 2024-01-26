@@ -302,33 +302,4 @@ esta funcion añade un plato a traves de un formulario tambien en el panel admin
             header("Location:" . url . '?controller=plato&action=admin');
         }
     }
-
-    public function mostrarPedidos()
-    {
-        session_start();
-
-        $resultado = PlatoDAO::obtenerPedidos();
-        if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
-
-            include_once 'views/cabeceraadmin.php';
-        } else {
-            include_once 'views/cabecera.php';
-        }
-        include_once 'views/pedidos.php';
-        include_once 'views/footer.php';
-    }
-    public function reseñaForm($ID_PEDIDO)
-    {
-        session_start();
-
-        $resultado = PlatoDAO::seleccionarpedido($ID_PEDIDO);
-        if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
-
-            include_once 'views/cabeceraadmin.php';
-        } else {
-            include_once 'views/cabecera.php';
-        }
-        include_once 'views/formreseña.php';
-        include_once 'views/footer.php';
-    }
 }
