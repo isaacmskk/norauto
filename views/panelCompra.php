@@ -80,24 +80,30 @@
           <p>Resumen</p>
         </div>
         <div class="cuadro3">
-          <p class="promotext">¿Código Promocional?</p>
-          <input class="formcodigo" type="search" placeholder="      Inserta el código" aria-label="Search">
-          <div class="articulos">
-            <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
-            <p><?= $precioTotal ?>€</p>
-          </div>
-          <div class="barra">
-          </div>
-          <div class="totalpedido">
-            <p>Total</p>
-            <p><?= $precioTotal ?>€</p>
-          </div>
-          <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
-            <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-            <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
-          </form>
+          <p class="promotext">Puntos disponibles: </p>
+          <p class="promotext">Tienes <?= $_SESSION['puntos'] ?> puntos</p>
+          <a href="">
+            <button class="botonpagar" type="submit">Usar puntos</button>
+          </a>
         </div>
+
+
+        <div class="articulos">
+          <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
+          <p><?= $precioTotal ?>€</p>
+        </div>
+        <div class="barra">
+        </div>
+        <div class="totalpedido">
+          <p>Total</p>
+          <p><?= $precioTotal ?>€</p>
+        </div>
+        <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
+          <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
+          <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+        </form>
       </div>
+    </div>
     </div>
   </section>
 
@@ -110,10 +116,5 @@
     <img src="fotos/BANNERABAJO.png">
   </section>
 </body>
-
-</html>
-
-</body>
-
 
 </html>

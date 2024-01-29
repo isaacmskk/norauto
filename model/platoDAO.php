@@ -146,35 +146,9 @@ class PlatoDAO
         return "Pedidos insertados correctamente en la base de datos.";
     }
 
-    // public static function obtenerPedido($pedidoId)
-    // {
-    //     $con = db::connect();
-    //     $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_PEDIDO = ?");
-    //     $stmt->bind_param("i", $pedidoId);
-
-    //     if (!$stmt->execute()) {
-    //         $con->close();
-    //         return "No se pudo obtener el pedido de la base de datos.";
-    //     }
-
-    //     $resultadoPedido = $stmt->get_result();
-    //     $pedido = $resultadoPedido->fetch_assoc();
-
-    //     $stmt = $con->prepare("SELECT * FROM platos_pedido WHERE ID_PEDIDO = ?");
-    //     $stmt->bind_param("i", $pedidoId);
-
-    //     if (!$stmt->execute()) {
-    //         $con->close();
-    //         return "No se pudo obtener los platos del pedido de la base de datos.";
-    //     }
-
-    //     $resultadoPlatos = $stmt->get_result();
-    //     $platos = $resultadoPlatos->fetch_all(MYSQLI_ASSOC);
-
-    //     $con->close();
-    //     foreach ($platos as $plato) {
-    //     }
-    // }
-
-
+   
+    
 }
+
+
+

@@ -39,5 +39,21 @@
             include_once 'views/formreseña.php';
             include_once 'views/footer.php';
         }
+        public function recuperarPuntos(){
+            session_start();
+            if (!isset($_SESSION['ID_CLIENTE'])) {
+                // Si no está definida, inicializamos con un valor predeterminado
+                $cliente = 0;
+            } else {
+                // Si está definida, usamos su valor actual
+                $cliente = $_SESSION['ID_CLIENTE'];
+            }
+            $_SESSION['puntos'] = ComentarioDAO::puntos($cliente);
+        
+            include 'views/panelCompra.php';
+        }
+        
+        
+        
         
     }

@@ -1,11 +1,6 @@
 <?php
 include_once 'model/comentarioDAO.php';
 include_once 'model/reseñas.php';
-//Esto es un NUEVO CONTROLADOR
-//hacer todas las configuraciones necesarias para que funcione como controlador
-
-/** IMPORTANTE**/
-//Cargar Modelos necesarios BBDD
 
 class APIController
 {

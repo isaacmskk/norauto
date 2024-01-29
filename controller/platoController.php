@@ -284,7 +284,7 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         setcookie("ultimopedido", $_POST['cantidadFinal'], time() + 3600);
         unset($_SESSION['selecciones']);
         header("Location:" . url . '?controller=plato');
-    }
+    }    
 
     /*
 esta funcion añade un plato a traves de un formulario tambien en el panel admin
@@ -302,4 +302,6 @@ esta funcion añade un plato a traves de un formulario tambien en el panel admin
             header("Location:" . url . '?controller=plato&action=admin');
         }
     }
+
+    
 }

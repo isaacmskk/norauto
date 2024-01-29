@@ -54,8 +54,11 @@
     document.getElementById('comentarioForm').addEventListener('submit', function(e) {
         e.preventDefault(); // Evita que el formulario se envíe
         notie.alert({ type: 'success', text: 'Formulario enviado con éxito', time: 2 }) // Muestra una notificación
+        setTimeout(function(){ location.reload(); }, 2000); // Recarga la página después de 2 segundos
     });
-  </script>
+</script>
+
+
 </body>
 
 </html>

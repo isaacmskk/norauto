@@ -53,7 +53,30 @@ class ComentarioDAO
         $con->close();
         return $pedidos;
     }
-
+    public static function puntos($id_cliente){
+        $con = db::connect();
+    
+        $stmt = $con->prepare("SELECT puntos FROM usuarios WHERE ID_CLIENTE = ?");
+        $stmt->bind_param("i", $id_cliente);
+        if (!$stmt->execute()) {
+            $con->close();
+            return "No se pudo obtener los puntos de la base de datos.";
+        }
+        $resultado = $stmt->get_result();
+        if ($resultado->num_rows > 0) {
+            // Si se encontró el usuario, obtenemos los puntos
+            $fila = $resultado->fetch_object();
+            $puntos = $fila->puntos;
+        } else {
+            // Si no se encontró el usuario, establecemos los puntos en 0
+            $puntos = 0;
+        }
+    
+        $con->close();
+    
+        return $puntos;
+    }
+    
     public static function existeResena($idPedido)
     {
         $con = db::connect();
@@ -71,6 +94,6 @@ class ComentarioDAO
         $con->close();
         return $existe;
     }
-    
+
 
 }
