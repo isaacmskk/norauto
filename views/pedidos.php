@@ -20,17 +20,14 @@
             FECHA <?= $pedido['FECHA'] ?>
             TOTAL <?= $pedido['TOTAL'] ?>
             IDPLATO <?= $pedido['ID_PLATO'] ?>
-        <?php if (!ComentarioDAO::existeResena($pedido['ID_PEDIDO'])) : ?>
-            <a href=<?= url . '?controller=Comentarios&action=reseñas&ID_PEDIDO=' . $pedido['ID_PEDIDO'] ?>>
-                <input type="submit" value="Reseña">
-            </a>
-            </p>
-        <?php endif; ?>
+            <?php if (!ComentarioDAO::existeResena($pedido['ID_PEDIDO'])) : ?>
+                <a href=<?= url . '?controller=Comentarios&action=reseñas&ID_PEDIDO=' . $pedido['ID_PEDIDO'] ?>>
+                    <input type="submit" value="Reseña">
+                </a>
+        </p>
+    <?php endif; ?>
     </div>
 <?php endforeach; ?>
-
-
-
 
 </body>
 

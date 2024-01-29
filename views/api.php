@@ -8,6 +8,15 @@
   <link href="bootstrap.min.css" rel="stylesheet">
   <link href="reseñascss.css" rel="stylesheet" type="text/css" media="screen">
   <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+    <style>
+        /* override styles here */
+        .notie-container {
+            box-shadow: none;
+        }
+    </style>
+    <script src="https://unpkg.com/notie"></script>
+
 </head>
 
 <body>
@@ -40,7 +49,12 @@
     <input type="number" id="VALORACION" name="VALORACION" min="1" max="5"><br><br>
     <input type="submit" value="Enviar">
   </form>
-  <script src="javascript/api.js">
+  <script src="javascript/api.js"></script>
+  <script>
+    document.getElementById('comentarioForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe
+        notie.alert({ type: 'success', text: 'Formulario enviado con éxito', time: 2 }) // Muestra una notificación
+    });
   </script>
 </body>
 
