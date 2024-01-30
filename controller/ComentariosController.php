@@ -39,19 +39,19 @@
             include_once 'views/formreseña.php';
             include_once 'views/footer.php';
         }
-        public function recuperarPuntos(){
-            session_start();
-            if (!isset($_SESSION['ID_CLIENTE'])) {
-                // Si no está definida, inicializamos con un valor predeterminado
-                $cliente = 0;
-            } else {
-                // Si está definida, usamos su valor actual
-                $cliente = $_SESSION['ID_CLIENTE'];
-            }
-            $_SESSION['puntos'] = ComentarioDAO::puntos($cliente);
+        // public function recuperarPuntos(){
+        //     session_start();
+        //     if (!isset($_SESSION['ID_CLIENTE'])) {
+        //         // Si no está definida, inicializamos con un valor predeterminado
+        //         $id_cliente = 0;
+        //     } else {
+        //         // Si está definida, usamos su valor actual
+        //         $id_cliente  = $_SESSION['ID_CLIENTE'];
+        //     }
+        //     $_SESSION['puntos'] = ComentarioDAO::puntos($id_cliente);
         
-            include 'views/panelCompra.php';
-        }
+        //     include 'views/panelCompra.php';
+        // }
         
         
         

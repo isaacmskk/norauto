@@ -1,6 +1,7 @@
 <?php
 include_once 'model/comentarioDAO.php';
 include_once 'model/reseñas.php';
+include_once 'model/clientes.php';
 
 class APIController
 {
@@ -40,7 +41,22 @@ class APIController
                 echo json_encode(['success' => false, 'error' => 'Faltan datos']);
             }
             return;
+        }else if ($_GET["accion"] == 'buscar_puntos') {
+            // Asegúrate de tener el ID del cliente disponible, por ejemplo, a través de $_GET
+            $id_cliente = $_SESSION["ID_CLIENTE"];
+            $puntos = PuntosDAO::AllPuntos($id_cliente);
+            $puntoar = [];
+            foreach ($puntos as $punto) {
+                $puntoar[] = [
+                    'PUNTOS' => $punto->PUNTOS
+                ];
+            }
+            header('Content-Type: application/json');
+            echo json_encode($puntoar, JSON_UNESCAPED_UNICODE);
+            return;
         }
+        
+        
         
     }
 }

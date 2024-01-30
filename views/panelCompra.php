@@ -81,7 +81,7 @@
         </div>
         <div class="cuadro3">
           <p class="promotext">Puntos disponibles: </p>
-          <p class="promotext">Tienes <?= $_SESSION['puntos'] ?> puntos</p>
+          <p class="promotext">Tienes puntos</p>
           <a href="">
             <button class="botonpagar" type="submit">Usar puntos</button>
           </a>
@@ -100,7 +100,9 @@
         </div>
         <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
           <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-          <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+          <a href=<?=''?>>
+            <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+          </a>
         </form>
       </div>
     </div>
@@ -115,6 +117,8 @@
   <section class="bannerabajo">
     <img src="fotos/BANNERABAJO.png">
   </section>
+  <script src="javascript/puntospropinas.js"></script>
+
 </body>
 
 </html>
