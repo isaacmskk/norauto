@@ -79,12 +79,13 @@
         <div class="textoresumen">
           <p>Resumen</p>
         </div>
-        <div class="cuadro3">
+        <div class="cuadro3" id="cuadro3">
           <p class="promotext">Puntos disponibles: </p>
-          <p class="promotext">Tienes puntos</p>
-          <a href="">
-            <button class="botonpagar" type="submit">Usar puntos</button>
-          </a>
+          <form id="cliente">
+            <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>"><br>
+            <input type = "text" id="puntos" name="puntos" value=""><br>
+            <input value="Usar Puntos" type="submit">
+          </form>
         </div>
 
 
@@ -100,7 +101,7 @@
         </div>
         <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
           <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-          <a href=<?=''?>>
+          <a href=<?= '' ?>>
             <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
           </a>
         </form>
