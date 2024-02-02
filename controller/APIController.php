@@ -43,24 +43,21 @@ class APIController
             }
             return;
         } else if ($_GET["accion"] == 'buscar_puntos') {
-
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
-          
+
             if (isset($data['ID_CLIENTE'])) {
-                echo $data['ID_CLIENTE'];
                 $id_cliente = $data['ID_CLIENTE'];
                 $puntos = PuntosDAO::AllPuntos($id_cliente);
-                echo json_decode($puntos, JSON_UNESCAPED_UNICODE);
-                return;
-                
-            } else {
 
+                // Devuelve solo los puntos
+                echo json_encode(['puntos' => $puntos], JSON_UNESCAPED_UNICODE);
+                return;
+            } else {
                 // Manejar el caso en el que 'ID_CLIENTE' no está set en el JSON data
                 echo json_encode(['error' => 'ID_CLIENTE not provided']);
             }
             return;
-
         }
     }
 }

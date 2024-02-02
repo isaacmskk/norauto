@@ -81,13 +81,7 @@
         </div>
         <div class="cuadro3" id="cuadro3">
           <p class="promotext">Puntos disponibles: </p>
-          <form id="cliente">
-            <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>"><br>
-            <input type = "text" id="puntos" name="puntos" value=""><br>
-            <input value="Usar Puntos" type="submit">
-          </form>
         </div>
-
 
         <div class="articulos">
           <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
@@ -101,8 +95,10 @@
         </div>
         <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
           <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-          <a href=<?= '' ?>>
-            <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
+          <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
+          <input type="checkbox" id="usarPuntos" name="usarPuntos">
+          <label for="usarPuntos">Usar Puntos</label><br>
+          <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
           </a>
         </form>
       </div>

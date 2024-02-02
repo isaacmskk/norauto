@@ -14,7 +14,8 @@ class PuntosDAO
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         $puntosactuales = $row['PUNTOS'];
-
+    
+        // Devuelve solo los puntos, no el ID_CLIENTE
         return $puntosactuales;
     }
 
