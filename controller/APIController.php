@@ -44,9 +44,6 @@ class APIController
             return;
         } else if ($_GET["accion"] == 'buscar_puntos') {
 
-            $puntos = []; // Define $puntos as an empty array before using it
-
-            // Read JSON data from the input stream
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
           
@@ -54,32 +51,16 @@ class APIController
                 echo $data['ID_CLIENTE'];
                 $id_cliente = $data['ID_CLIENTE'];
                 $puntos = PuntosDAO::AllPuntos($id_cliente);
-
-                $puntoar = [];
-
-                // Verifica si $puntos es un array y no está vacío
-                if (is_array($puntos) && !empty($puntos)) {
-                    foreach ($puntos as $punto) {
-                        $puntoar[] = [
-                            'PUNTOS' => $punto->PUNTOS
-                        ];
-                    }
-                } else {
-                    // Manejar el caso en el que $puntos no es un array o está vacío
-                    $puntoar = [
-                        'error' => 'No se encontraron puntos para el cliente.'
-                    ];
-                }
+                echo json_decode($puntos, JSON_UNESCAPED_UNICODE);
+                return;
+                
             } else {
 
                 // Manejar el caso en el que 'ID_CLIENTE' no está set en el JSON data
                 echo json_encode(['error' => 'ID_CLIENTE not provided']);
-                return;
             }
-
-            header('Content-Type: application/json');
-            echo json_encode($puntoar, JSON_UNESCAPED_UNICODE);
             return;
+
         }
     }
 }
