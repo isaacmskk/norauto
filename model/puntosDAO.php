@@ -35,13 +35,23 @@ class PuntosDAO
 }
 
 
-    public static function acumularPuntos($id_cliente, $puntosAcumulados)
-    {
-        $con = db::connect();
-        $query = "UPDATE usuarios SET PUNTOS = PUNTOS + ? WHERE ID_CLIENTE = ?";
+    // En tu clase PuntosDAO
+public static function acumularPuntosPorCompra($id_cliente, $total)
+{
+    // Establece la tasa de conversión de puntos basada en el gasto 
+    $tasaConversion = 0.2;
 
-        $stmt = $con->prepare($query);
-        $stmt->bind_param("ii", $puntosAcumulados, $id_cliente);
-        $stmt->execute();
-    }
+    // Calcula la cantidad de puntos a acumular
+    $puntosAcumulados = round($total * $tasaConversion);
+
+    // Obtén los puntos actuales del cliente
+    $puntosActuales = self::AllPuntos($id_cliente);
+
+    // Actualiza los puntos del cliente sumando los puntos acumulados
+    $nuevosPuntos = $puntosActuales + $puntosAcumulados;
+    self::actualizarPuntos($id_cliente, $nuevosPuntos);
+
+    return $puntosAcumulados;
+}
+
 }

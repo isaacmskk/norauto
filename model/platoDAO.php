@@ -109,42 +109,45 @@ class PlatoDAO
         // Return the result
         return $result;
     }
-    public static function añadirPedido($fecha, $cliente, $total, $selecciones)
-    {
-        // Agregamos el pedido a la base de datos
-        $con = db::connect();
+    // En tu clase PlatoDAO
+public static function añadirPedido($fecha, $cliente, $total, $selecciones)
+{
+    $con = db::connect();
 
-        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssd", $fecha, $cliente, $total);
+    $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssd", $fecha, $cliente, $total);
+
+    if (!$stmt->execute()) {
+        $con->close();
+        return "No se pudo insertar el pedido en la base de datos.";
+    }
+
+    // Obtén el ID del pedido recién insertado
+    $pedidoId = $stmt->insert_id;
+
+    foreach ($selecciones as $seleccion) {
+        $platoId = $seleccion->getPlato()->getID_PLATO();
+
+        // Validamos los valores de `ID_PLATO`
+        if (!PlatoDAO::getPlatoById($platoId)) {
+            $con->close();
+            return "No existe el plato con ID " . $platoId;
+        }
+
+        $stmt = $con->prepare("INSERT INTO platos_pedido (ID_PEDIDO, ID_PLATO) VALUES (?, ?)");
+        $stmt->bind_param("ii", $pedidoId, $platoId);
 
         if (!$stmt->execute()) {
             $con->close();
-            return "No se pudo insertar el pedido en la base de datos.";
+            return "No se pudo insertar el plato en el pedido.";
         }
-
-        $pedidoId = $stmt->insert_id;
-
-        foreach ($selecciones as $seleccion) {
-            $platoId = $seleccion->getPlato()->getID_PLATO();
-
-            // Validamos los valores de `ID_PLATO`
-            if (!PlatoDAO::getPlatoById($platoId)) {
-                $con->close();
-                return "No existe el plato con ID " . $platoId;
-            }
-
-            $stmt = $con->prepare("INSERT INTO platos_pedido (ID_PEDIDO, ID_PLATO) VALUES (?, ?)");
-            $stmt->bind_param("ii", $pedidoId, $platoId);
-
-            if (!$stmt->execute()) {
-                $con->close();
-                return "No se pudo insertar el plato en el pedido.";
-            }
-        }
-
-        $con->close();
-        return "Pedidos insertados correctamente en la base de datos.";
     }
+
+    $con->close();
+
+    return $pedidoId; // Retorna el ID del pedido
+}
+
 
    
     

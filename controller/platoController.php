@@ -299,6 +299,8 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         }
     
         $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones']);
+        $puntosAcumulados = PuntosDAO::acumularPuntosPorCompra($cliente, $total);
+
         setcookie("ultimopedido", $total, time() + 3600);
         unset($_SESSION['selecciones']);
         header("Location:" . url . '?controller=plato');
