@@ -53,5 +53,16 @@ public static function acumularPuntosPorCompra($id_cliente, $total)
 
     return $puntosAcumulados;
 }
+// En tu clase PuntosDAO
+public static function calcularPuntosAcumulados($total, $id_cliente)
+{
+    // Establece la tasa de conversión de puntos basada en el gasto (por ejemplo, 1 euro = 1 punto)
+    $tasaConversion = 0.2;
+
+    // Calcula la cantidad de puntos a acumular
+    $puntosAcumulados = round($total * $tasaConversion);
+
+    return $puntosAcumulados;
+}
 
 }

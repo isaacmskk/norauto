@@ -98,6 +98,11 @@
           <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
           <input type="checkbox" id="usarPuntos" name="usarPuntos">
           <label for="usarPuntos">Usar Puntos</label><br>
+          <?php
+    $puntosAcumulados = PuntosDAO::calcularPuntosAcumulados($precioTotal, $_SESSION['ID_CLIENTE']);
+    ?>
+    <p>Acumularás <?= $puntosAcumulados ?> puntos con este pedido.</p>
+
           <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
         </form>
 
