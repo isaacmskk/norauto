@@ -271,6 +271,7 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
     public function confirmar()
     {
         session_start();
+    
         if (!isset($_SESSION['ID_CLIENTE'])) {
             // Si no está definida, inicializamos con un valor predeterminado
             $cliente = 0;
@@ -278,13 +279,31 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
             // Si está definida, usamos su valor actual
             $cliente = $_SESSION['ID_CLIENTE'];
         }
+    
         $fecha = date('d-m-Y');
         $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
+        $usarPuntos = isset($_POST['usarPuntos']) ? true : false;
+    
+        if ($usarPuntos) {
+            // Obtén los puntos disponibles del cliente
+            $puntosDisponibles = PuntosDAO::AllPuntos($cliente);
+    
+            // Calcula el descuento en función de los puntos disponibles
+            $descuento = $puntosDisponibles;
+    
+            // Resta el descuento al total del pedido
+            $total -= $descuento  * 0.1;
+    
+            // Actualiza los puntos del cliente restando los puntos utilizados
+            PuntosDAO::actualizarPuntos($cliente, $puntosDisponibles - $descuento);
+        }
+    
         $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones']);
-        setcookie("ultimopedido", $_POST['cantidadFinal'], time() + 3600);
+        setcookie("ultimopedido", $total, time() + 3600);
         unset($_SESSION['selecciones']);
         header("Location:" . url . '?controller=plato');
-    }    
+    }
+    
 
     /*
 esta funcion añade un plato a traves de un formulario tambien en el panel admin

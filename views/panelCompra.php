@@ -99,8 +99,8 @@
           <input type="checkbox" id="usarPuntos" name="usarPuntos">
           <label for="usarPuntos">Usar Puntos</label><br>
           <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
-          </a>
         </form>
+
       </div>
     </div>
     </div>

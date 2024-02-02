@@ -115,7 +115,7 @@ class PlatoDAO
         $con = db::connect();
 
         $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssi", $fecha, $cliente, $total);
+        $stmt->bind_param("ssd", $fecha, $cliente, $total);
 
         if (!$stmt->execute()) {
             $con->close();

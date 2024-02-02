@@ -18,6 +18,21 @@ class PuntosDAO
         // Devuelve solo los puntos, no el ID_CLIENTE
         return $puntosactuales;
     }
+    public static function actualizarPuntos($id_cliente, $nuevosPuntos)
+{
+    $con = db::connect();
+
+    $stmt = $con->prepare("UPDATE usuarios SET PUNTOS = ? WHERE ID_CLIENTE = ?");
+    $stmt->bind_param("ii", $nuevosPuntos, $id_cliente);
+    
+    if (!$stmt->execute()) {
+        $con->close();
+        return "No se pudo actualizar los puntos del cliente en la base de datos.";
+    }
+
+    $con->close();
+    return "Puntos actualizados correctamente en la base de datos.";
+}
 
 
     public static function acumularPuntos($id_cliente, $puntosAcumulados)
