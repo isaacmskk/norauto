@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>ALL PEDIDOS</title>
+    <title>MIS PEDIDOS</title>
     <meta charset="UTF-8">
     <meta name="description" content="Descripció web">
     <meta name="keywords" content="Paraules clau">
@@ -14,19 +14,21 @@
     <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 
-<?php foreach ($resultado as $pedido) : ?>
-    <div class="pedido row">
-        <p>Pedido ID: <?= $pedido['ID_PEDIDO'] ?>
-            FECHA <?= $pedido['FECHA'] ?>
-            TOTAL <?= $pedido['TOTAL'] ?>
-            <?php if (!ComentarioDAO::existeResena($pedido['ID_PEDIDO'])) : ?>
-                <a href=<?= url . '?controller=Comentarios&action=reseñas&ID_PEDIDO=' . $pedido['ID_PEDIDO'] ?>>
-                    <input type="submit" value="Reseña">
-                </a>
-        </p>
-    <?php endif; ?>
-    </div>
-<?php endforeach; ?>
+<body>
+    <h2>Mis Pedidos</h2>
+    <?php foreach ($resultado as $pedido) : ?>
+        <div class="pedido row">
+            <p>Pedido ID: <?= $pedido['ID_PEDIDO'] ?>
+                FECHA <?= $pedido['FECHA'] ?>
+                TOTAL <?= $pedido['TOTAL'] ?>
+                <?php if (!ComentarioDAO::existeResena($pedido['ID_PEDIDO'])) : ?>
+                    <a href=<?= url . '?controller=Comentarios&action=reseñas&ID_PEDIDO=' . $pedido['ID_PEDIDO'] ?>>
+                        <input type="submit" value="Reseña">
+                    </a>
+            </p>
+        <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
 
 </body>
 

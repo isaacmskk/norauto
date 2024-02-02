@@ -1,3 +1,33 @@
-.pedido{
-    display: inline-flex;
+.pedido {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 1px; /* Ajusta el valor según tus preferencias */
+    width: fit-content;
+}
+
+/* Opcional: Estilo para el botón de reseña */
+.pedido a input {
+    background-color: #0071DC;
+    color: white;
+    padding: 10px 16px; /* Ajusta el espacio y el tamaño según tus preferencias */
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Tamaño de la letra */
+    margin-top: 10px; /* Espacio superior */
+    margin-right: 5px; /* Espacio derecho */
+    cursor: pointer;
+}
+.pedido a input:hover{
+    background-color: #002B6F;
+    color: white;
+    padding: 10px 16px; /* Ajusta el espacio y el tamaño según tus preferencias */
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Tamaño de la letra */
+    margin-top: 10px; /* Espacio superior */
+    margin-right: 5px; /* Espacio derecho */
+    cursor: pointer;
 }

@@ -1,5 +1,63 @@
-/* js */
-.fondorese{
+/* reseñascss.css */
+
+/* Estilo para el formulario */
+#comentarioForm {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#comentarioForm label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#comentarioForm input[type="text"],
+#comentarioForm input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#comentarioForm input[type="submit"] {
+    background-color: #0071DC;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#comentarioForm input[type="submit"]:hover {
+    background-color: #002B6F;
+}
+
+/* Estilo para los filtros */
+#categories-filter {
+    float: left;
+    margin-right: 20px;
+}
+
+#categories-filter label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#orden-selector {
+    float: left;
+    margin-right: 20px;
+}
+
+/* Otras reglas de estilo que ya tienes */
+.fondorese {
     background-color: #F4F4F6;
     padding-left: 50px;
     padding-top: 20px;
@@ -8,16 +66,17 @@
     width: 100%;
     margin-bottom: 20px;
 }
-.estrellas{
+
+.estrellas {
     font-size: 25px;
 }
 
-.comrese{
+.comrese {
     font-size: 13px;
     word-wrap: break-word;
 }
-.nomrese{
+
+.nomrese {
     font-size: 12px;
     font-weight: bold;
-
 }

@@ -79,35 +79,38 @@
         <div class="textoresumen">
           <p>Resumen</p>
         </div>
-        <div class="cuadro3" id="cuadro3">
-          <p class="promotext">Puntos disponibles: </p>
-        </div>
+        <div class="cuadroblanco">
 
-        <div class="articulos">
-          <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
-          <p><?= $precioTotal ?>€</p>
-        </div>
-        <div class="barra">
-        </div>
-        <div class="totalpedido">
-          <p>Total</p>
-          <p><?= $precioTotal ?>€</p>
-        </div>
-        <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
-          <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
-          <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
-          <input type="checkbox" id="usarPuntos" name="usarPuntos">
-          <label for="usarPuntos">Usar Puntos</label><br>
-          <?php
-    $puntosAcumulados = PuntosDAO::calcularPuntosAcumulados($precioTotal, $_SESSION['ID_CLIENTE']);
-    ?>
-    <p>Acumularás <?= $puntosAcumulados ?> puntos con este pedido.</p>
+          <div class="articulos" id="cuadro3">
+            <p class="promotext">Puntos disponibles: </p>
+          </div>
+          <div class="articulos">
+            <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
+            <p><?= $precioTotal ?>€</p>
 
-          <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
-        </form>
+          </div>
+          <div class="barra">
+          </div>
+          <div class="totalpedido">
+            <p>Total</p>
+            <p><?= $precioTotal ?>€</p>
+          </div>
+          <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
+            <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
+            <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
+            <input type="checkbox" id="usarPuntos" name="usarPuntos">
+            <label for="usarPuntos">Usar Puntos</label><br>
+            <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
 
+          </form>
+          <div class="articulos">
+            <?php
+            $puntosAcumulados = PuntosDAO::calcularPuntosAcumulados($precioTotal, $_SESSION['ID_CLIENTE']);
+            ?>
+            <p>Acumularás <?= $puntosAcumulados ?> puntos con este pedido.</p>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   </section>
 
