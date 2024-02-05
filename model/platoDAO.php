@@ -25,15 +25,15 @@ class PlatoDAO
     public static function getAllByType($ID_CAT)
     {
         $con = db::connect();
-        $stmt = $con->prepare("SELECT DISTINCT NOMBRE_CATEGORIA FROM plato WHERE ID_CAT=?");
-        $stmt->bind_param("s", $ID_CAT);
+        $stmt = $con->prepare("SELECT ID_CAT FROM plato WHERE ID_CAT=?");
+        $stmt->bind_param("i", $ID_CAT);
         $stmt->execute();
         $result = $stmt->get_result();
         $con->close();
         $listaCategorias = [];
     
         while ($categoria = $result->fetch_assoc()) {
-            $listaCategorias[] = $categoria['NOMBRE_CATEGORIA'];
+            $listaCategorias[] = $categoria['ID_CAT'];
         }
     
         return $listaCategorias;

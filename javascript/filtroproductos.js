@@ -1,4 +1,3 @@
-// Añade estas líneas al final de tu script JavaScript
 const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
 
 categoryCheckboxes.forEach(checkbox => {
@@ -22,13 +21,4 @@ function updateProducts() {
             productsToShow.forEach(product => product.style.display = 'block');
         });
     }
-}
-
-function resetFilters() {
-    // Desmarcar todos los checkboxes
-    categoryCheckboxes.forEach(checkbox => checkbox.checked = false);
-
-    // Mostrar todos los productos
-    const allProducts = document.querySelectorAll('.col-12.col-lg-3');
-    allProducts.forEach(product => product.style.display = 'block');
 }

@@ -84,17 +84,12 @@
         </div>
     </section>
 
-    <!-- Agrega estas líneas a tu HTML dentro del body -->
     <section class="category-filter">
-        <label><input type="checkbox" class="category-checkbox" value="hamburguesas"> Hamburguesas</label>
-        <label><input type="checkbox" class="category-checkbox" value="pasta"> Pasta</label>
-        <label><input type="checkbox" class="category-checkbox" value="pizza"> Pizza</label>
-        <label><input type="checkbox" class="category-checkbox" value="paella"> Paella</label>
-        <label><input type="checkbox" class="category-checkbox" value="hotdog"> Hot-dog</label>
-
-
-        <!-- Agrega más checkboxes según tus categorías -->
-
+        <label><input type="checkbox" class="category-checkbox" value="0"> Pasta</label>
+        <label><input type="checkbox" class="category-checkbox" value="1"> Pizza</label>
+        <label><input type="checkbox" class="category-checkbox" value="2"> Paella</label>
+        <label><input type="checkbox" class="category-checkbox" value="3"> Hot-dog</label>
+        <label><input type="checkbox" class="category-checkbox" value="4"> Hamburguesas</label>
         <button onclick="resetFilters()">Resetear Filtros</button>
     </section>
     <section class="fondomenu1 row">
