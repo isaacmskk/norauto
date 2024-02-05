@@ -86,14 +86,14 @@
           </div>
           <div class="articulos">
             <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
-            <p><?= $precioTotal ?>€</p>
+            <p id=""><?= $precioTotal ?>€</p>
 
           </div>
           <div class="barra">
           </div>
           <div class="totalpedido">
             <p>Total</p>
-            <p><?= $precioTotal ?>€</p>
+            <p id="precioTotal"><?= $precioTotal ?>€</p>
           </div>
           <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
             <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
