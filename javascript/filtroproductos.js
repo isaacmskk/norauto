@@ -1,7 +1,7 @@
 const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
 
 categoryCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', updateProducts);
+    checkbox.addEventListener('click', updateProducts);
 });
 
 function updateProducts() {
@@ -14,11 +14,15 @@ function updateProducts() {
     if (selectedCategorias.length === 0) {
         allProducts.forEach(product => product.style.display = 'block');
     } else {
-        allProducts.forEach(product => product.style.display = 'none');
-
-        selectedCategorias.forEach(categoria => {
-            const productsToShow = document.querySelectorAll(`[data-categoria="${categoria}"]`);
-            productsToShow.forEach(product => product.style.display = 'block');
+        allProducts.forEach(product => {
+            const categoriaProducto = product.getAttribute('data-categoria');
+            const isVisible = selectedCategorias.includes(categoriaProducto);
+            product.style.display = isVisible ? 'block' : 'none';
         });
     }
+}
+
+function resetFilters() {
+    categoryCheckboxes.forEach(checkbox => checkbox.checked = false);
+    updateProducts();
 }
