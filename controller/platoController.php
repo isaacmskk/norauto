@@ -279,7 +279,6 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
             // Si está definida, usamos su valor actual
             $cliente = $_SESSION['ID_CLIENTE'];
         }
-    
         $fecha = date('d-m-Y');
         $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
         $usarPuntos = isset($_POST['usarPuntos']) ? true : false;

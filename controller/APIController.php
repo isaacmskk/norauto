@@ -58,21 +58,7 @@ class APIController
                 echo json_encode(['error' => 'ID_CLIENTE not provided']);
             }
             return;
-            // }elseif ($_GET["accion"] == 'puntosUser') {
-            //     $json = file_get_contents('php://input');
-            //     $data = json_decode($json, true);
-
-            //     $id_usuario = $data['id_usuario'];
-            //     if (isset($id_usuario)) {
-            //         // $id_usuario = $_SESSION['id'];
-            //         $puntos = PuntosDAO::acumularPuntos($id_usuario);
-            //         echo json_encode($puntos, JSON_UNESCAPED_UNICODE);
-            //         return;
-            //     } else {
-            //         echo json_encode(['error' => 'No hay sesión iniciada']);
-            //     }
-            //     return;
-            // }
+            
         }
     }
 }
