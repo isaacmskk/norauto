@@ -22,26 +22,23 @@ class PlatoDAO
         return $listaPlatos;
     }
     //esta funcion cogera todos los platos por su id_cat
-    public static function getAllByTipe($ID_CAT)
+    public static function getAllByType($ID_CAT)
     {
         $con = db::connect();
-
-        $stmt = $con->prepare("SELECT * FROM plato WHERE ID_CAT=?");
+        $stmt = $con->prepare("SELECT DISTINCT NOMBRE_CATEGORIA FROM plato WHERE ID_CAT=?");
         $stmt->bind_param("s", $ID_CAT);
-
         $stmt->execute();
         $result = $stmt->get_result();
-
         $con->close();
-        $listaPlatos = [];
-        while ($plato = $result->fetch_object($ID_CAT)) {
-
-            $listaPlatos[] = $plato;
+        $listaCategorias = [];
+    
+        while ($categoria = $result->fetch_assoc()) {
+            $listaCategorias[] = $categoria['NOMBRE_CATEGORIA'];
         }
-
-
-        return $listaPlatos;
+    
+        return $listaCategorias;
     }
+    
 
     //esta funcion cogera todos los platos por su id
 
@@ -110,48 +107,41 @@ class PlatoDAO
         return $result;
     }
     // En tu clase PlatoDAO
-public static function añadirPedido($fecha, $cliente, $total, $selecciones)
-{
-    $con = db::connect();
+    public static function añadirPedido($fecha, $cliente, $total, $selecciones)
+    {
+        $con = db::connect();
 
-    $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
-    $stmt->bind_param("ssd", $fecha, $cliente, $total);
-
-    if (!$stmt->execute()) {
-        $con->close();
-        return "No se pudo insertar el pedido en la base de datos.";
-    }
-
-    // Obtén el ID del pedido recién insertado
-    $pedidoId = $stmt->insert_id;
-
-    foreach ($selecciones as $seleccion) {
-        $platoId = $seleccion->getPlato()->getID_PLATO();
-
-        // Validamos los valores de `ID_PLATO`
-        if (!PlatoDAO::getPlatoById($platoId)) {
-            $con->close();
-            return "No existe el plato con ID " . $platoId;
-        }
-
-        $stmt = $con->prepare("INSERT INTO platos_pedido (ID_PEDIDO, ID_PLATO) VALUES (?, ?)");
-        $stmt->bind_param("ii", $pedidoId, $platoId);
+        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssd", $fecha, $cliente, $total);
 
         if (!$stmt->execute()) {
             $con->close();
-            return "No se pudo insertar el plato en el pedido.";
+            return "No se pudo insertar el pedido en la base de datos.";
         }
+
+        // Obtén el ID del pedido recién insertado
+        $pedidoId = $stmt->insert_id;
+
+        foreach ($selecciones as $seleccion) {
+            $platoId = $seleccion->getPlato()->getID_PLATO();
+
+            // Validamos los valores de `ID_PLATO`
+            if (!PlatoDAO::getPlatoById($platoId)) {
+                $con->close();
+                return "No existe el plato con ID " . $platoId;
+            }
+
+            $stmt = $con->prepare("INSERT INTO platos_pedido (ID_PEDIDO, ID_PLATO) VALUES (?, ?)");
+            $stmt->bind_param("ii", $pedidoId, $platoId);
+
+            if (!$stmt->execute()) {
+                $con->close();
+                return "No se pudo insertar el plato en el pedido.";
+            }
+        }
+
+        $con->close();
+
+        return $pedidoId; // Retorna el ID del pedido
     }
-
-    $con->close();
-
-    return $pedidoId; // Retorna el ID del pedido
 }
-
-
-   
-    
-}
-
-
-

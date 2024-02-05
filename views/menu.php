@@ -14,7 +14,6 @@
     <link href="menucss.css" rel="stylesheet" type="text/css" media="screen">
     <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
 
-
 </head>
 
 <body>
@@ -85,28 +84,44 @@
         </div>
     </section>
 
+    <!-- Agrega estas líneas a tu HTML dentro del body -->
+    <section class="category-filter">
+        <label><input type="checkbox" class="category-checkbox" value="hamburguesas"> Hamburguesas</label>
+        <label><input type="checkbox" class="category-checkbox" value="pasta"> Pasta</label>
+        <label><input type="checkbox" class="category-checkbox" value="pizza"> Pizza</label>
+        <label><input type="checkbox" class="category-checkbox" value="paella"> Paella</label>
+        <label><input type="checkbox" class="category-checkbox" value="hotdog"> Hot-dog</label>
 
+
+        <!-- Agrega más checkboxes según tus categorías -->
+
+        <button onclick="resetFilters()">Resetear Filtros</button>
+    </section>
     <section class="fondomenu1 row">
+
         <?php
-        foreach ($allPlatos as $plato){ ?>
-
-            <article class="col-12 col-lg-3">
+        foreach ($allPlatos as $plato) { ?>
+            <article class="col-12 col-lg-3" data-categoria="<?= $plato->getID_CAT() ?>">
                 <div class="imagenesmenu">
-                    <img alt="imagen producto" src=<?= "fotos/" . $plato->getFOTO() ?>>
-                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€<br><?php if ($plato->getVegana() == 1) {
-                                                                                            echo "Vegana";
-                                                                                        } ?></p>
+                    <img alt="imagen producto" src="<?= "fotos/" . $plato->getFOTO() ?>">
+                    <p><?= $plato->getNOMBRE() ?> <br><?= $plato->getPRECIO() ?>€<br>
+                        <?php if ($plato->getVegana() == 1) {
+                            echo "Vegana";
+                        } ?>
+                    </p>
 
-                    <form action=<?= "?controller=plato&action=selecciones" ?> method="POST">
+                    <form action="<?= "?controller=plato&action=selecciones" ?>" method="POST">
                         <input name="id" value="<?= $plato->getID_PLATO() ?> " hidden>
                         <input name="categoria" value="<?= $plato->getID_CAT() ?> " hidden>
-                        <button class="añadirmenu" name="Añadir" class="bet-button w3-black w3-section" type="submit"><img alt="imagen carrito boton pequeño" src="fotos/minicarrito.png">Añadir</button>
+                        <button class="añadirmenu" name="Añadir" class="bet-button w3-black w3-section" type="submit">
+                            <img alt="imagen carrito boton pequeño" src="fotos/minicarrito.png">Añadir
+                        </button>
                     </form>
                 </div>
             </article>
-        <?php
-        } ?>
-    </section>
+        <?php } ?>
+
+
 
     </section>
     <section class="volverarriba">
@@ -120,5 +135,6 @@
 </body>
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="javascript/filtroproductos.js"></script>
 
 </html>
