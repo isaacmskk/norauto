@@ -14,7 +14,6 @@
   <link href="carritocss.css" rel="stylesheet" type="text/css" media="screen">
   <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
 
-
 </head>
 
 <body>
@@ -113,6 +112,14 @@
       </div>
     </div>
   </section>
+  <button id="generarQRBtn" 
+        data-fecha="<?php echo date("d-m-Y"); ?>"
+        data-productos="<?php echo htmlentities(json_encode($_SESSION['selecciones'])); ?>"
+        data-precio-total="<?php echo $precioTotal; ?>">
+    Generar QR
+</button>
+
+
 
   <section class="volverarriba">
     <a href="#header">Volver Arriba</a>
@@ -123,6 +130,7 @@
     <img src="fotos/BANNERABAJO.png">
   </section>
   <script src="javascript/puntospropinas.js"></script>
+  <script src="javascript/qrcode.min.js"></script>
 
 </body>
 

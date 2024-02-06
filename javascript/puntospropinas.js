@@ -51,3 +51,4 @@ function AllPuntos(puntos) {
     
     puntosInput.appendChild(mostrar);
 }
+

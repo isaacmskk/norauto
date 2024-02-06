@@ -31,14 +31,14 @@ class PlatoDAO
         $result = $stmt->get_result();
         $con->close();
         $listaCategorias = [];
-    
+
         while ($categoria = $result->fetch_assoc()) {
             $listaCategorias[] = $categoria['ID_CAT'];
         }
-    
+
         return $listaCategorias;
     }
-    
+
 
     //esta funcion cogera todos los platos por su id
 
