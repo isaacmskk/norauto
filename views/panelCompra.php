@@ -94,14 +94,14 @@
             <p>Total</p>
             <p id="precioTotal"><?= $precioTotal ?>€</p>
           </div>
-          <form id="qr" action=<?= '?controller=plato&action=confirmar' ?> method='post'>
-            <input id="cantidadFinal" type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
+          <form id="qr" action="<?= '?controller=plato&action=confirmar' ?>" method='post'>
+            <input id="cantidadFinal" type="hidden" name="cantidadFinal" value="<?= $precioTotal ?>">
             <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
             <input type="checkbox" id="usarPuntos" name="usarPuntos">
             <label for="usarPuntos">Usar Puntos</label><br>
-            <td><button class="botonpagar" type="submit">Tramitar Pedido</button></td>
-
+            <button class="botonpagar" type="submit">Tramitar Pedido</button>
           </form>
+
           <div class="articulos">
             <?php
             $puntosAcumulados = PuntosDAO::calcularPuntosAcumulados($precioTotal, $_SESSION['ID_CLIENTE']);

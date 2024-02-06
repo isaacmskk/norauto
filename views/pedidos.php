@@ -16,9 +16,10 @@
 
 <body>
     <h2>Mis Pedidos</h2>
-    <div class="qrrr">
-
+    <div id="cuadro4">
+        
     </div>
+
     <?php foreach ($resultado as $pedido) : ?>
         <div class="pedido row">
             <p>Pedido ID: <?= $pedido['ID_PEDIDO'] ?>

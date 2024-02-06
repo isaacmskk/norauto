@@ -1,12 +1,12 @@
 // Función para generar y mostrar el código QR
 function generarQR(datos) {
-    // Verifica si el elemento con id 'cuadro3' ya existe
-    var qrContainer = document.getElementById("cuadro3");
+    // Verifica si el elemento con id 'cuadro4' ya existe
+    var qrContainer = document.getElementById("cuadro4");
 
     // Si el elemento no existe, crea uno nuevo y lo agrega al final del body
     if (!qrContainer) {
         qrContainer = document.createElement("div");
-        qrContainer.id = "cuadro3";
+        qrContainer.id = "cuadro4";
         document.body.appendChild(qrContainer);
     }
 
@@ -21,10 +21,11 @@ function generarQR(datos) {
     });
 }
 
-
-
 // Manejador de evento para el envío del formulario
 document.getElementById("qr").addEventListener("submit", function (event) {
+    // Evita que el formulario se envíe y recargue la página
+    event.preventDefault();
+
     // Obtiene los datos del campo cantidadFinal
     var datosInput = document.getElementById("cantidadFinal");
 
@@ -32,8 +33,20 @@ document.getElementById("qr").addEventListener("submit", function (event) {
     if (datosInput) {
         var datos = datosInput.value;
 
-        // Genera y muestra el código QR
-        generarQR(datos);
+        // Construye la URL con los parámetros necesarios
+        var url = '?controller=Comentarios&action=mostrarPedidos';
+
+        // Abre una nueva ventana con la URL que incluye los parámetros
+        var nuevaVentana = window.open(url);
+
+        // Genera y muestra el código QR en la nueva ventana
+        if (nuevaVentana) {
+            nuevaVentana.onload = function() {
+                nuevaVentana.generarQR(datos);
+            };
+        } else {
+            console.error("No se pudo abrir la nueva ventana.");
+        }
     } else {
         console.error("Elemento con id 'cantidadFinal' no encontrado.");
     }
