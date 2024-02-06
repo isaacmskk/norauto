@@ -1,14 +1,17 @@
 // Función para generar y mostrar el código QR
 function generarQR(datos) {
-    // Verifica si el elemento con id 'miQR' ya existe
-    var qrContainer = document.getElementById("miQR");
+    // Verifica si el elemento con id 'cuadro3' ya existe
+    var qrContainer = document.getElementById("cuadro3");
 
-    // Si el elemento no existe, crea uno nuevo
+    // Si el elemento no existe, crea uno nuevo y lo agrega al final del body
     if (!qrContainer) {
         qrContainer = document.createElement("div");
-        qrContainer.id = "miQR";
+        qrContainer.id = "cuadro3";
         document.body.appendChild(qrContainer);
     }
+
+    // Limpia el contenido existente del contenedor antes de generar un nuevo código QR
+    qrContainer.innerHTML = "";
 
     // Crea un nuevo objeto QRCode
     var qrcode = new QRCode(qrContainer, {
@@ -16,10 +19,9 @@ function generarQR(datos) {
         width: 128,
         height: 128
     });
-
-    // Abre una nueva ventana con el código QR
-    window.open("", "_blank").document.write(qrContainer.outerHTML);
 }
+
+
 
 // Manejador de evento para el envío del formulario
 document.getElementById("qr").addEventListener("submit", function (event) {
