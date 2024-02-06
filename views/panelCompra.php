@@ -94,8 +94,8 @@
             <p>Total</p>
             <p id="precioTotal"><?= $precioTotal ?>€</p>
           </div>
-          <form action=<?= '?controller=plato&action=confirmar' ?> method='post'>
-            <input type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
+          <form id="qr" action=<?= '?controller=plato&action=confirmar' ?> method='post'>
+            <input id="cantidadFinal" type="hidden" name="cantidadFinal" value=<?= $precioTotal ?>>
             <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
             <input type="checkbox" id="usarPuntos" name="usarPuntos">
             <label for="usarPuntos">Usar Puntos</label><br>
@@ -112,15 +112,6 @@
       </div>
     </div>
   </section>
-  <button id="generarQRBtn" 
-        data-fecha="<?php echo date("d-m-Y"); ?>"
-        data-productos="<?php echo htmlentities(json_encode($_SESSION['selecciones'])); ?>"
-        data-precio-total="<?php echo $precioTotal; ?>">
-    Generar QR
-</button>
-
-
-
   <section class="volverarriba">
     <a href="#header">Volver Arriba</a>
   </section>
@@ -131,6 +122,8 @@
   </section>
   <script src="javascript/puntospropinas.js"></script>
   <script src="javascript/qrcode.min.js"></script>
+  <script src="javascript/qrgenerator.js"></script>
+
 
 </body>
 
