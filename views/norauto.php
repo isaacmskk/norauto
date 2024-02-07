@@ -16,7 +16,9 @@
 
 
 </head>
+<div id="cuadro4">
 
+  </div>
 <body>
   <section class="cookie">
     <p><?= $msg_cookie ?></p>
@@ -49,6 +51,7 @@
       </li>
     </ul>
   </nav>
+  
 
   <section class="row">
     <img class="banner1" src="fotos\banner.png" alt="Muestra una imagen de comida y una oferta">
@@ -141,5 +144,8 @@
 </body>
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="javascript/puntospropinas.js"></script>
+<script src="javascript/qrcode.min.js"></script>
+<script src="javascript/qrgenerator.js"></script>
 
 </html>

@@ -46,7 +46,7 @@ document.getElementById("qr").addEventListener("submit", function (event) {
         var datos = datosInput.value;
 
         // Construye la URL con los parámetros necesarios
-        var url = '?controller=Comentarios&action=mostrarPedidos';
+        var url = '?controller=plato';
 
         // Abre una nueva ventana con la URL que incluye los parámetros
         var nuevaVentana = window.open(url);
