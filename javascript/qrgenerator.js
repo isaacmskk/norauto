@@ -13,12 +13,24 @@ function generarQR(datos) {
     // Limpia el contenido existente del contenedor antes de generar un nuevo código QR
     qrContainer.innerHTML = "";
 
+    // Asegúrate de que datos sea una URL válida
+    var datosURL = validarURL(datos);
+
     // Crea un nuevo objeto QRCode
     var qrcode = new QRCode(qrContainer, {
-        text: datos,
+        text: datosURL,
         width: 128,
         height: 128
     });
+}
+
+// Función para validar y formatear una URL
+function validarURL(url) {
+    // Agrega "http://" si la URL no comienza con eso o "https://"
+    if (!url.startsWith('http://') && !url.startsWith('https://localhost/norauto/')) {
+        url = 'https://localhost/norauto/' + url;
+    }
+    return url;
 }
 
 // Manejador de evento para el envío del formulario
@@ -27,7 +39,7 @@ document.getElementById("qr").addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Obtiene los datos del campo cantidadFinal
-    var datosInput = document.getElementById("cantidadFinal");
+    var datosInput = document.getElementById("linkqr");
 
     // Verifica si el elemento existe antes de intentar acceder a su valor
     if (datosInput) {
@@ -48,6 +60,6 @@ document.getElementById("qr").addEventListener("submit", function (event) {
             console.error("No se pudo abrir la nueva ventana.");
         }
     } else {
-        console.error("Elemento con id 'cantidadFinal' no encontrado.");
+        console.error("Elemento con id 'linkqr' no encontrado.");
     }
 });

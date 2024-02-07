@@ -323,5 +323,15 @@ esta funcion añade un plato a traves de un formulario tambien en el panel admin
         }
     }
 
-    
+    public function qrpage(){
+        if (isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+
+            include_once 'views/cabeceraadmin.php';
+        } else {
+            include_once 'views/cabecera.php';
+        }
+
+        include_once 'views/paginaqr.php';
+        include_once 'views/footer.php';
+    }
 }
