@@ -19,7 +19,6 @@
                 ID CLIENTE: <?= $resultado['ID_CLIENTE'] ?><br>
                 ID PLATO: <?= $resultado['ID_PLATO'] ?><br>
                 TOTAL: <?= $resultado['TOTAL'] ?><br>
-                CUPONES APLICADOS:
                 PUNTOS: <?= $resultado['PUNTOS'] ?>
 
             </p>
