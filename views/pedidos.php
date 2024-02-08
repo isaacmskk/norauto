@@ -16,10 +16,6 @@
 
 <body>
     <h2>Mis Pedidos</h2>
-    <div id="cuadro4">
-        
-    </div>
-
     <?php foreach ($resultado as $pedido) : ?>
         <div class="pedido row">
             <p>Pedido ID: <?= $pedido['ID_PEDIDO'] ?>
@@ -35,8 +31,7 @@
     <?php endforeach; ?>
 
     <script src="javascript/puntospropinas.js"></script>
-    <script src="javascript/qrcode.min.js"></script>
-    <script src="javascript/qrgenerator.js"></script>
+
 </body>
 
 </html>

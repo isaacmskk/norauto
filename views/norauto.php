@@ -16,9 +16,6 @@
 
 
 </head>
-<div id="cuadro4">
-
-  </div>
 <body>
   <section class="cookie">
     <p><?= $msg_cookie ?></p>

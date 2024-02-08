@@ -73,18 +73,5 @@ class ComentarioDAO
         $con->close();
         return $existe;
     }
-
-        // public static function actualizarPuntos($id_cliente, $puntos_ganados){
-    //     $con = db::connect();
-    //     $query = "UPDATE usuarios SET puntos = puntos + ? WHERE ID_CLIENTE = ?";
-    //     $stmt = $con->prepare($query);
-    //     $stmt->bind_param("ii", $puntos_ganados, $id_cliente);
-    //     if (!$stmt->execute()) {
-    //         $con->close();
-    //         return "No se pudo actualizar los puntos en la base de datos.";
-    //     }
-    //     $con->close();
-    //     return "Puntos actualizados con éxito.";
-    // }
     
 }
