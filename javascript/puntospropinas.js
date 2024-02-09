@@ -23,23 +23,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let precioOriginal = parseFloat(document.getElementById('precioTotal').innerText.split('€')[0]);
     let checkbox = document.getElementById('usarPuntos');
+    let propinaInput = document.getElementById('propina');
     let precioTotalElement = document.getElementById('precioTotal');
 
     checkbox.addEventListener('change', function () {
+        actualizarPrecioTotal();
+    });
+
+    propinaInput.addEventListener('input', function () {
+        actualizarPrecioTotal();
+    });
+
+    function actualizarPrecioTotal() {
         if (precioTotalElement) {
-            if (this.checked) {
-                let puntosDescuento = parseFloat(document.getElementById('cuadro3').innerText.split(' ')[1]);
-                let descuento = puntosDescuento * 0.1;
-                let precioTotal = precioOriginal - descuento;
-                precioTotalElement.innerText = `${precioTotal.toFixed(2)} €`;
-            } else {
-                // Checkbox desmarcado, restaurar el precio original
-                precioTotalElement.innerText = `${precioOriginal.toFixed(2)} €`;
-            }
+            let puntosDescuento = checkbox.checked ? parseFloat(document.getElementById('cuadro3').innerText.split(' ')[1]) * 0.1 : 0;
+            let propina = parseFloat(propinaInput.value) || 0;
+            let precioTotal = precioOriginal - puntosDescuento + (precioOriginal * propina / 100);
+            precioTotalElement.innerText = `${precioTotal.toFixed(2)} €`;
         } else {
             console.error('Elemento con ID "precioTotal" no encontrado en el HTML.');
         }
-    });
+    }
 });
 
 function AllPuntos(puntos) {
@@ -51,4 +55,3 @@ function AllPuntos(puntos) {
     
     puntosInput.appendChild(mostrar);
 }
-
