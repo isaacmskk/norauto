@@ -18,8 +18,10 @@
                 FECHA: <?= $resultado['FECHA'] ?><br>
                 ID CLIENTE: <?= $resultado['ID_CLIENTE'] ?><br>
                 ID PLATO: <?= $resultado['ID_PLATO'] ?><br>
-                TOTAL: <?= $resultado['TOTAL'] ?><br>
-                PUNTOS: <?= $resultado['PUNTOS'] ?>
+                TOTAL: <?= $resultado['TOTAL'] ?> €<br>
+                PUNTOS: <?= $resultado['PUNTOS'] ?><br>
+                Propina aplicada: <?= $resultado['PROPINA'] ?> %
+
 
             </p>
         </div>

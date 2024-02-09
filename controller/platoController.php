@@ -307,7 +307,7 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         $total = ceil($total * 100) / 100;
         $total = number_format($total, 2, '.', '');
 
-        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones']);
+        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones'], $propina);
         $puntosAcumulados = PuntosDAO::acumularPuntosPorCompra($cliente, $total);
         $_SESSION['ultimoPedidoId'] = $pedidito;
     

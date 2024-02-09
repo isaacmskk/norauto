@@ -107,12 +107,12 @@ class PlatoDAO
         return $result;
     }
     // En tu clase PlatoDAO
-    public static function añadirPedido($fecha, $cliente, $total, $selecciones)
+    public static function añadirPedido($fecha, $cliente, $total, $selecciones, $propina)
     {
         $con = db::connect();
 
-        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssd", $fecha, $cliente, $total);
+        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL, PROPINA) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssdi", $fecha, $cliente, $total,$propina);
 
         if (!$stmt->execute()) {
             $con->close();
