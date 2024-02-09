@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ressenyes del Restaurant</title>
-  <link href="../bootstrap.min.css" rel="stylesheet">
-  <link href="../reseñascss.css" rel="stylesheet" type="text/css" media="screen">
-  <link href="../cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="reseñascss.css" rel="stylesheet" type="text/css" media="screen">
+  <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
     <style>
         /* override styles here */
