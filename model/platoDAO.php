@@ -214,6 +214,4 @@ class PlatoDAO
         return $ultimoPedidoInfo;
     }
     
-
-    
 }
