@@ -5,8 +5,8 @@
     <title>Último Pedido</title>
     <meta charset="UTF-8">
     <meta name="description" content="Descripción de la página">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="cssconjunto.css" media="screen">
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../cssconjunto.css" media="screen">
 </head>
 
 <body>

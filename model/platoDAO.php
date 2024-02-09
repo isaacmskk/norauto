@@ -145,53 +145,75 @@ class PlatoDAO
         return $pedidoId; // Retorna el ID del pedido
     }
     public static function ultimopedido($pedidoId)
-{
-    $con = db::connect();
-
-    // Consulta para obtener información del último pedido
-    $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_PEDIDO = ?");
-    $stmt->bind_param("i", $pedidoId);
-    $stmt->execute();
-
-    // Obtiene el resultado de la consulta
-    $result = $stmt->get_result();
-
-    // Verifica si se encontraron resultados
-    if ($result->num_rows > 0) {
-        // Obtiene la fila asociada al último pedido
-        $ultimoPedidoInfo = $result->fetch_assoc();
-
-        // Consulta adicional para obtener los puntos del usuario desde la tabla usuarios
-        $stmtUsuario = $con->prepare("SELECT PUNTOS FROM usuarios WHERE ID_CLIENTE = ?");
-        $stmtUsuario->bind_param("i", $ultimoPedidoInfo['ID_CLIENTE']);
-        $stmtUsuario->execute();
-
-        // Obtiene el resultado de la consulta de usuarios
-        $resultUsuario = $stmtUsuario->get_result();
-
-        // Verifica si se encontraron resultados en la consulta de usuarios
-        if ($resultUsuario->num_rows > 0) {
-            // Obtiene los puntos y los agrega a la información del último pedido
-            $usuarioInfo = $resultUsuario->fetch_assoc();
-            $ultimoPedidoInfo['PUNTOS'] = $usuarioInfo['PUNTOS'];
+    {
+        $con = db::connect();
+    
+        // Consulta para obtener información del último pedido
+        $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_PEDIDO = ?");
+        $stmt->bind_param("i", $pedidoId);
+        $stmt->execute();
+    
+        // Obtiene el resultado de la consulta
+        $result = $stmt->get_result();
+    
+        // Verifica si se encontraron resultados
+        if ($result->num_rows > 0) {
+            // Obtiene la fila asociada al último pedido
+            $ultimoPedidoInfo = $result->fetch_assoc();
+    
+            // Consulta adicional para obtener los puntos del usuario desde la tabla usuarios
+            $stmtUsuario = $con->prepare("SELECT PUNTOS FROM usuarios WHERE ID_CLIENTE = ?");
+            $stmtUsuario->bind_param("i", $ultimoPedidoInfo['ID_CLIENTE']);
+            $stmtUsuario->execute();
+    
+            // Obtiene el resultado de la consulta de usuarios
+            $resultUsuario = $stmtUsuario->get_result();
+    
+            // Verifica si se encontraron resultados en la consulta de usuarios
+            if ($resultUsuario->num_rows > 0) {
+                // Obtiene los puntos y los agrega a la información del último pedido
+                $usuarioInfo = $resultUsuario->fetch_assoc();
+                $ultimoPedidoInfo['PUNTOS'] = $usuarioInfo['PUNTOS'];
+            } else {
+                // No se encontraron resultados en la consulta de usuarios
+                $ultimoPedidoInfo['PUNTOS'] = null;
+            }
+    
+            // Cierra la conexión de la consulta de usuarios
+            $stmtUsuario->close();
+    
+            // Consulta adicional para obtener el ID_PLATO desde la tabla platos_pedido
+            $stmtPlato = $con->prepare("SELECT ID_PLATO FROM platos_pedido WHERE ID_PEDIDO = ?");
+            $stmtPlato->bind_param("i", $pedidoId);
+            $stmtPlato->execute();
+    
+            // Obtiene el resultado de la consulta de platos_pedido
+            $resultPlato = $stmtPlato->get_result();
+    
+            // Verifica si se encontraron resultados en la consulta de platos_pedido
+            if ($resultPlato->num_rows > 0) {
+                // Obtiene el ID_PLATO y lo agrega a la información del último pedido
+                $platoInfo = $resultPlato->fetch_assoc();
+                $ultimoPedidoInfo['ID_PLATO'] = $platoInfo['ID_PLATO'];
+            } else {
+                // No se encontraron resultados en la consulta de platos_pedido
+                $ultimoPedidoInfo['ID_PLATO'] = null;
+            }
+    
+            // Cierra la conexión de la consulta de platos_pedido
+            $stmtPlato->close();
         } else {
-            // No se encontraron resultados en la consulta de usuarios
-            $ultimoPedidoInfo['PUNTOS'] = null;
+            // No se encontraron resultados
+            $ultimoPedidoInfo = null;
         }
-
-        // Cierra la conexión de la consulta de usuarios
-        $stmtUsuario->close();
-    } else {
-        // No se encontraron resultados
-        $ultimoPedidoInfo = null;
+    
+        // Cierra la conexión de la consulta de pedido
+        $stmt->close();
+        $con->close();
+    
+        return $ultimoPedidoInfo;
     }
-
-    // Cierra la conexión de la consulta de pedido
-    $stmt->close();
-    $con->close();
-
-    return $ultimoPedidoInfo;
-}
+    
 
     
 }
