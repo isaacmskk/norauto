@@ -29,6 +29,13 @@
               </a>
             </li>
             <li class="nav-item">
+            <img src="fotos/mispedidos.png" alt="imagen pedidos" width="30" height="30">
+
+              <a class="nav-link" href=<?= url . '?controller=Comentarios&action=mostrarPedidos' ?> style="text-decoration:none">
+                Mis pedidos
+              </a>
+            </li>
+            <li class="nav-item">
               <img src="fotos/menu-del-restaurante (1).png" alt="imagen menu" width="30" height="30">
               <a class="nav-link" href=<?= url . '?controller=plato&action=menu' ?>>Menu</a>
             </li>

@@ -21,8 +21,10 @@
           </form>
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a href=<?= url . '?controller=Comentarios&action=mostrarPedidos' ?> style="text-decoration:none">
-                <button class="">Mis pedidos</button>
+              <img src="fotos/mispedidos.png" alt="imagen pedidos" width="30" height="30">
+
+              <a class="nav-link" href=<?= url . '?controller=Comentarios&action=mostrarPedidos' ?> style="text-decoration:none">
+                Mis pedidos
               </a>
             </li>
             <li class="nav-item">

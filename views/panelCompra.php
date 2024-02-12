@@ -90,22 +90,23 @@
           </div>
           <div class="barra">
           </div>
+          
+          <form id="qr" action="<?= '?controller=plato&action=confirmar' ?>" method='post'>
+            <input type="hidden" name="cantidadFinal" value="<?= $precioTotal ?>">
+            <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
+            <div class="propinaspuntos">
+              <input type="checkbox" id="usarPuntos" name="usarPuntos">
+              <label for="usarPuntos">Usar Puntos</label><br>
+              <label for="propina">Propina (%)</label>
+              <input type="number" id="propina" name="propina" min="1" max="100" value="3"><br>
+            </div>
+            <button class="botonpagar" type="submit">Tramitar Pedido</button>
+
+          </form>
           <div class="totalpedido">
             <p>Total</p>
             <p id="precioTotal"><?= $precioTotal ?>€</p>
           </div>
-          <form id="qr" action="<?= '?controller=plato&action=confirmar' ?>" method='post'>
-            <input type="hidden" name="cantidadFinal" value="<?= $precioTotal ?>">
-            <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>">
-            <input type="checkbox" id="usarPuntos" name="usarPuntos">
-            <label for="usarPuntos">Usar Puntos</label><br>
-            <label for="propina">Propina (%)</label>
-            <input type="number" id="propina" name="propina" min="1" max="100" value="3"><br>
-
-            <button class="botonpagar" type="submit">Tramitar Pedido</button>
-
-          </form>
-
 
           <div class="articulos">
             <?php

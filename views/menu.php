@@ -85,13 +85,30 @@
     </section>
 
     <section class="category-filter">
-        <label><input type="checkbox" class="category-checkbox" value="0"> Pasta</label>
-        <label><input type="checkbox" class="category-checkbox" value="1"> Pizza</label>
-        <label><input type="checkbox" class="category-checkbox" value="2"> Paella</label>
-        <label><input type="checkbox" class="category-checkbox" value="3"> Hot-dog</label>
-        <label><input type="checkbox" class="category-checkbox" value="4"> Hamburguesas</label>
-        <button onclick="resetFilters()">Resetear Filtros</button>
-    </section>
+    <div class="filter-option">
+        <input type="checkbox" class="category-checkbox" id="checkbox-0" value="0">
+        <label for="checkbox-0">Pasta</label>
+    </div>
+    <div class="filter-option">
+        <input type="checkbox" class="category-checkbox" id="checkbox-1" value="1">
+        <label for="checkbox-1">Pizza</label>
+    </div>
+    <div class="filter-option">
+        <input type="checkbox" class="category-checkbox" id="checkbox-2" value="2">
+        <label for="checkbox-2">Paella</label>
+    </div>
+    <div class="filter-option">
+        <input type="checkbox" class="category-checkbox" id="checkbox-3" value="3">
+        <label for="checkbox-3">Hot-dog</label>
+    </div>
+    <div class="filter-option">
+        <input type="checkbox" class="category-checkbox" id="checkbox-4" value="4">
+        <label for="checkbox-4">Hamburguesas</label>
+    </div>
+    <button class="botonreset" onclick="resetFilters()">Resetear</button>
+</section>
+
+
     <section class="fondomenu1 row">
 
         <?php

@@ -46,7 +46,7 @@
     align-items: flex-start;
     background-color: white;
     width: 434px;
-    height: 361px;
+    height: 400px;
     margin-top: 70px;
     flex-direction: column;
     margin-bottom: 15px;
@@ -76,7 +76,9 @@
 }
 
 .botonpagar {
+    margin-top: 15px;
     margin-left: 15px;
+
     width: 402px;
     height: 45px;
     color: white;
@@ -115,7 +117,9 @@
 
 
 }
-
+.propinaspuntos{
+    margin-left: 20px;
+}
 .cuadro {
     margin-left: 30px;
     display: flex;

@@ -7,6 +7,8 @@
     <meta name="description" content="Descripción de la página">
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="cssconjunto.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="cssqr.css" media="screen">
+
 </head>
 
 <body>
@@ -14,12 +16,12 @@
     <?php if ($resultado !== null) : ?>
         <div class="pedido row">
             <p>
-                Pedido ID: <?= $resultado['ID_PEDIDO'] ?><br>
-                FECHA: <?= $resultado['FECHA'] ?><br>
+                ID del pedido: <?= $resultado['ID_PEDIDO'] ?><br>
+                Fecha del pedido: <?= $resultado['FECHA'] ?><br>
                 ID CLIENTE: <?= $resultado['ID_CLIENTE'] ?><br>
                 ID PLATO: <?= $resultado['ID_PLATO'] ?><br>
-                TOTAL: <?= $resultado['TOTAL'] ?> €<br>
-                PUNTOS: <?= $resultado['PUNTOS'] ?><br>
+                Total del pedido: <?= $resultado['TOTAL'] ?> €<br>
+                Tus puntos: <?= $resultado['PUNTOS'] ?><br>
                 Propina aplicada: <?= $resultado['PROPINA'] ?> %
 
 

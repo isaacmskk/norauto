@@ -1,0 +1,7 @@
+.pedido {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 1px; /* Ajusta el valor según tus preferencias */
+    width: fit-content;
+}
