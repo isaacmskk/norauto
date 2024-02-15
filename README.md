@@ -14,19 +14,61 @@ Esta es una página web de restauración basada en Norauto, desarrollada con tec
 - **CSS:** Para el diseño y estilo de la página.
 - **HTML:** Para la estructura y contenido de la página.
 
-# JAVASCRIPTS
 
-## Codigo Reseñas/Filtro/Insertar Reseñas
-En este archivo js se han trabajado las reseñas de la pagina, para empezar tenemos el fetch que hara la busqueda de las reseñas a traves de la funcion buscar_reseña ubicada en el archivo ApiController. esta hace un foreach con gets a partir de la funcion allcomentarios que basicamente es un select de la tabla reseñas.
-Luego tenemos la parte del filtro de reseñas que ordenara por checkbox dependiendo la valoracion y por valor ascendente o descendente.
+## Codigo Reseñas/Filtro/Insertar ReseñasEste código realiza lo siguiente:
+
+1. **Evento de Carga de la Página:**
+   - Al cargar la página, se realiza una solicitud a una API para obtener las reseñas.
+   - Se procesa la respuesta JSON y se llama a la función `AllComentarios` para mostrar las reseñas en la página.
+
+2. **Función `AllComentarios`:**
+   - Recibe un arreglo de reseñas y crea elementos HTML para mostrar cada reseña.
+   - Las reseñas se organizan en divs con clases específicas basadas en su valoración (`VALORACION`).
+   - Las reseñas se añaden al contenedor con el ID 'reseñadas' en la página.
+
+3. **Funciones de Manipulación de Estrellas (`estrellas`):**
+   - Genera un string de estrellas doradas y círculos grises para representar la valoración.
+
+4. **Manejo de Checkboxes de Categoría (`categoryCheckboxes`):**
+   - Asigna eventos de cambio a los checkboxes de categoría para filtrar las reseñas por valoración.
+
+5. **Función `updateReviews`:**
+   - Filtra y muestra las reseñas según las categorías de valoración seleccionadas.
+   - Ordena las reseñas según la opción seleccionada en el elemento con el ID 'orden'.
+   - Actualiza el contenido en el contenedor 'reseñadas' de acuerdo con las filtraciones y el orden.
+
+6. **Evento de Cambio en el Selector de Orden (`ordenSelector`):**
+   - Asigna un evento de cambio al selector de orden para actualizar las reseñas cuando cambia la opción de orden.
+
+7. **PHP (Servidor):**
+   - En el lado del servidor, la función `AllComentarios` realiza una consulta a la base de datos para obtener información de reseñas y usuarios, luego devuelve un arreglo de objetos `Reseña`.
+
+En resumen, este código implementa un sistema dinámico en el que se cargan reseñas desde una API al cargar la página, permite filtrar y ordenar las reseñas según las preferencias del usuario y utiliza PHP en el servidor para obtener datos de la base de datos.
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/64ab26f5-f4bc-4b8f-b722-c8aad7c3b2a3)
-![image](https://github.com/isaacmskk/norauto/assets/145151333/d9df0e05-97b8-4531-af68-d80fbee87269)
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/8415a436-dca7-43f4-a356-2725aaed034e)
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/48b4bf72-2a71-4d3b-a65e-4cb60bf6ca45)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/d9df0e05-97b8-4531-af68-d80fbee87269)
+Este código implementa la funcionalidad de enviar un comentario y valoración mediante un formulario en una página web. Aquí tienes un resumen:
 
-Esta parte hará que cuando el usuario rellene el formulario para añadir la reseña, estos datos se recojan y con la función de insertarComentario se envien a la tabla de reseñas y con la función buscar_reseña se muestren.
+1. **Evento de Envío del Formulario:**
+   - Cuando se envía el formulario con el ID 'comentarioForm', se ejecuta una función de manejo de eventos.
+   - Se obtienen los valores de ID_CLIENTE, ID_PEDIDO, COMENTARIO y VALORACION del formulario.
+   - Se construye un objeto de datos (`data`) con estos valores.
+   - Se realiza una solicitud POST a una API remota utilizando la función `fetch` para enviar los datos.
 
-![image](https://github.com/isaacmskk/norauto/assets/145151333/4786dc0d-3389-4461-a04a-1dacfdde13a8)
+2. **PHP (Servidor):**
+   - En el lado del servidor, se verifica si la acción es 'insertar' a través de `$_GET`.
+   - Se lee el flujo de entrada JSON para obtener los datos enviados desde el formulario.
+   - Se asegura de que los datos requeridos estén presentes y luego llama a la función `insertarComentario` en `ComentarioDAO` para insertar el comentario y la valoración en la base de datos.
+   - Devuelve una respuesta JSON indicando si la operación fue exitosa.
+
+3. **Clase ComentarioDAO:**
+   - La clase `ComentarioDAO` tiene un método estático `insertarComentario` que realiza la conexión a la base de datos, prepara la consulta SQL para insertar un comentario en la tabla 'reseñas' y ejecuta la consulta.
+
+En resumen, este código implementa una funcionalidad completa de envío de comentarios y valoraciones desde el cliente a través de un formulario web y lo procesa en el servidor PHP para almacenarlo en la base de datos.
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/24a6f295-4006-4bd6-9040-acd778459310)
+
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/be9ec123-f8f2-4c7c-92d4-86647eaba1d8)
 
@@ -39,6 +81,7 @@ Este js funciona parecido al filtro de reseñas, la diferencia principal que est
 - Asigna un evento de clic a cada checkbox. Al hacer clic, se actualizan los productos y se almacenan las categorías seleccionadas en localStorage.
 - La función updateProducts() filtra y muestra los productos según las categorías seleccionadas o muestra todos si no hay selecciones.
 - La función resetFilters() desmarca todas las checkboxes, actualiza los productos y elimina las categorías seleccionadas almacenadas en localStorage.
+  
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/9051d40b-d2ad-469c-aecc-a2db588d82fd)
 
 
@@ -50,41 +93,34 @@ Este código realiza lo siguiente:
 - Asigna eventos a cambios en el checkbox y la entrada de propina para actualizar el precio total en consecuencia.
 - La función `actualizarPrecioTotal` calcula el nuevo precio total basándose en el precio original, el descuento de puntos (si el checkbox está marcado) y la propina ingresada.
 - La función `AllPuntos` actualiza el contenido HTML para mostrar la cantidad de puntos del cliente.
+  
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/a100ad16-df7e-4db1-9445-1f24ad03a6fa)
 
 En resumen, este código interactúa con una API para obtener puntos de un cliente, actualiza dinámicamente la interfaz de usuario según las interacciones del usuario (marcar el checkbox o ingresar propina), y muestra la cantidad de puntos del cliente en la página.
+
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/c4e1f921-5f68-4576-90a7-9e9905102ae5)
+
 Esta es la pagina de carrito y en la foto se muestra el form donde se aplican puntos y propinas:
+
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/9a8a930b-e482-4d23-99f2-5917e51f44f7)
-Esta es la clase donde se recuperan todos los puntos y se calculan los acumulados y las tasas:
+
+Este código define una clase llamada `PuntosDAO` que proporciona funciones para interactuar con la base de datos en relación con los puntos de los clientes. Aquí está un resumen:
+
+- `AllPuntos($id_cliente)`: Devuelve la cantidad de puntos actuales de un cliente específico consultando la base de datos.
+
+- `actualizarPuntos($id_cliente, $nuevosPuntos)`: Actualiza la cantidad de puntos de un cliente en la base de datos con un nuevo valor proporcionado.
+
+- `acumularPuntosPorCompra($id_cliente, $total)`: Calcula la cantidad de puntos a acumular basándose en el total de la compra, luego actualiza la base de datos sumando estos puntos a los puntos existentes del cliente.
+
+- `calcularPuntosAcumulados($total, $id_cliente)`: Calcula la cantidad de puntos que un cliente acumularía basándose en el total de una compra, sin realizar ninguna actualización en la base de datos.
+
+En resumen, esta clase proporciona funciones para obtener, actualizar y calcular puntos de clientes en la base de datos, así como para calcular puntos acumulados sin realizar actualizaciones.
+
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/52fd0f4b-40d1-47d0-8e29-09c69e1e2c5b)
 
 ## Codigo generador qr
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/8e9f94ff-592b-4264-b014-01e993d99369)
-
-
-# PHP
-
-## Codigo Nuevo PlatoDAO
-![image](https://github.com/isaacmskk/norauto/assets/145151333/f097a854-9e44-4ef0-8c63-4509da8de886)
-
-![image](https://github.com/isaacmskk/norauto/assets/145151333/6ddb58ed-4ed2-4a9d-a229-abfc979b0469)
-
-
-## Codigo PuntosDAO
-![image](https://github.com/isaacmskk/norauto/assets/145151333/4d72db0e-f4a3-4ece-aea0-2744be05c329)
-![image](https://github.com/isaacmskk/norauto/assets/145151333/c2fbfb73-cb8f-425e-b218-ce744a7845d7)
-
-
-## Codigo ComentariDAO
-![image](https://github.com/isaacmskk/norauto/assets/145151333/264cb6cc-039c-42f0-876d-73f1ac2a5f40)
-
-![image](https://github.com/isaacmskk/norauto/assets/145151333/b4997aef-2cf3-4c15-aabf-e8e13e856f11)
-
-## Codigo generador qr
-
-## Codigo generador qr
 
 
 
