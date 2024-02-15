@@ -40,3 +40,28 @@ Esta es una página web de restauración basada en Norauto, desarrollada con tec
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/8e9f94ff-592b-4264-b014-01e993d99369)
 
+
+# PHP
+
+## Codigo Nuevo PlatoDAO
+![image](https://github.com/isaacmskk/norauto/assets/145151333/f097a854-9e44-4ef0-8c63-4509da8de886)
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/6ddb58ed-4ed2-4a9d-a229-abfc979b0469)
+
+
+## Codigo PuntosDAO
+![image](https://github.com/isaacmskk/norauto/assets/145151333/4d72db0e-f4a3-4ece-aea0-2744be05c329)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/c2fbfb73-cb8f-425e-b218-ce744a7845d7)
+
+
+## Codigo ComentariDAO
+![image](https://github.com/isaacmskk/norauto/assets/145151333/264cb6cc-039c-42f0-876d-73f1ac2a5f40)
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/b4997aef-2cf3-4c15-aabf-e8e13e856f11)
+
+## Codigo generador qr
+
+## Codigo generador qr
+
+
+
