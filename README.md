@@ -17,10 +17,16 @@ Esta es una página web de restauración basada en Norauto, desarrollada con tec
 # JAVASCRIPTS
 
 ## Codigo Reseñas/Filtro/Insertar Reseñas
+En este archivo js se han trabajado las reseñas de la pagina, para empezar tenemos el fetch que hara la busqueda de las reseñas a traves de la funcion buscar_reseña ubicada en el archivo ApiController. esta hace un foreach con gets a partir de la funcion allcomentarios que basicamente es un select de la tabla reseñas.
+Luego tenemos la parte del filtro de reseñas que ordenara por checkbox dependiendo la valoracion y por valor ascendente o descendente.
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/64ab26f5-f4bc-4b8f-b722-c8aad7c3b2a3)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/d9df0e05-97b8-4531-af68-d80fbee87269)
 
 
+Esta parte hará que cuando el usuario rellene el formulario para añadir la reseña, estos datos se recogan y con la  
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/48b4bf72-2a71-4d3b-a65e-4cb60bf6ca45)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/be9ec123-f8f2-4c7c-92d4-86647eaba1d8)
+
 
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/4786dc0d-3389-4461-a04a-1dacfdde13a8)
