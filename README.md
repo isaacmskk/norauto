@@ -17,10 +17,3 @@ Esta es una página web de restauración basada en Norauto, desarrollada con tec
 ## Configuración
 - Puedes configurar la conexión a la base de datos en el archivo `config.php`.
 - Personaliza el contenido y el diseño según tus necesidades en los archivos correspondientes.
-
-Este proyecto está bajo la licencia [MIT](LICENSE).
-
----
-
-Espero que este ejemplo te sea útil. Asegúrate de ajustar la información según las características específicas de tu proyecto. ¡Buena suerte con tu página web de restauración Norauto!
-
