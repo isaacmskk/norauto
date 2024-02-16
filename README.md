@@ -4,9 +4,15 @@
 Esta es una página web de restauración basada en Norauto, desarrollada con tecnologías web como JavaScript, PHP, CSS y HTML. La aplicación tiene como objetivo proporcionar información sobre restauración de vehículos y servicios ofrecidos por Norauto.
 
 ## Funcionalidades Principales
-- **Catálogo de Servicios:** Muestra una lista de servicios de restauración ofrecidos por Norauto.
-- **Galería de Antes y Después:** Presenta imágenes de vehículos antes y después de la restauración.
-- **Formulario de Contacto:** Permite a los usuarios ponerse en contacto con Norauto para solicitar más información o servicios.
+
+- Reseñas y Filtros: Permite ver, filtrar y dejar reseñas de productos.
+- Envío de Comentarios: Los usuarios pueden enviar comentarios y valoraciones.
+- Filtro Persistente: Los usuarios pueden filtrar productos y mantener el filtro incluso después de recargar la página.
+- Puntos y Propinas: Calcula puntos de cliente y permite aplicar descuentos.
+- Generador QR: Genera códigos QR para finalizar compras.
+- Detalles del Último Pedido: Muestra detalles del último pedido.
+- Tecnologías Utilizadas: JavaScript, PHP, HTML, CSS.
+- Bibliotecas Utilizadas: SweetAlert, QRCode.
 
 ## Tecnologías Utilizadas
 - **JavaScript:** Para la interactividad del lado del cliente.
@@ -15,7 +21,7 @@ Esta es una página web de restauración basada en Norauto, desarrollada con tec
 - **HTML:** Para la estructura y contenido de la página.
 
 
-## Codigo Reseñas/Filtro/Insertar ReseñasEste código realiza lo siguiente:
+## Codigo Reseñas/Filtro/Insertar Reseñas
 
 1. **Evento de Carga de la Página:**
    - Al cargar la página, se realiza una solicitud a una API para obtener las reseñas.
@@ -182,8 +188,24 @@ Esta es la funcion del controller de qrpage, esta llama a las vista y a la funci
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/35458565-92e5-41a1-b9fb-fad74edb208d)
 
-Aqui las funciones que se llaman y que serviran para :
+**Función getUltimoPedidoUser:**
+Objetivo:
 
+Obtener los detalles del último pedido de un usuario, incluyendo información sobre los platos pedidos, la fecha, el total, la propina y los puntos asociados al cliente.
+
+- Establece la conexión a la base de datos.
+- Prepara y ejecuta una consulta SQL para obtener detalles del último pedido.
+- Itera sobre los resultados obtenidos, crea objetos Pedido con información de la base de datos y los agrega a un array.
+- Retorna el array con los detalles del último pedido.
+
+**Función getPlatoPedido:**
+Objetivo:
+
+Obtener el ID del último pedido realizado por un cliente.
+
+- Establece la conexión a la base de datos.
+- Prepara y ejecuta una consulta SQL para obtener el ID del último pedido del cliente.
+- Obtiene y retorna el ID del último pedido.
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/8b12b851-6144-4b9a-8ec7-3ec2a0112497)
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/e675e324-3044-4076-9a7d-6082b6083c8b)
