@@ -119,8 +119,38 @@ En resumen, esta clase proporciona funciones para obtener, actualizar y calcular
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/52fd0f4b-40d1-47d0-8e29-09c69e1e2c5b)
 
 ## Codigo generador qr
+Evento de Carga de la Página:
 
-![image](https://github.com/isaacmskk/norauto/assets/145151333/8e9f94ff-592b-4264-b014-01e993d99369)
+Al cargar la página, se asigna un evento a la función anónima que se ejecutará cuando el contenido DOM esté completamente cargado.
+Evento de Envío de Formulario ('qr'):
+
+Cuando se envía el formulario con el ID 'qr', se ejecuta una función de manejo de eventos.
+La función utiliza event.preventDefault() para evitar que el formulario se envíe normalmente y recargue la página.
+Generación de Código QR:
+
+Se define una URL que se utilizará como contenido para el código QR (en este caso, la URL de la página asociada al controlador 'plato' y la acción 'qrpage').
+Se crea un contenedor div para el código QR.
+Se utiliza la librería QRCode para generar un código QR con la URL especificada y se coloca dentro del contenedor.
+Ventana Emergente con Código QR:
+
+Se utiliza SweetAlert (una librería para ventanas emergentes personalizadas) para mostrar una ventana emergente con el código QR generado.
+La ventana emergente incluye un título, un icono de éxito y el contenido del código QR en un contenedor.
+Botón de Confirmación en la Ventana Emergente:
+
+Se agrega un botón de confirmación a la ventana emergente con el texto "Aceptar".
+Cuando el botón se presiona, se envía el formulario al backend para finalizar la compra.
+Evento de Confirmación (then):
+
+Se utiliza el método then para realizar acciones después de que el usuario haya interactuado con la ventana emergente.
+Si el valor (que representa la acción del botón "Aceptar") es verdadero, se envía el formulario al backend para finalizar la compra.
+En resumen, este código genera un código QR basado en una URL específica, lo muestra al usuario en una ventana emergente utilizando SweetAlert, y luego permite al usuario finalizar la compra al confirmar la ventana emergente.
+
+
+
+
+
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/4dad9396-1fef-4cff-8994-e64422cae459)
 
 
 
