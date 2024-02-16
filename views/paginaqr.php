@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Último Pedido</title>
+    <title>Últimos Pedidos</title>
     <meta charset="UTF-8">
     <meta name="description" content="Descripción de la página">
     <link rel="stylesheet" href="bootstrap.min.css">
@@ -12,26 +12,27 @@
 </head>
 
 <body>
-    <h2>Último Pedido</h2>
-    <?php if ($resultado !== null) : ?>
-        <div class="pedido row">
+    <h2>Últimos Pedidos</h2>
+
+    <?php if (!empty($platos)) : ?>
+        <p>Pedido ID: <?= $primerPedidoID ?></p>
+
+        <p>Fecha: <?= $primerPedidoFecha ?></p>
+        <?php foreach ($platos as $resultado) : ?>
             <p>
-                ID del pedido: <?= $resultado['ID_PEDIDO'] ?><br>
-                Fecha del pedido: <?= $resultado['FECHA'] ?><br>
-                ID CLIENTE: <?= $resultado['ID_CLIENTE'] ?><br>
-                ID PLATO: <?= $resultado['ID_PLATO'] ?><br>
-                Total del pedido: <?= $resultado['TOTAL'] ?> €<br>
-                Tus puntos: <?= $resultado['PUNTOS'] ?><br>
-                Propina aplicada: <?= $resultado['PROPINA'] ?> %
-
-
+                ID Plato: <?= $resultado->getPlato()->getID_PLATO() ?><br>
+                Nombre Plato: <?= $resultado->getPlato()->getNOMBRE() ?><br>
+                Precio Plato: <?= $resultado->getPlato()->getPrecio() ?>€<br>
             </p>
-        </div>
+        <?php endforeach; ?>
+
+        <p>Total: <?= $resultado->getTOTAL() ?> €</p>
+        <p>Propina aplicada: <?= $resultado->getPROPINA() ?> %</p>
+
     <?php else : ?>
         <p>No se encontró información del pedido.</p>
     <?php endif; ?>
-
-    <script src="javascript/qrgenerator.js"></script>
 </body>
 
 </html>
+

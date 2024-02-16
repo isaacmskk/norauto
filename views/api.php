@@ -27,19 +27,39 @@
   </section>
  <!-- FILTRO -->
  <div id="categories-filter">
-    <label><input type="checkbox" value="1" class="category-checkbox">1 Estrella</label>
-    <label><input type="checkbox" value="2" class="category-checkbox">2 Estrellas</label>
-    <label><input type="checkbox" value="3" class="category-checkbox">3 Estrellas</label>
-    <label><input type="checkbox" value="4" class="category-checkbox">4 Estrellas</label>
-    <label><input type="checkbox" value="5" class="category-checkbox">5 Estrellas</label>
-  </div>
-  <div id="orden-selector">
+    <div class="filter-option">
+        <input type="checkbox" value="1" id="checkbox-1" class="category-checkbox">
+        <label for="checkbox-1">1 Estrella</label>
+    </div>
+
+    <div class="filter-option">
+        <input type="checkbox" value="2" id="checkbox-2" class="category-checkbox">
+        <label for="checkbox-2">2 Estrellas</label>
+    </div>
+
+    <div class="filter-option">
+        <input type="checkbox" value="3" id="checkbox-3" class="category-checkbox">
+        <label for="checkbox-3">3 Estrellas</label>
+    </div>
+
+    <div class="filter-option">
+        <input type="checkbox" value="4" id="checkbox-4" class="category-checkbox">
+        <label for="checkbox-4">4 Estrellas</label>
+    </div>
+
+    <div class="filter-option">
+        <input type="checkbox" value="5" id="checkbox-5" class="category-checkbox">
+        <label for="checkbox-5">5 Estrellas</label>
+    </div>
+</div>
+
+<div id="orden-selector">
     <label for="orden">Orden:</label>
     <select id="orden">
-      <option value="ascendente">Ascendente</option>
-      <option value="descendente">Descendente</option>
+        <option value="ascendente">Ascendente</option>
+        <option value="descendente">Descendente</option>
     </select>
-  </div>
+</div>
   <form id="comentarioForm">
     <input type="hidden" id="ID_PEDIDO" name="ID_PEDIDO" value="<?php echo $_GET['ID_PEDIDO']; ?>">
     <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $_SESSION['ID_CLIENTE'] ?>"><br>

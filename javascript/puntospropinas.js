@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let puntos = {
         ID_CLIENTE: ID_CLIENTE
     };
-
     fetch('https://localhost/norauto/?controller=API&action=api&accion=buscar_puntos', {
         method: 'POST',
         headers: {
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
     propinaInput.addEventListener('input', function () {
         actualizarPrecioTotal();
     });
-
     function actualizarPrecioTotal() {
         if (precioTotalElement) {
             let puntosDescuento = checkbox.checked ? parseFloat(document.getElementById('cuadro3').innerText.split(' ')[1]) * 0.1 : 0;
@@ -45,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
-
 function AllPuntos(puntos) {
     let puntosInput = document.getElementById('cuadro3');
     puntosInput.innerHTML = '';

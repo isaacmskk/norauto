@@ -2,7 +2,8 @@
 include_once "controller/platoController.php";
 include_once 'config/db.php';
 include_once 'plato.php';
-include 'pasta.PHP';
+include_once 'pedido.php';
+include 'pasta.php';
 
 class PlatoDAO
 {
@@ -112,7 +113,7 @@ class PlatoDAO
         $con = db::connect();
 
         $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL, PROPINA) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssdi", $fecha, $cliente, $total,$propina);
+        $stmt->bind_param("ssdi", $fecha, $cliente, $total, $propina);
 
         if (!$stmt->execute()) {
             $con->close();
@@ -144,74 +145,140 @@ class PlatoDAO
 
         return $pedidoId; // Retorna el ID del pedido
     }
-    public static function ultimopedido($pedidoId)
+    // public static function ultimopedido($pedidoId)
+    // {
+    //     $con = db::connect();
+
+    //     // Consulta para obtener información del último pedido
+    //     $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_PEDIDO = ?");
+    //     $stmt->bind_param("i", $pedidoId);
+    //     $stmt->execute();
+
+    //     // Obtiene el resultado de la consulta
+    //     $result = $stmt->get_result();
+
+    //     // Verifica si se encontraron resultados
+    //     if ($result->num_rows > 0) {
+    //         // Obtiene la fila asociada al último pedido
+    //         $ultimoPedidoInfo = $result->fetch_assoc();
+
+    //         // Consulta adicional para obtener los puntos del usuario desde la tabla usuarios
+    //         $stmtUsuario = $con->prepare("SELECT PUNTOS FROM usuarios WHERE ID_CLIENTE = ?");
+    //         $stmtUsuario->bind_param("i", $ultimoPedidoInfo['ID_CLIENTE']);
+    //         $stmtUsuario->execute();
+
+    //         // Obtiene el resultado de la consulta de usuarios
+    //         $resultUsuario = $stmtUsuario->get_result();
+
+    //         // Verifica si se encontraron resultados en la consulta de usuarios
+    //         if ($resultUsuario->num_rows > 0) {
+    //             // Obtiene los puntos y los agrega a la información del último pedido
+    //             $usuarioInfo = $resultUsuario->fetch_assoc();
+    //             $ultimoPedidoInfo['PUNTOS'] = $usuarioInfo['PUNTOS'];
+    //         } else {
+    //             // No se encontraron resultados en la consulta de usuarios
+    //             $ultimoPedidoInfo['PUNTOS'] = null;
+    //         }
+
+    //         // Cierra la conexión de la consulta de usuarios
+    //         $stmtUsuario->close();
+
+    //         // Consulta adicional para obtener el ID_PLATO desde la tabla platos_pedido
+    //         $stmtPlato = $con->prepare("SELECT ID_PLATO FROM platos_pedido WHERE ID_PEDIDO = ?");
+    //         $stmtPlato->bind_param("i", $pedidoId);
+    //         $stmtPlato->execute();
+
+    //         // Obtiene el resultado de la consulta de platos_pedido
+    //         $resultPlato = $stmtPlato->get_result();
+
+    //         // Verifica si se encontraron resultados en la consulta de platos_pedido
+    //         if ($resultPlato->num_rows > 0) {
+    //             // Obtiene el ID_PLATO y lo agrega a la información del último pedido
+    //             $platoInfo = $resultPlato->fetch_assoc();
+    //             $ultimoPedidoInfo['ID_PLATO'] = $platoInfo['ID_PLATO'];
+    //         } else {
+    //             // No se encontraron resultados en la consulta de platos_pedido
+    //             $ultimoPedidoInfo['ID_PLATO'] = null;
+    //         }
+
+    //         // Cierra la conexión de la consulta de platos_pedido
+    //         $stmtPlato->close();
+    //     } else {
+    //         // No se encontraron resultados
+    //         $ultimoPedidoInfo = null;
+    //     }
+
+    //     // Cierra la conexión de la consulta de pedido
+    //     $stmt->close();
+    //     $con->close();
+
+    //     return $ultimoPedidoInfo;
+    // }
+    public static function getUltimoPedidoUser($id_pedido)
     {
         $con = db::connect();
+        $query = "SELECT 
+            platos_pedido.ID_PLATO, 
+            platos_pedido.ID_PEDIDO, 
+            pedido.ID_PEDIDO,
+            pedido.ID_CLIENTE,
+            pedido.FECHA,
+            pedido.TOTAL,
+            pedido.PROPINA,
+            usuarios.PUNTOS
+            FROM platos_pedido
+            JOIN pedido ON platos_pedido.ID_PEDIDO = pedido.ID_PEDIDO
+            JOIN usuarios ON pedido.ID_CLIENTE = usuarios.ID_CLIENTE
+            WHERE platos_pedido.ID_PEDIDO = ?;";
     
-        // Consulta para obtener información del último pedido
-        $stmt = $con->prepare("SELECT * FROM pedido WHERE ID_PEDIDO = ?");
-        $stmt->bind_param("i", $pedidoId);
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $id_pedido); // Bind as integer
         $stmt->execute();
-    
-        // Obtiene el resultado de la consulta
         $result = $stmt->get_result();
-    
-        // Verifica si se encontraron resultados
-        if ($result->num_rows > 0) {
-            // Obtiene la fila asociada al último pedido
-            $ultimoPedidoInfo = $result->fetch_assoc();
-    
-            // Consulta adicional para obtener los puntos del usuario desde la tabla usuarios
-            $stmtUsuario = $con->prepare("SELECT PUNTOS FROM usuarios WHERE ID_CLIENTE = ?");
-            $stmtUsuario->bind_param("i", $ultimoPedidoInfo['ID_CLIENTE']);
-            $stmtUsuario->execute();
-    
-            // Obtiene el resultado de la consulta de usuarios
-            $resultUsuario = $stmtUsuario->get_result();
-    
-            // Verifica si se encontraron resultados en la consulta de usuarios
-            if ($resultUsuario->num_rows > 0) {
-                // Obtiene los puntos y los agrega a la información del último pedido
-                $usuarioInfo = $resultUsuario->fetch_assoc();
-                $ultimoPedidoInfo['PUNTOS'] = $usuarioInfo['PUNTOS'];
-            } else {
-                // No se encontraron resultados en la consulta de usuarios
-                $ultimoPedidoInfo['PUNTOS'] = null;
-            }
-    
-            // Cierra la conexión de la consulta de usuarios
-            $stmtUsuario->close();
-    
-            // Consulta adicional para obtener el ID_PLATO desde la tabla platos_pedido
-            $stmtPlato = $con->prepare("SELECT ID_PLATO FROM platos_pedido WHERE ID_PEDIDO = ?");
-            $stmtPlato->bind_param("i", $pedidoId);
-            $stmtPlato->execute();
-    
-            // Obtiene el resultado de la consulta de platos_pedido
-            $resultPlato = $stmtPlato->get_result();
-    
-            // Verifica si se encontraron resultados en la consulta de platos_pedido
-            if ($resultPlato->num_rows > 0) {
-                // Obtiene el ID_PLATO y lo agrega a la información del último pedido
-                $platoInfo = $resultPlato->fetch_assoc();
-                $ultimoPedidoInfo['ID_PLATO'] = $platoInfo['ID_PLATO'];
-            } else {
-                // No se encontraron resultados en la consulta de platos_pedido
-                $ultimoPedidoInfo['ID_PLATO'] = null;
-            }
-    
-            // Cierra la conexión de la consulta de platos_pedido
-            $stmtPlato->close();
-        } else {
-            // No se encontraron resultados
-            $ultimoPedidoInfo = null;
+        $detalles_pedido = array();
+        while ($row = $result->fetch_assoc()) {
+            //Por cada fila obtenemos los detalles del producto
+            $ID_PLATO = $row['ID_PLATO'];
+            $id_cliente = $row['ID_CLIENTE'];
+            $ID = $row['ID_PEDIDO'];
+            $fecha = $row['FECHA'];
+            $precioTotal = $row['TOTAL'];
+            $propina = $row['PROPINA'];
+            $puntos = $row['PUNTOS'];
+
+
+            //Consulta para obtener los datos del producto y ademas el objeto Producto
+            $plato_pedido = PlatoDAO::getPlatoById($ID_PLATO);
+
+            //creamos el objeto pedido con el producto y la cantidad
+            $pedido = new Pedido($plato_pedido);
+            $pedido->setID_CLIENTE($id_cliente);
+            $pedido->setID_PEDIDO($ID);
+            $pedido->setFECHA($fecha);
+            $pedido->setTOTAL($precioTotal);
+            $pedido->setPROPINA($propina);
+            $pedido->setPUNTOS($puntos);
+
+            //Agregamos el objeto Pedido al array de detalles
+            $detalles_pedido[] = $pedido;
         }
-    
-        // Cierra la conexión de la consulta de pedido
-        $stmt->close();
-        $con->close();
-    
-        return $ultimoPedidoInfo;
+
+        return $detalles_pedido;
     }
-    
+    public static function getPlatoPedido($id)
+    {
+        $con = db::connect();
+        $query = "SELECT pedido.ID_PEDIDO FROM pedido WHERE ID_CLIENTE = ? ORDER BY pedido.ID_PEDIDO DESC LIMIT 1";
+
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->store_result();
+
+        $stmt->bind_result($pedido_ID);
+
+        $stmt->fetch();
+
+        return $pedido_ID;
+    }
 }

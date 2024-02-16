@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateProducts();
     }
 });
-
 categoryCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('click', function () {
         updateProducts();
@@ -30,7 +29,6 @@ categoryCheckboxes.forEach(checkbox => {
         localStorage.setItem('selectedCategories', selectedCategories.join(','));
     });
 });
-
 function updateProducts() {
     const selectedCategories = Array.from(categoryCheckboxes)
         .filter(checkbox => checkbox.checked)
@@ -48,7 +46,6 @@ function updateProducts() {
         });
     }
 }
-
 function resetFilters() {
     categoryCheckboxes.forEach(checkbox => checkbox.checked = false);
     updateProducts();

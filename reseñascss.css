@@ -42,18 +42,68 @@
 
 /* Estilo para los filtros */
 #categories-filter {
-    float: left;
-    margin-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: 30px;
 }
 
-#categories-filter label {
-    display: block;
-    margin-bottom: 8px;
+.filter-option {
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 #orden-selector {
     float: left;
-    margin-right: 20px;
+    margin-left:55px;
+}
+
+#orden-selector label {
+    display: block;
+    color: #555;
+}
+
+#orden-selector select {
+    padding: 5px;
+    border: 2px solid #3498db;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #555;
+    cursor: pointer;
+}
+
+.category-checkbox {
+    display: none;
+}
+
+.filter-option label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    color: #555;
+}
+
+.filter-option label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3498db;
+    background-color: #fff;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.filter-option label:hover:before {
+    border-color: #2980b9;
+}
+
+.category-checkbox:checked+label:before {
+    background-color: #0071DC;
+    border-color: #0071DC;
 }
 
 /* Otras reglas de estilo que ya tienes */

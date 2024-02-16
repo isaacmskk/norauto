@@ -5,6 +5,13 @@ class Pedido{
     private $cantidad = 1;
     private $ID_PEDIDO;
 
+    private $ID_CLIENTE;
+
+    private $FECHA;
+    private $TOTAL;
+    private $PROPINA;
+    private $PUNTOS;
+
 
 
     public function __construct($plato){
@@ -70,6 +77,106 @@ public function devuelvePrecio(){
     public function setID_PEDIDO($ID_PEDIDO)
     {
         $this->ID_PEDIDO = $ID_PEDIDO;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ID_CLIENTE
+     */ 
+    public function getID_CLIENTE()
+    {
+        return $this->ID_CLIENTE;
+    }
+
+    /**
+     * Set the value of ID_CLIENTE
+     *
+     * @return  self
+     */ 
+    public function setID_CLIENTE($ID_CLIENTE)
+    {
+        $this->ID_CLIENTE = $ID_CLIENTE;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of FECHA
+     */ 
+    public function getFECHA()
+    {
+        return $this->FECHA;
+    }
+
+    /**
+     * Set the value of FECHA
+     *
+     * @return  self
+     */ 
+    public function setFECHA($FECHA)
+    {
+        $this->FECHA = $FECHA;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of TOTAL
+     */ 
+    public function getTOTAL()
+    {
+        return $this->TOTAL;
+    }
+
+    /**
+     * Set the value of TOTAL
+     *
+     * @return  self
+     */ 
+    public function setTOTAL($TOTAL)
+    {
+        $this->TOTAL = $TOTAL;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of PROPINA
+     */ 
+    public function getPROPINA()
+    {
+        return $this->PROPINA;
+    }
+
+    /**
+     * Set the value of PROPINA
+     *
+     * @return  self
+     */ 
+    public function setPROPINA($PROPINA)
+    {
+        $this->PROPINA = $PROPINA;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of PUNTOS
+     */ 
+    public function getPUNTOS()
+    {
+        return $this->PUNTOS;
+    }
+
+    /**
+     * Set the value of PUNTOS
+     *
+     * @return  self
+     */ 
+    public function setPUNTOS($PUNTOS)
+    {
+        $this->PUNTOS = $PUNTOS;
 
         return $this;
     }
