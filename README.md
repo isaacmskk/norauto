@@ -45,9 +45,13 @@ Esta es una página web de restauración basada en Norauto, desarrollada con tec
 
 En resumen, este código implementa un sistema dinámico en el que se cargan reseñas desde una API al cargar la página, permite filtrar y ordenar las reseñas según las preferencias del usuario y utiliza PHP en el servidor para obtener datos de la base de datos.
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/64ab26f5-f4bc-4b8f-b722-c8aad7c3b2a3)
+
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/8415a436-dca7-43f4-a356-2725aaed034e)
+
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/48b4bf72-2a71-4d3b-a65e-4cb60bf6ca45)
+
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/d9df0e05-97b8-4531-af68-d80fbee87269)
+
 Este código implementa la funcionalidad de enviar un comentario y valoración mediante un formulario en una página web. Aquí tienes un resumen:
 
 1. **Evento de Envío del Formulario:**
@@ -71,6 +75,7 @@ En resumen, este código implementa una funcionalidad completa de envío de come
 
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/be9ec123-f8f2-4c7c-92d4-86647eaba1d8)
+
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/a3bb1f8e-8f68-4628-bef3-fce6dfbb9890)
 
@@ -100,9 +105,11 @@ En resumen, este código interactúa con una API para obtener puntos de un clien
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/c4e1f921-5f68-4576-90a7-9e9905102ae5)
 
+
 Esta es la pagina de carrito y en la foto se muestra el form donde se aplican puntos y propinas:
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/9a8a930b-e482-4d23-99f2-5917e51f44f7)
+
 
 Este código define una clase llamada `PuntosDAO` que proporciona funciones para interactuar con la base de datos en relación con los puntos de los clientes. Aquí está un resumen:
 
@@ -145,7 +152,8 @@ Se utiliza el método then para realizar acciones después de que el usuario hay
 Si el valor (que representa la acción del botón "Aceptar") es verdadero, se envía el formulario al backend para finalizar la compra.
 En resumen, este código genera un código QR basado en una URL específica, lo muestra al usuario en una ventana emergente utilizando SweetAlert, y luego permite al usuario finalizar la compra al confirmar la ventana emergente.
 
-![image](https://github.com/isaacmskk/norauto/assets/145151333/4dad9396-1fef-4cff-8994-e64422cae459)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/7fca8cba-b7d2-412f-bdfb-a870425f7bcc)
+
 Este código representa una página HTML que muestra detalles sobre el último pedido. Aquí hay una explicación:
 
  **Cabecera del Documento (`head`):**
@@ -168,16 +176,18 @@ Este código representa una página HTML que muestra detalles sobre el último p
 
 En resumen, esta página HTML utiliza PHP para mostrar los detalles del último pedido, y también incluye un script JavaScript que parece estar relacionado con la generación de códigos QR (`qrgenerator.js`).
 
-![image](https://github.com/isaacmskk/norauto/assets/145151333/c7560af3-f5f2-42c6-8434-7cbeb5d8cef0)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/a6b44c36-d560-41a6-8f46-6f5599639be7)
 
 Esta es la funcion del controller de qrpage, esta llama a las vista y a la funcion de platoDAO de ultimopedido
 
-![image](https://github.com/isaacmskk/norauto/assets/145151333/9240314b-a638-4f8a-8d2d-6e7294cc8036)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/35458565-92e5-41a1-b9fb-fad74edb208d)
 
-Aqui la funcion de ultimpedido:
+Aqui las funciones que se llaman y que serviran para :
 
-![image](https://github.com/isaacmskk/norauto/assets/145151333/60c43a22-6725-48f7-88a8-ddca95d872b1)
-![image](https://github.com/isaacmskk/norauto/assets/145151333/59ea4c7f-0f70-4120-84c7-dd4049afb62c)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/8b12b851-6144-4b9a-8ec7-3ec2a0112497)
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/e675e324-3044-4076-9a7d-6082b6083c8b)
+
 
 
 
