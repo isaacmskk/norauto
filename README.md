@@ -146,6 +146,38 @@ Si el valor (que representa la acción del botón "Aceptar") es verdadero, se en
 En resumen, este código genera un código QR basado en una URL específica, lo muestra al usuario en una ventana emergente utilizando SweetAlert, y luego permite al usuario finalizar la compra al confirmar la ventana emergente.
 
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/4dad9396-1fef-4cff-8994-e64422cae459)
+Este código representa una página HTML que muestra detalles sobre el último pedido. Aquí hay una explicación:
+
+ **Cabecera del Documento (`head`):**
+   - Define el título de la página como "Último Pedido".
+   - Establece la codificación de caracteres a UTF-8.
+   - Incluye enlaces a hojas de estilo (`bootstrap.min.css`, `cssconjunto.css` y `cssqr.css`).
+
+ **Cuerpo del Documento (`body`):**
+   - Inicia una sesión PHP (`session_start()`) para gestionar variables de sesión.
+   - Muestra un título `<h2>` que dice "Último Pedido".
+
+ **Bloque PHP dentro del Cuerpo:**
+   - Comienza un bloque PHP (`<?php ... ?>`) que verifica si la variable `$resultado` no es `null`. Si hay información en `$resultado`, muestra los detalles del pedido en un contenedor `<div class="pedido row">`. Si no hay información, muestra un mensaje indicando que no se encontró información del pedido.
+
+ **Detalles del Pedido (`<div class="pedido row">`):**
+   - Muestra los detalles del pedido dentro de un párrafo (`<p>`), incluyendo el ID del pedido, la fecha, el ID del cliente, el ID del plato, el total del pedido, los puntos asociados al pedido y la propina aplicada.
+
+ **Script JavaScript (`<script src="../javascript/qrgenerator.js"></script>`):**
+   - Incluye un archivo JavaScript (`qrgenerator.js`) que se encuentra en la ruta '../javascript/'.
+
+En resumen, esta página HTML utiliza PHP para mostrar los detalles del último pedido, y también incluye un script JavaScript que parece estar relacionado con la generación de códigos QR (`qrgenerator.js`).
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/c7560af3-f5f2-42c6-8434-7cbeb5d8cef0)
+
+Esta es la funcion del controller de qrpage, esta llama a las vista y a la funcion de platoDAO de ultimopedido
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/9240314b-a638-4f8a-8d2d-6e7294cc8036)
+
+Aqui la funcion de ultimpedido:
+
+![image](https://github.com/isaacmskk/norauto/assets/145151333/60c43a22-6725-48f7-88a8-ddca95d872b1)
+![image](https://github.com/isaacmskk/norauto/assets/145151333/59ea4c7f-0f70-4120-84c7-dd4049afb62c)
 
 
 
