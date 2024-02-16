@@ -145,11 +145,6 @@ Se utiliza el método then para realizar acciones después de que el usuario hay
 Si el valor (que representa la acción del botón "Aceptar") es verdadero, se envía el formulario al backend para finalizar la compra.
 En resumen, este código genera un código QR basado en una URL específica, lo muestra al usuario en una ventana emergente utilizando SweetAlert, y luego permite al usuario finalizar la compra al confirmar la ventana emergente.
 
-
-
-
-
-
 ![image](https://github.com/isaacmskk/norauto/assets/145151333/4dad9396-1fef-4cff-8994-e64422cae459)
 
 
