@@ -13,6 +13,7 @@ include_once 'model/pedido.php';
 
 class platoController
 {
+
     /*funcion que inicia la session, recoge el valor de la cookie ultimopedido y si no esta vacia la enseña por pantalla, 
     tambien comprobara que en caso de que admin haya iniciado sesion se mostrara una cabecera u otra, en caso contrario no lo hara.
     mostrara la pagina norauto y el footer.
@@ -263,6 +264,45 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         }
         header("Location:" . url . '?controller=plato&action=admin');
     }
+    public function getTiempo()
+    {
+        $username = "insbernatelferrer_montes_isaac";
+        $password = "82dfaDI0DB";
+        $url = "https://api.meteomatics.com/2024-05-29T00:00:00Z--2024-06-11T22:00:00Z:PT5M/t_2m:C/41.3828939,2.1774322/json?model=mix";
+
+        $context = stream_context_create(array(
+            'http' => array(
+                'header' => "Authorization: Basic " . base64_encode("$username:$password")
+            )
+        ));
+
+        $response = @file_get_contents($url, false, $context);
+
+        if ($response === FALSE) {
+            $error = error_get_last();
+            var_dump($error); // Print the error for debugging
+            return null;
+        }
+
+        $data = json_decode($response, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            var_dump(json_last_error_msg()); // Print JSON error
+            return null;
+        }
+
+        // Process weather data
+        $temperature = $data['data'][0]['coordinates'][0]['dates'][0]['value'] ?? null;
+        $description = $data['data'][0]['parameter'] ?? null;
+        $icon = "https://your_icon_service/{$description}.png"; // Example URL for icon
+
+        // Return weather data
+        return array(
+            'temperature' => $temperature,
+            'description' => $description,
+            'icon' => $icon
+        );
+    }
 
     /* 
     esta es la funcion con la cual se confirmara el pedido de los platos escogidos.
@@ -296,7 +336,7 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
             $descuento = $puntosDisponibles;
 
             // Resta el descuento al total del pedido
-            $total -= $descuento  * 0.1;
+            $total -= $descuento * 0.1;
 
             // Actualiza los puntos del cliente restando los puntos utilizados
             PuntosDAO::actualizarPuntos($cliente, $puntosDisponibles - $descuento);
@@ -308,14 +348,48 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         $total = ceil($total * 100) / 100;
         $total = number_format($total, 2, '.', '');
 
-        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones'], $propina);
+        $tipoEntrega = $_POST['tipoEntrega'];
+        $estado = ($tipoEntrega == 'recoger') ? 1 : 0;
+        $tipoEntrega = $_POST['tipoEntrega'];
+        $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
+    
+        // Check if delivery option is "A domicilio"
+        if ($tipoEntrega == 'domicilio') {
+            // Add minimum delivery fee of 5 euros
+            $total += 5;
+        }
+    
+        // Other calculations...
+    
+        // Redirect and set cookie
+        header("Location:" . url . '?controller=plato');
+
+
+        if ($estado == 0) {
+            $clima = $this->getTiempo();
+            if (isset($clima['temperature']) && $clima['temperature'] > 30) {
+                // Incrementar el total en un 10% si la temperatura es mayor a 30 grados
+                $incrementoClima = $total * 0.10;
+                $total += $incrementoClima;
+                // Pasar el costo adicional por pantalla a la vista
+                $costoAdicionalClima = number_format($incrementoClima, 2);
+                $_SESSION['costoAdicionalClima'] = $costoAdicionalClima;
+
+            }
+        }
+
+        // Pasa el estado al método añadirPedido
+        $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones'], $propina, $estado);
         $puntosAcumulados = PuntosDAO::acumularPuntosPorCompra($cliente, $total);
         $_SESSION['ultimoPedidoId'] = $pedidito;
 
         setcookie("ultimopedido", $total, time() + 3600);
         unset($_SESSION['selecciones']);
+
         header("Location:" . url . '?controller=plato');
     }
+
+
 
 
 
@@ -348,11 +422,9 @@ esta funcion añade un plato a traves de un formulario tambien en el panel admin
         if ($primerPedido) {
             $primerPedidoID = $primerPedido->getID_PEDIDO();
             $primerPedidoFecha = $primerPedido->getFECHA();
-           
         }
 
-            include_once 'views/paginaqr.php';
-            include_once 'views/footer.php';
-        
+        include_once 'views/paginaqr.php';
+        include_once 'views/footer.php';
     }
 }

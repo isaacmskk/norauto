@@ -46,8 +46,8 @@
                 </select>
                 
                 <label for="ROL">Rol *</label>
-                <select name="ROL" id="ROL" required>
-                    <option value="REPARTIDOR">Repartidor</option>
+                <select type="hidden" name="ROL" id="ROL" required>
+                    <option type="hidden" value="REPARTIDOR">Repartidor</option>
                 </select>
                 
                 <button class="botonpagar" type="submit">Registrate</button>

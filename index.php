@@ -4,6 +4,8 @@ include_once 'config/parameters.php';
 include_once 'controller/ComentariosController.php';
 include_once 'controller/APIController.php';
 include_once 'controller/repartidoresController.php';
+include_once 'controller/pedidosController.php';
+
 if (!isset($_GET['controller'])) {
     header("Location: " . url . "?controller=plato");
 } else {

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Perfil del Repartidor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="" rel="stylesheet" type="text/css" media="screen">
 </head>
 
 <body>
@@ -32,70 +30,90 @@
 
         <h2>Clima Actual</h2>
         <div class="weather-container">
-            <?php if ($weather['temperature'] !== null && $weather['description'] !== null && $weather['icon'] !== null) : ?>
+            <?php if ($weather && $weather['temperature'] !== null && $weather['description'] !== null && $weather['icon'] !== null) : ?>
                 <p>Temperatura: <?php echo $weather['temperature']; ?>°C</p>
                 <p>Condición: <?php echo $weather['description']; ?></p>
-                <img src="<?php echo $weather['icon']; ?>" alt="Weather Icon">
             <?php else : ?>
                 <p>No se pudo obtener la información del clima.</p>
             <?php endif; ?>
         </div>
+    </div>
 
-        <h2>Historial de Pedidos</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Pedido</th>
-                    <th>Fecha</th>
-                    <th>ID Cliente</th>
-                    <th>Total</th>
+    <h2>Historial de Pedidos</h2>
+    <form id="filterForm">
+        <div>
+            <label for="fechaFilter">Fecha:</label>
+            <select id="fechaFilter">
+                <option value="fechaAsc">Ascendente</option>
+                <option value="fechaDesc">Descendente</option>
+            </select>
+        </div>
+        <div>
+            <label for="totalFilter">Total:</label>
+            <select id="totalFilter">
+                <option value="totalAsc">Ascendente</option>
+                <option value="totalDesc">Descendente</option>
+            </select>
+        </div>
+    </form>
+    <table >
+        <thead>
+            <tr>
+                <th>ID Pedido</th>
+                <th>Fecha</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="historialPedidosTable">
+            <?php foreach ($historialPedidos as $pedido) : ?>
+                <tr class="pedido-row" data-id="<?php echo $pedido['ID_PEDIDO']; ?>" data-fecha="<?php echo $pedido['FECHA']; ?>" data-id-cliente="<?php echo $pedido['ID_CLIENTE']; ?>" data-total="<?php echo $pedido['TOTAL_PEDIDO']; ?>">
+                    <td><?php echo $pedido['ID_PEDIDO']; ?></td>
+                    <td><?php echo $pedido['FECHA']; ?></td>
+                    <td><?php echo $pedido['TOTAL_PEDIDO']; ?></td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($historialPedidos as $pedido) : ?>
-                    <tr>
-                        <td><?php echo $pedido['ID_PEDIDO']; ?></td>
-                        <td><?php echo $pedido['FECHA']; ?></td>
-                        <td><?php echo $pedido['ID_CLIENTE']; ?></td>
-                        <td><?php echo $pedido['TOTAL_PEDIDO']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
-        <h2>Pedidos Pendientes de Aceptar</h2>
-        <table>
-            <thead>
+    <h2>Pedidos Pendientes de Aceptar</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Pedido</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($pedidosPendientes as $pedido) : ?>
                 <tr>
-                    <th>ID Pedido</th>
-                    <th>Fecha</th>
-                    <th>ID Cliente</th>
-                    <th>Total</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($pedidosPendientes as $pedido) : ?>
-                    <tr>
-                        <td><?php echo $pedido['ID_PEDIDO']; ?></td>
-                        <td><?php echo $pedido['FECHA']; ?></td>
-                        <td><?php echo $pedido['ID_CLIENTE']; ?></td>
-                        <td><?php echo $pedido['TOTAL_PEDIDO']; ?></td>
-                        <td>
-                            <form action="?controller=pedidos&action=aceptar" method="post">
+                    <td><?php echo $pedido['ID_PEDIDO']; ?></td>
+                    <td><?php echo $pedido['FECHA']; ?></td>
+                    <td><?php echo $pedido['TOTAL_PEDIDO']; ?></td>
+                    <td>
+                        <?php if ($repartidor['DISPONIBLE']) : ?>
+                            <form action="?controller=pedidos&action=aceptarPedido" method="post" style="display:inline-block;">
                                 <input type="hidden" name="ID_PEDIDO" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+                                <input type="hidden" name="accion" value="aceptar">
                                 <button type="submit">Aceptar</button>
                             </form>
-                            <form action="?controller=pedidos&action=rechazar" method="post">
+                            <form action="?controller=pedidos&action=aceptarPedido" method="post" style="display:inline-block;">
                                 <input type="hidden" name="ID_PEDIDO" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+                                <input type="hidden" name="accion" value="rechazar">
                                 <button type="submit">Rechazar</button>
                             </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+                        <?php else : ?>
+                            <span>No disponible para aceptar pedidos</span>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="javascript/popuprepartidor.js"></script>
+    <script src="javascript/filtropedidosfecha.js"></script>
+    <script src="javascript/filtropedidostotal.js"></script>
 </body>
-
 </html>

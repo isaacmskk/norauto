@@ -35,9 +35,6 @@
         <a href="#">Equipamiento y mantenimiento</a>
       </li>
       <li class="col">
-        <a href="#">Bicicleta electrica, Moto</a>
-      </li>
-      <li class="col">
         <a href="#">Invierno</a>
       </li>
       <li class="ofertas col">
@@ -45,6 +42,12 @@
       </li>
       <li>
         <a href=<?= url . '?controller=Comentarios&action=reseñas' ?>>Reseñas</a>
+      </li>
+      <li>
+        <a href=<?= url . '?controller=repartidores&action=register' ?>>RegisterRepart</a>
+      </li>
+      <li>
+        <a href=<?= url . '?controller=repartidores&action=login' ?>>LoginRepart</a>
       </li>
     </ul>
   </nav>

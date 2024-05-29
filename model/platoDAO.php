@@ -108,43 +108,46 @@ class PlatoDAO
         return $result;
     }
     // En tu clase PlatoDAO
-    public static function añadirPedido($fecha, $cliente, $total, $selecciones, $propina)
+    public static function añadirPedido($fecha, $cliente, $total, $selecciones, $propina, $estado)
     {
         $con = db::connect();
-
-        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL, PROPINA) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssdi", $fecha, $cliente, $total, $propina);
-
+    
+        $stmt = $con->prepare("INSERT INTO pedido (FECHA, ID_CLIENTE, TOTAL, PROPINA, ESTADO) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssdii", $fecha, $cliente, $total, $propina, $estado);
+    
         if (!$stmt->execute()) {
             $con->close();
             return "No se pudo insertar el pedido en la base de datos.";
         }
-
+    
         // Obtén el ID del pedido recién insertado
         $pedidoId = $stmt->insert_id;
-
+    
         foreach ($selecciones as $seleccion) {
             $platoId = $seleccion->getPlato()->getID_PLATO();
-
+    
             // Validamos los valores de `ID_PLATO`
             if (!PlatoDAO::getPlatoById($platoId)) {
                 $con->close();
                 return "No existe el plato con ID " . $platoId;
             }
-
+    
             $stmt = $con->prepare("INSERT INTO platos_pedido (ID_PEDIDO, ID_PLATO) VALUES (?, ?)");
             $stmt->bind_param("ii", $pedidoId, $platoId);
-
+    
             if (!$stmt->execute()) {
                 $con->close();
                 return "No se pudo insertar el plato en el pedido.";
             }
         }
-
+    
         $con->close();
-
-        return $pedidoId; // Retorna el ID del pedido
+    
+        return $pedidoId;
     }
+    
+    
+    
     // public static function ultimopedido($pedidoId)
     // {
     //     $con = db::connect();

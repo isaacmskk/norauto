@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
   <title>Carrito Norauto</title>
 
   <meta charset="UTF-8">
@@ -90,24 +91,37 @@
           </div>
           <div class="barra">
           </div>
-          
+
           <form id="qr" action="<?= '?controller=plato&action=confirmar' ?>" method='post'>
             <input type="hidden" name="cantidadFinal" value="<?= $precioTotal ?>">
             <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $ID_CLIENTE ?>">
+
             <div class="propinaspuntos">
               <input type="checkbox" id="usarPuntos" name="usarPuntos">
               <label for="usarPuntos">Usar Puntos</label><br>
               <label for="propina">Propina (%)</label>
-              <input type="number" id="propina" name="propina" min="0" max="100" value="3"><br>
+              <input type="number" id="propina" name="propina" min="3" max="100" value="3"><br>
+            </div>
+
+
+            <div class="tipo-entrega">
+              <label for="tipoEntrega">Tipo de entrega:</label>
+              <select id="tipoEntrega" name="tipoEntrega">
+                <option value="recoger">Recoger</option>
+                <option value="domicilio">A domicilio</option>
+              </select>
             </div>
             <button class="botonpagar" id="botonpagar" type="submit">Tramitar Pedido</button>
-
           </form>
+
           <div class="totalpedido">
             <p>Total</p>
             <p id="precioTotal"><?= $precioTotal ?>€</p>
           </div>
+          <div>
+          <p>Coste extra por temperatura = <?= $costoAdicionalClima = $_SESSION['costoAdicionalClima'] ?? 0;?>€</p>
 
+          </div>
           <div class="articulos">
             <?php
             $puntosAcumulados = PuntosDAO::calcularPuntosAcumulados($precioTotal, $_SESSION['ID_CLIENTE']);

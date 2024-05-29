@@ -1,7 +1,7 @@
 <?php
 include_once 'config/db.php';
 include_once 'repartidores.php';
-include 'panelCompra.php';
+include 'views/panelCompra.php';
 
 
 class RepartidorDAO {
