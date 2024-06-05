@@ -1,10 +1,8 @@
-<!DOCTYPE html PUBLIC>
+<!DOCTYPE html>
 <html>
 
 <head>
-
   <title>Carrito Norauto</title>
-
   <meta charset="UTF-8">
   <meta name="description" content="Descripció web">
   <meta name="keywords" content="Paraules clau">
@@ -14,36 +12,19 @@
   <link href="bootstrap.min.css" rel="stylesheet">
   <link href="carritocss.css" rel="stylesheet" type="text/css" media="screen">
   <link href="cssconjunto.css" rel="stylesheet" type="text/css" media="screen">
-
 </head>
 
 <body>
   <nav class="nav1">
     <ul>
-      <li>
-        <a href="#">Cita Taller</a>
-      </li>
-      <li>
-        <a href="#">Neumaticos y llantas</a>
-      </li>
-      <li>
-        <a href="#">Piezas y herramientas</a>
-      </li>
-      <li>
-        <a href="#">Equipamiento y mantenimiento</a>
-      </li>
-      <li>
-        <a href="#">Bicicleta electrica, Moto</a>
-      </li>
-      <li>
-        <a href="#">Invierno</a>
-      </li>
-      <li class="ofertas">
-        <a href="#">Ofertas</a>
-      </li>
-      <li>
-        <a href=<?= url . '?controller=Comentarios&action=reseñas' ?>>Reseñas</a>
-      </li>
+      <li><a href="#">Cita Taller</a></li>
+      <li><a href="#">Neumaticos y llantas</a></li>
+      <li><a href="#">Piezas y herramientas</a></li>
+      <li><a href="#">Equipamiento y mantenimiento</a></li>
+      <li><a href="#">Bicicleta electrica, Moto</a></li>
+      <li><a href="#">Invierno</a></li>
+      <li class="ofertas"><a href="#">Ofertas</a></li>
+      <li><a href="<?= url . '?controller=Comentarios&action=reseñas' ?>">Reseñas</a></li>
     </ul>
   </nav>
   <section class="fondo">
@@ -52,21 +33,19 @@
         <div class="textocesta">
           <p>Cesta</p>
         </div>
-
         <?php
         $pos = 0;
         foreach ($_SESSION['selecciones'] as $pedido) { ?>
           <div class="cuadro">
-
-            <img alt="muestra la imagen del plato seleccionado" src=<?= "fotos/" . $pedido->getPlato()->getFOTO() ?> width="120" height="120">
+            <img alt="muestra la imagen del plato seleccionado" src="<?= "fotos/" . $pedido->getPlato()->getFOTO() ?>" width="120" height="120">
             <p class="p1"><?= $pedido->getPlato()->getNOMBRE() ?></p>
             <p class="p2"><?= $pedido->getPlato()->getPRECIO() ?>€</p>
             <div class="boton2">
-              <form action=<?= '?controller=plato&action=compra' ?> method='post'>
+              <form action="<?= '?controller=plato&action=compra' ?>" method='post'>
                 <tr>
-                  <td><button class="mas" type="submit" name="Añadir" value=<?= $pos ?>> + </button></td>
+                  <td><button class="mas" type="submit" name="Añadir" value="<?= $pos ?>"> + </button></td>
                   <td><?= $pedido->getCantidad() ?></td>
-                  <td><button class="menos" type="submit" name="Eliminar" value=<?= $pos ?>> - </button></td>
+                  <td><button class="menos" type="submit" name="Eliminar" value="<?= $pos ?>"> - </button></td>
                 </tr>
               </form>
             </div>
@@ -80,30 +59,23 @@
           <p>Resumen</p>
         </div>
         <div class="cuadroblanco">
-
           <div class="articulos" id="cuadro3">
             <p class="promotext">Puntos disponibles: </p>
           </div>
           <div class="articulos">
             <p>Articulos en total (<?= count($_SESSION['selecciones']) ?>)</p>
             <p id=""><?= $precioTotal ?>€</p>
-
           </div>
-          <div class="barra">
-          </div>
-
+          <div class="barra"></div>
           <form id="qr" action="<?= '?controller=plato&action=confirmar' ?>" method='post'>
             <input type="hidden" name="cantidadFinal" value="<?= $precioTotal ?>">
             <input type="hidden" id="ID_CLIENTE" name="ID_CLIENTE" value="<?= $ID_CLIENTE ?>">
-
             <div class="propinaspuntos">
               <input type="checkbox" id="usarPuntos" name="usarPuntos">
               <label for="usarPuntos">Usar Puntos</label><br>
               <label for="propina">Propina (%)</label>
               <input type="number" id="propina" name="propina" min="3" max="100" value="3"><br>
             </div>
-
-
             <div class="tipo-entrega">
               <label for="tipoEntrega">Tipo de entrega:</label>
               <select id="tipoEntrega" name="tipoEntrega">
@@ -113,14 +85,13 @@
             </div>
             <button class="botonpagar" id="botonpagar" type="submit">Tramitar Pedido</button>
           </form>
-
           <div class="totalpedido">
             <p>Total</p>
             <p id="precioTotal"><?= $precioTotal ?>€</p>
           </div>
           <div>
-          <p>Coste extra por temperatura = <?= $costoAdicionalClima = $_SESSION['costoAdicionalClima'] ?? 0;?>€</p>
-
+            <p>Coste extra por temperatura = <?= $_SESSION['costoAdicionalClima'] ?? 0; ?>€</p>
+            <p>Coste por entrega a domicilio = 5€</p>
           </div>
           <div class="articulos">
             <?php
@@ -135,8 +106,6 @@
   <section class="volverarriba">
     <a href="#header">Volver Arriba</a>
   </section>
-
-
   <section class="bannerabajo">
     <img src="fotos/BANNERABAJO.png">
   </section>

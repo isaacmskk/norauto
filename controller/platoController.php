@@ -266,9 +266,13 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
     }
     public function getTiempo()
     {
-        $username = "insbernatelferrer_montes_isaac";
-        $password = "82dfaDI0DB";
-        $url = "https://api.meteomatics.com/2024-05-29T00:00:00Z--2024-06-11T22:00:00Z:PT5M/t_2m:C/41.3828939,2.1774322/json?model=mix";
+        $username = "insbernatelferrer_segarra_isaac";
+        $password = "70MsaP2i0V";
+
+        $currentDateTime = (new DateTime())->format('Y-m-d\TH:i:s\Z');
+        $endDateTime = (new DateTime())->add(new DateInterval('P10D'))->format('Y-m-d\TH:i:s\Z');
+
+        $url = "https://api.meteomatics.com/{$currentDateTime}--{$endDateTime}:PT5M/t_2m:C/41.3828939,2.1774322/json?model=mix";
 
         $context = stream_context_create(array(
             'http' => array(
@@ -280,29 +284,26 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
 
         if ($response === FALSE) {
             $error = error_get_last();
-            var_dump($error); // Print the error for debugging
+            var_dump($error);
             return null;
         }
 
         $data = json_decode($response, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            var_dump(json_last_error_msg()); // Print JSON error
+            var_dump(json_last_error_msg());
             return null;
         }
 
-        // Process weather data
         $temperature = $data['data'][0]['coordinates'][0]['dates'][0]['value'] ?? null;
         $description = $data['data'][0]['parameter'] ?? null;
-        $icon = "https://your_icon_service/{$description}.png"; // Example URL for icon
 
-        // Return weather data
         return array(
             'temperature' => $temperature,
             'description' => $description,
-            'icon' => $icon
         );
     }
+
 
     /* 
     esta es la funcion con la cual se confirmara el pedido de los platos escogidos.
@@ -314,35 +315,24 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
         session_start();
 
         if (!isset($_POST['ID_CLIENTE'])) {
-            // Si no está definida, inicializamos con un valor predeterminado
             $cliente = 0;
         } else {
-            // Si está definida, usamos su valor actual
             $cliente = $_POST['ID_CLIENTE'];
         }
 
         $fecha = date('d-m-Y');
 
-        // Calcula el total de la orden directamente
         $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
 
         $usarPuntos = isset($_POST['usarPuntos']) ? true : false;
 
         if ($usarPuntos) {
-            // Obtén los puntos disponibles del cliente
             $puntosDisponibles = PuntosDAO::AllPuntos($cliente);
-
-            // Calcula el descuento en función de los puntos disponibles
             $descuento = $puntosDisponibles;
-
-            // Resta el descuento al total del pedido
             $total -= $descuento * 0.1;
-
-            // Actualiza los puntos del cliente restando los puntos utilizados
             PuntosDAO::actualizarPuntos($cliente, $puntosDisponibles - $descuento);
         }
 
-        // Ahora, también considera la propina aplicada desde el cliente
         $propina = isset($_POST['propina']) ? floatval($_POST['propina']) : 0;
         $total += $total * ($propina / 100);
         $total = ceil($total * 100) / 100;
@@ -350,35 +340,23 @@ esta funcion actualiza el plato con lo que se ha enviado a traves del form de ed
 
         $tipoEntrega = $_POST['tipoEntrega'];
         $estado = ($tipoEntrega == 'recoger') ? 1 : 0;
-        $tipoEntrega = $_POST['tipoEntrega'];
-        $total = CalculadoraPrecios::calculadoraPrecioPedido($_SESSION['selecciones']);
-    
-        // Check if delivery option is "A domicilio"
+
         if ($tipoEntrega == 'domicilio') {
-            // Add minimum delivery fee of 5 euros
             $total += 5;
         }
-    
-        // Other calculations...
-    
-        // Redirect and set cookie
-        header("Location:" . url . '?controller=plato');
-
 
         if ($estado == 0) {
             $clima = $this->getTiempo();
-            if (isset($clima['temperature']) && $clima['temperature'] > 30) {
-                // Incrementar el total en un 10% si la temperatura es mayor a 30 grados
+            if (isset($clima['temperature']) && $clima['temperature'] > 20) {
                 $incrementoClima = $total * 0.10;
                 $total += $incrementoClima;
-                // Pasar el costo adicional por pantalla a la vista
                 $costoAdicionalClima = number_format($incrementoClima, 2);
                 $_SESSION['costoAdicionalClima'] = $costoAdicionalClima;
-
             }
+            $clima = $this->getTiempo();
+            var_dump($clima);
         }
 
-        // Pasa el estado al método añadirPedido
         $pedidito = PlatoDAO::añadirPedido($fecha, $cliente, $total, $_SESSION['selecciones'], $propina, $estado);
         $puntosAcumulados = PuntosDAO::acumularPuntosPorCompra($cliente, $total);
         $_SESSION['ultimoPedidoId'] = $pedidito;

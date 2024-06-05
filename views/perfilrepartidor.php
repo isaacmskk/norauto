@@ -30,7 +30,7 @@
 
         <h2>Clima Actual</h2>
         <div class="weather-container">
-            <?php if ($weather && $weather['temperature'] !== null && $weather['description'] !== null && $weather['icon'] !== null) : ?>
+            <?php if ($weather && $weather['temperature'] !== null && $weather['description'] !== null) : ?>
                 <p>Temperatura: <?php echo $weather['temperature']; ?>°C</p>
                 <p>Condición: <?php echo $weather['description']; ?></p>
             <?php else : ?>
@@ -56,7 +56,7 @@
             </select>
         </div>
     </form>
-    <table >
+    <table>
         <thead>
             <tr>
                 <th>ID Pedido</th>
@@ -76,41 +76,59 @@
     </table>
 
     <h2>Pedidos Pendientes de Aceptar</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID Pedido</th>
-                <th>Fecha</th>
-                <th>Total</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($pedidosPendientes as $pedido) : ?>
+    <?php if ($repartidor['DISPONIBLE'] == 0) : ?>
+        <p>No estás disponible para aceptar nuevos pedidos. Por favor, cambia tu disponibilidad en el perfil.</p>
+    <?php else : ?>
+        <table>
+            <thead>
                 <tr>
-                    <td><?php echo $pedido['ID_PEDIDO']; ?></td>
-                    <td><?php echo $pedido['FECHA']; ?></td>
-                    <td><?php echo $pedido['TOTAL_PEDIDO']; ?></td>
-                    <td>
-                        <?php if ($repartidor['DISPONIBLE']) : ?>
-                            <form action="?controller=pedidos&action=aceptarPedido" method="post" style="display:inline-block;">
-                                <input type="hidden" name="ID_PEDIDO" value="<?php echo $pedido['ID_PEDIDO']; ?>">
-                                <input type="hidden" name="accion" value="aceptar">
-                                <button type="submit">Aceptar</button>
-                            </form>
-                            <form action="?controller=pedidos&action=aceptarPedido" method="post" style="display:inline-block;">
-                                <input type="hidden" name="ID_PEDIDO" value="<?php echo $pedido['ID_PEDIDO']; ?>">
-                                <input type="hidden" name="accion" value="rechazar">
-                                <button type="submit">Rechazar</button>
-                            </form>
-                        <?php else : ?>
-                            <span>No disponible para aceptar pedidos</span>
-                        <?php endif; ?>
-                    </td>
+                    <th>ID Pedido</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php if (count($pedidosPendientes) > 0) : ?>
+                    <?php foreach ($pedidosPendientes as $pedido) : ?>
+                        <tr>
+                            <td><?php echo $pedido['ID_PEDIDO']; ?></td>
+                            <td><?php echo $pedido['FECHA']; ?></td>
+                            <td><?php echo $pedido['TOTAL_PEDIDO']; ?></td>
+                            <td>
+                                <?php if ($repartidor['ESTADO'] == 0) : ?>
+                                    <form action="?controller=repartidores&action=aceptarPedido" method="post" style="display:inline-block;">
+                                        <input type="hidden" name="ID_PEDIDO" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+                                        <button type="submit">Aceptar</button>
+                                    </form>
+                                    <form action="?controller=repartidores&action=rechazarPedido" method="post" style="display:inline-block;">
+                                        <input type="hidden" name="ID_PEDIDO" value="<?php echo $pedido['ID_PEDIDO']; ?>">
+                                        <button type="submit">Rechazar</button>
+                                    </form>
+                                <?php else : ?>
+                                    <span>No disponible para aceptar pedidos</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="4">No hay pedidos pendientes.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+
+    <?php if ($repartidor['ESTADO'] == 1): ?>
+        <h2>Pedido Actual</h2>
+        <form action="?controller=repartidores&action=completarPedido" method="post">
+            <label for="ID_PEDIDO">ID Pedido:</label>
+            <input type="text" id="ID_PEDIDO" name="ID_PEDIDO" required>
+            <button type="submit">Marcar como Completado</button>
+        </form>
+    <?php endif; ?>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="javascript/popuprepartidor.js"></script>
     <script src="javascript/filtropedidosfecha.js"></script>

@@ -7,7 +7,7 @@ include 'views/panelCompra.php';
 class RepartidorDAO {
     public static function getRepartidoresDisponibles() {
         $con = db::connect();
-        $query = "SELECT * FROM repartidores WHERE DISPONIBLE = 1"; // Suponiendo que DISPONIBLE es un campo que indica si el repartidor está disponible
+        $query = "SELECT * FROM repartidores WHERE DISPONIBLE = 1";
         $result = $con->query($query);
 
         $repartidores = [];

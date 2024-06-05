@@ -55,7 +55,6 @@ class repartidoresController
         session_start();
         if (!isset($_SESSION['repartidor'])) {
             header("Location: ?controller=repartidores&action=login");
-            exit();
         }
 
         $repartidor = $_SESSION['repartidor'];
@@ -76,15 +75,19 @@ class repartidoresController
 
             echo "Información actualizada con éxito.";
         }
-
+        if ($repartidor['DISPONIBLE'] == 1 && $repartidor['ESTADO'] == 0) {
+            $pedidosPendientes = $this->getPedidosPendientes();
+        } else {
+            $pedidosPendientes = array();
+        }
         $weather = $this->getWeather();
         $historialPedidos = $this->getHistorialPedidos($repartidor['ID_REPARTIDOR']);
-        $pedidosPendientes = $this->getPedidosPendientes();
 
         include_once 'views/cabecera.php';
         include_once 'views/perfilrepartidor.php';
         include_once 'views/footer.php';
     }
+
 
     private function getHistorialPedidos($idRepartidor)
     {
@@ -113,25 +116,71 @@ class repartidoresController
     }
 
     public function aceptarPedido()
-    {
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ID_PEDIDO'])) {
-            $idPedido = $_POST['ID_PEDIDO'];
-            $idRepartidor = $_SESSION['repartidor']['ID_REPARTIDOR'];
+{
+    session_start();
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ID_PEDIDO'])) {
+        $idPedido = $_POST['ID_PEDIDO'];
+        $idRepartidor = $_SESSION['repartidor']['ID_REPARTIDOR'];
 
-            $con = db::connect();
+        $con = db::connect();
+
+        $result = $con->query("SELECT DISPONIBLE, ESTADO FROM repartidores WHERE ID_REPARTIDOR = $idRepartidor");
+        $repartidor = $result->fetch_assoc();
+        
+        if ($repartidor['DISPONIBLE'] == 1 && $repartidor['ESTADO'] == 0) {
             $stmt = $con->prepare("UPDATE pedido SET ESTADO = 1, ID_REPARTIDOR = ? WHERE ID_PEDIDO = ?");
             $stmt->bind_param("ii", $idRepartidor, $idPedido);
             $stmt->execute();
-            $con->close();
+            $stmt->close();
+            
+            // Cambiar el estado del repartidor a entregando (1) y no disponible (0)
+            $stmt = $con->prepare("UPDATE repartidores SET ESTADO = 1, DISPONIBLE = 0 WHERE ID_REPARTIDOR = ?");
+            $stmt->bind_param("i", $idRepartidor);
+            $stmt->execute();
+            $stmt->close();
+
+            $_SESSION['repartidor']['ESTADO'] = 1; 
+            $_SESSION['repartidor']['DISPONIBLE'] = 0; 
+        } else {
+            echo "No puedes aceptar un nuevo pedido hasta que completes el actual o cambies tu disponibilidad.";
         }
-        header("Location: ?controller=repartidores&action=profile");
+        
+        $con->close();
     }
+    header("Location: ?controller=repartidores&action=profile");
+}
+public function completarPedido()
+{
+    session_start();
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ID_PEDIDO'])) {
+        $idPedido = $_POST['ID_PEDIDO'];
+        $idRepartidor = $_SESSION['repartidor']['ID_REPARTIDOR'];
+
+        $con = db::connect();
+
+        $stmt = $con->prepare("UPDATE pedido SET ESTADO = 2 WHERE ID_PEDIDO = ?");
+        $stmt->bind_param("i", $idPedido);
+        $stmt->execute();
+        $stmt->close();
+
+        $stmt = $con->prepare("UPDATE repartidores SET ESTADO = 0, DISPONIBLE = 1 WHERE ID_REPARTIDOR = ?");
+        $stmt->bind_param("i", $idRepartidor);
+        $stmt->execute();
+        $stmt->close();
+
+        $_SESSION['repartidor']['ESTADO'] = 0;
+        $_SESSION['repartidor']['DISPONIBLE'] = 1;
+
+        $con->close();
+    }
+    header("Location: ?controller=repartidores&action=profile");
+}
+
 
     public function rechazarPedido()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['ID_PEDIDO'])) {
             $idPedido = $_POST['ID_PEDIDO'];
-            // Actualizar el estado del pedido a 'Rechazado'
             $con = db::connect();
             $stmt = $con->prepare("UPDATE pedido SET ESTADO = 'Rechazado', ID_REPARTIDOR = NULL WHERE ID_PEDIDO = ?");
             $stmt->bind_param("i", $idPedido);
@@ -142,8 +191,15 @@ class repartidoresController
     }
 
     private function getPedidosPendientes()
-    {
-        $con = db::connect();
+{
+    $idRepartidor = $_SESSION['repartidor']['ID_REPARTIDOR'];
+    $con = db::connect();
+
+    // Verificar si el repartidor está disponible
+    $result = $con->query("SELECT DISPONIBLE, ESTADO FROM repartidores WHERE ID_REPARTIDOR = $idRepartidor");
+    $repartidor = $result->fetch_assoc();
+    
+    if ($repartidor['DISPONIBLE'] == 1 && $repartidor['ESTADO'] == 0) {
         $query = "SELECT p.ID_PEDIDO, p.FECHA, p.ID_CLIENTE, SUM(pl.PRECIO * pp.CANTIDAD + p.PROPINA + 5) AS TOTAL_PEDIDO
                   FROM pedido p
                   LEFT JOIN platos_pedido pp ON p.ID_PEDIDO = pp.ID_PEDIDO
@@ -158,16 +214,22 @@ class repartidoresController
                 $pedidosPendientes[] = $row;
             }
         }
-
         return $pedidosPendientes;
+    } else {
+        return array();
     }
-
+}
 
     public function getWeather()
     {
-        $username = "insbernatelferrer_montes_isaac";
-        $password = "82dfaDI0DB";
-        $url = "https://api.meteomatics.com/2024-05-29T00:00:00Z--2024-06-11T22:00:00Z:PT5M/t_2m:C/41.3828939,2.1774322/json?model=mix";
+        $username = "insbernatelferrer_segarra_isaac";
+        $password = "70MsaP2i0V";
+
+        $currentDateTime = (new DateTime())->format('Y-m-d\TH:i:s\Z');
+
+        $endDateTime = (new DateTime())->add(new DateInterval('P10D'))->format('Y-m-d\TH:i:s\Z');
+
+        $url = "https://api.meteomatics.com/{$currentDateTime}--{$endDateTime}:PT5M/t_2m:C/41.3828939,2.1774322/json?model=mix";
 
         $context = stream_context_create(array(
             'http' => array(
@@ -179,27 +241,23 @@ class repartidoresController
 
         if ($response === FALSE) {
             $error = error_get_last();
-            var_dump($error); // Print the error for debugging
+            var_dump($error);
             return null;
         }
 
         $data = json_decode($response, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            var_dump(json_last_error_msg()); // Print JSON error
+            var_dump(json_last_error_msg());
             return null;
         }
 
-        // Process weather data
         $temperature = $data['data'][0]['coordinates'][0]['dates'][0]['value'] ?? null;
         $description = $data['data'][0]['parameter'] ?? null;
-        $icon = "https://your_icon_service/{$description}.png"; // Example URL for icon
 
-        // Return weather data
         return array(
             'temperature' => $temperature,
             'description' => $description,
-            'icon' => $icon
         );
     }
 }
