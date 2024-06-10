@@ -49,6 +49,9 @@
       <li>
         <a href=<?= url . '?controller=repartidores&action=login' ?>>LoginRepart</a>
       </li>
+      <li>
+        <a href=<?= url . '?controller=repartidores&action=profile' ?>>PerfilRepart</a>
+      </li>
     </ul>
   </nav>
   
